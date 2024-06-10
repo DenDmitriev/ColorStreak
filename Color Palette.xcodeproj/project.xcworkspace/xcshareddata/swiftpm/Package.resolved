@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "dominantcolors",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DenDmitriev/DominantColors",
+      "state" : {
+        "revision" : "8b2d6a130182560b4db2c30a4bbede5fe35db5a4",
+        "version" : "1.1.8"
+      }
+    },
+    {
+      "identity" : "liquid",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maustinstar/liquid.git",
+      "state" : {
+        "revision" : "9123b9d1fb24c8273c989924b4e889f07629a26b",
+        "version" : "0.0.2"
+      }
+    }
+  ],
+  "version" : 2
+}

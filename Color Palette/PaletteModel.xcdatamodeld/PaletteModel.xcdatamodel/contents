@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="ColorModel" representedClassName="ColorModel" syncable="YES" codeGenerationType="class">
+        <attribute name="blue" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="green" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="red" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="palette" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaletteModel" inverseName="colors" inverseEntity="PaletteModel"/>
+    </entity>
+    <entity name="ColorTagModel" representedClassName="ColorTagModel" syncable="YES" codeGenerationType="class">
+        <attribute name="tag" optional="YES" attributeType="String"/>
+        <relationship name="palette" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaletteModel" inverseName="tags" inverseEntity="PaletteModel"/>
+    </entity>
+    <entity name="PaletteModel" representedClassName="PaletteModel" syncable="YES" codeGenerationType="class">
+        <attribute name="colorSpace" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="colors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ColorModel" inverseName="palette" inverseEntity="ColorModel"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ColorTagModel" inverseName="palette" inverseEntity="ColorTagModel"/>
+    </entity>
+</model>

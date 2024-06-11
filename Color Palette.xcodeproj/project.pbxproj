@@ -179,6 +179,7 @@
 		95EF77A12C146F78007E1DEC /* ColorPickerPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77A02C146F78007E1DEC /* ColorPickerPanel.swift */; };
 		95EF77A32C156F9D007E1DEC /* ContrastBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77A22C156F9D007E1DEC /* ContrastBackgroundView.swift */; };
 		95EF77A72C15815A007E1DEC /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77A62C15815A007E1DEC /* BottomSheetView.swift */; };
+		95EF77A92C173EB9007E1DEC /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77A82C173EB9007E1DEC /* AppIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -366,6 +367,7 @@
 		95EF77A02C146F78007E1DEC /* ColorPickerPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerPanel.swift; sourceTree = "<group>"; };
 		95EF77A22C156F9D007E1DEC /* ContrastBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastBackgroundView.swift; sourceTree = "<group>"; };
 		95EF77A62C15815A007E1DEC /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		95EF77A82C173EB9007E1DEC /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -652,6 +654,7 @@
 			children = (
 				951950E32C10EBB1001434F4 /* MenuView.swift */,
 				951950E52C10EFB4001434F4 /* AboutView.swift */,
+				95EF77A82C173EB9007E1DEC /* AppIcon.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -1167,6 +1170,7 @@
 				95879D802BF72F860016A577 /* ContentView.swift in Sources */,
 				95EF77792C135393007E1DEC /* HexPanelView.swift in Sources */,
 				954A69D42BF9F16E00726A65 /* CGColorExtensionHSB.swift in Sources */,
+				95EF77A92C173EB9007E1DEC /* AppIcon.swift in Sources */,
 				9501E9A62BFA315C004448EA /* UserDefaultsKey.swift in Sources */,
 				9511136D2C087285000B3E3C /* PaletteItemView.swift in Sources */,
 				9511137B2C09A694000B3E3C /* NavigationRouter.swift in Sources */,

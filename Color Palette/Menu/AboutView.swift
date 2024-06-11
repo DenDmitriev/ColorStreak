@@ -12,7 +12,11 @@ struct AboutView: View {
     
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     let appBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-    let mailSupport = URL(string: "mailto:some@mail.com")
+    let mailSupport = URL(string: "mailto:dv.denstr@gmail.com")
+    let icons = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any]
+    
+    let site = URL(string: "https://dendmitriev.github.io/ColorPalette/")
+    let privatePlicy = URL(string: "https://www.apple.com")
     
     @Environment(\.requestReview) var requestReview
     
@@ -20,21 +24,25 @@ struct AboutView: View {
         List {
             Section {
                 HStack(spacing: 16) {
-                    Circle()
-                        .fill(.secondary)
-                        .frame(width: 100)
+                    AppIcon()
                         .aspectRatio(1.0, contentMode: .fit)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     
                     VStack(alignment: .leading) {
                         Text("Color Palette")
                             .font(.title)
                         Text("Version \(appVersion ?? "Empty") (Build \(appBuild ?? "Empty"))")
                             .foregroundStyle(.secondary)
+                            .font(.caption)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
-                Link(destination: URL(string: "https://www.apple.com")!, label: {
+                Link(destination: site!, label: {
+                    Text("Site")
+                })
+                
+                Link(destination: privatePlicy!, label: {
                     Text("Private Policy")
                 })
             }

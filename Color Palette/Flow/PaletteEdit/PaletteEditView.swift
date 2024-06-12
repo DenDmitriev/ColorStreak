@@ -39,6 +39,7 @@ struct PaletteEditView: View {
         }
         .navigationBarBackButtonHidden()
         .ignoresSafeArea()
+        .toolbar(.hidden, for: .tabBar)
         .toolbar(content: {
             ToolbarItem(placement: .topBarLeading) {
                 Button(role: .cancel) {

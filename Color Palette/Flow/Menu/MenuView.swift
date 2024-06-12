@@ -57,6 +57,8 @@ struct MenuView: View {
                     NavigationLink("About", destination: AboutView())
                 }
             }
+            .scrollContentBackground(.hidden)
+            .background(.appBackground)
             .navigationTitle("Menu")
             .alert("Confirm deletion", isPresented: $showDeleteAlert) {
                 Button("Delete", role: .destructive, action: removeAllPalette)

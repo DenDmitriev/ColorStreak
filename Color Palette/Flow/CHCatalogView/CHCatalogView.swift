@@ -59,7 +59,8 @@ struct CHCatalogView: View {
                 .padding(12)
                 .background(.regularMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding(.horizontal)
+                .padding(.horizontal, 28)
+                .padding(.top, 8)
                 .onTapGesture {
                     hideKeyboard()
                 }

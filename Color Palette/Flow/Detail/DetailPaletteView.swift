@@ -55,6 +55,8 @@ struct DetailPaletteView: View {
                 }
                 .foregroundStyle(.secondary)
             }
+            .scrollContentBackground(.hidden)
+            .background(.appBackground)
             .navigationTitle("Detail")
             .toolbar(content: {
                 ToolbarItem(placement: .topBarTrailing) {

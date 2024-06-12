@@ -56,6 +56,7 @@ struct NewPaletteView: View {
                             NewImageColors(palette: newPalette)
                         }
                     }
+                    .frame(maxWidth: .infinity)
                     .padding()
                     .background(HierarchicalShapeStyle.quinary)
                     .clipShape(RoundedRectangle(cornerRadius: 24))

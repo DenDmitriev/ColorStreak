@@ -16,7 +16,7 @@ struct AboutView: View {
     let icons = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any]
     
     let site = URL(string: "https://dendmitriev.github.io/ColorPalette/")
-    let privatePlicy = URL(string: "https://www.apple.com")
+    let privatePlicy = URL(string: "https://dendmitriev.github.io/ColorPalette/privacy_policy/")
     
     @Environment(\.requestReview) var requestReview
     
@@ -55,6 +55,8 @@ struct AboutView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(.appBackground)
         .foregroundStyle(.primary)
         .navigationTitle("About")
     }

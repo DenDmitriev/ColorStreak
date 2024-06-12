@@ -142,6 +142,7 @@ struct PalettePickView: View {
                     }
             }
         }
+        .toolbar(.hidden, for: .tabBar)
         .onChange(of: colorSpace) { _, newColorSpace in
             palette.convert(device: newColorSpace)
         }

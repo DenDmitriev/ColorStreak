@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct Color_Palette: App {
     @StateObject private var shop: PaletteShop = .init()
+    @StateObject private var chShop: CHPaletteShop = .init()
     
     @AppStorage(UserDefaultsKey.isDarkMode.key)
     private var isDarkMode: Bool = false
@@ -24,6 +25,7 @@ struct Color_Palette: App {
                 .preferredColorScheme(isDarkMode ? .dark : .light)
         }
         .environmentObject(shop)
+        .environmentObject(chShop)
     }
     
     private func navigationTitleAppearance() {

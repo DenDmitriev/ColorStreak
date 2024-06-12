@@ -16,7 +16,6 @@ enum CatalogRouter: NavigationRouter {
     case detailPalette(_ palette: Palette)
     case share(_ palette: Palette)
     case contrast(_ palette: Palette)
-    case menu, about
     
     var title: String {
         switch self {
@@ -32,10 +31,6 @@ enum CatalogRouter: NavigationRouter {
             return "Detail Palette"
         case .share:
             return "Share Palette"
-        case .menu:
-            return "Menu"
-        case .about:
-            return "About"
         case .pickPalette:
             return "Pick Palette"
         case .contrast:
@@ -64,10 +59,6 @@ enum CatalogRouter: NavigationRouter {
             DetailPaletteView(palette: palette)
         case .share(let palette):
             ShareView(palette: palette)
-        case .menu:
-            MenuView()
-        case .about:
-            AboutView()
         case .contrast(let palette):
             ContrastView(palette: palette)
         }

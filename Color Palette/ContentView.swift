@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-
-    @EnvironmentObject var shop: PaletteShop
-    @StateObject var coordinator: Coordinator<CatalogRouter, CatalogError> = .init()
+    @StateObject var catalogCoordinator: Coordinator<CatalogRouter, CatalogError> = .init()
+    @StateObject var libraryCoordinator: Coordinator<CHCatalogRouter, CatalogError> = .init()
+    @StateObject var coordinator: TabCoordinator<TabRouter> = .init(tab: .catalog)
     
     var body: some View {
-        CatalogCoordinatorView()
+        TabCoordinatorView()
             .environmentObject(coordinator)
+            .environmentObject(libraryCoordinator)
+            .environmentObject(catalogCoordinator)
     }
 }
 
 #Preview {
     ContentView()
         .environmentObject(PaletteShop())
+        .environmentObject(CHPaletteShop())
 }

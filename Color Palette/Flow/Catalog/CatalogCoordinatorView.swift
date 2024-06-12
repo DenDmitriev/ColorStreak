@@ -31,14 +31,6 @@ struct CatalogCoordinatorView: View {
                 .alert(isPresented: $coordinator.hasError, error: coordinator.error) {
                     Button("Ok", action: { coordinator.hasError.toggle() })
                 }
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Menu", systemImage: "line.3.horizontal") {
-                            coordinator.push(.menu)
-                        }
-                        .tint(.primary)
-                    }
-                }
         }
         .environmentObject(coordinator)
     }

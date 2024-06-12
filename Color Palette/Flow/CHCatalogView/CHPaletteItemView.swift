@@ -1,16 +1,16 @@
 //
-//  PaletteItemView.swift
-//  dE Calculator
+//  CHPaletteItemView.swift
+//  Color Palette
 //
-//  Created by Denis Dmitriev on 30.05.2024.
+//  Created by Denis Dmitriev on 11.06.2024.
 //
 
 import SwiftUI
 
-struct PaletteItemView: View {
+struct CHPaletteItemView: View {
     @ObservedObject var palette: Palette
     @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
-    @EnvironmentObject private var shop: PaletteShop
+    @EnvironmentObject private var chShop: PaletteShop
     
     @State private var showMenu = false
     
@@ -32,10 +32,7 @@ struct PaletteItemView: View {
                             .fill(.ultraThinMaterial)
                         
                         HStack {
-                            Button("",systemImage: "eyedropper.halffull" , action: pickPaletteAction)
-                            Button("",systemImage: "slider.horizontal.3" , action: editPaletteAction)
                             Button("",systemImage: "rectangle.portrait.inset.filled" , action: showPaletteAction)
-                            Button("",systemImage: "square.fill.on.circle.fill" , action: contrastPaletteAction)
                         }
                         .font(.system(size: 24, weight: .bold))
                         .foregroundStyle(.white)
@@ -47,48 +44,30 @@ struct PaletteItemView: View {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             
             HStack(spacing: 20) {
-                Text(palette.name.isEmpty ? "Unknown" : palette.name)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
                 Button(action: { showMenu.toggle() }, label: {
                     Image(systemName: "ellipsis")
                 })
+                .frame(maxWidth: .infinity, alignment: .trailing)
             }
+            .foregroundStyle(.primary)
             .font(.system(size: 14, weight: .regular))
-            .foregroundStyle(.appPrimary)
             .padding(.horizontal)
             .padding(.vertical, 8)
         }
-    }
-    
-    private func editPaletteAction() {
-        showMenu = false
-        coordinator.push(.editPalette(palette))
-    }
-    
-    private func pickPaletteAction() {
-        showMenu = false
-        coordinator.push(.pickPalette(palette))
     }
     
     private func showPaletteAction() {
         showMenu = false
         coordinator.present(cover: .showPalette(palette))
     }
-    
-    private func contrastPaletteAction() {
-        showMenu = false
-        coordinator.push(.contrast(palette))
-    }
 }
 
 #Preview {
     VStack {
-        PaletteItemView(palette: Palette(colors: [.red, .orange, .yellow, .green, .cyan, .blue, .purple], name: "Palette"))
+        CHPaletteItemView(palette: Palette(colors: [.red, .orange, .yellow, .green, .cyan, .blue, .purple], name: "Palette"))
             .environmentObject(Coordinator<CatalogRouter, CatalogError>())
             .environmentObject(PaletteShop())
             .padding()
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
 }
-

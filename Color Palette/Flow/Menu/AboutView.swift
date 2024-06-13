@@ -16,7 +16,8 @@ struct AboutView: View {
     let icons = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any]
     
     let site = URL(string: "https://dendmitriev.github.io/ColorPalette/")
-    let privatePlicy = URL(string: "https://dendmitriev.github.io/ColorPalette/privacy_policy/")
+    let privatePolicy = URL(string: "https://dendmitriev.github.io/ColorPalette/privacy_policy/")
+    let termsOfService = URL(string: "https://dendmitriev.github.io/ColorPalette/termsofservice/")
     
     @Environment(\.requestReview) var requestReview
     
@@ -42,8 +43,12 @@ struct AboutView: View {
                     Text("Site")
                 })
                 
-                Link(destination: privatePlicy!, label: {
+                Link(destination: privatePolicy!, label: {
                     Text("Private Policy")
+                })
+                
+                Link(destination: termsOfService!, label: {
+                    Text("Terms of Service")
                 })
             }
             

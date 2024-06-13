@@ -14,4 +14,13 @@ enum AxisPalette: String, Identifiable, CaseIterable {
     var id: Self {
         self
     }
+    
+    var name: String {
+        switch self {
+        case .horizontal:
+            String(localized: "Horizontal")
+        case .vertical:
+            String(localized: "Vertical")
+        }
+    }
 }

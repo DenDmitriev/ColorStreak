@@ -20,21 +20,21 @@ enum CatalogRouter: NavigationRouter {
     var title: String {
         switch self {
         case .catalog:
-            return "Catalog"
+            return String(localized: "Catalog")
         case .newPalette:
-            return "New Palette"
+            return String(localized: "New Palette")
         case .editPalette:
-            return "Edit Palette"
+            return String(localized: "Edit Palette")
         case .showPalette:
-            return "Show Palette"
+            return String(localized: "Show Palette")
         case .detailPalette:
-            return "Detail Palette"
+            return String(localized: "Detail Palette")
         case .share:
-            return "Share Palette"
+            return String(localized: "Share Palette")
         case .pickPalette:
-            return "Pick Palette"
+            return String(localized: "Pick Palette")
         case .contrast:
-            return "Contrast"
+            return String(localized: "Contrast")
         }
     }
     

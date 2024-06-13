@@ -19,11 +19,11 @@ enum TabRouter: NavigationRouter, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .catalog:
-            "Catalog"
+            return String(localized: "Catalog")
         case .library:
-            "Library"
+            return String(localized: "Library")
         case .menu:
-            "Menu"
+            return String(localized: "Menu")
         }
     }
     

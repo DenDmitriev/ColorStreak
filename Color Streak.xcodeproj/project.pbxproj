@@ -153,7 +153,7 @@
 		9587CDA12C197C7400495D33 /* CHCatalogCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9587CDA02C197C7400495D33 /* CHCatalogCoordinatorView.swift */; };
 		9587CDA32C197CE900495D33 /* CHCatalogRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9587CDA22C197CE900495D33 /* CHCatalogRouter.swift */; };
 		9587CDA52C197E9700495D33 /* TabCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9587CDA42C197E9700495D33 /* TabCoordinatorView.swift */; };
-		959EE2112C10FBB20061E678 /* LabCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959EE2102C10FBB20061E678 /* LabCalculator.swift */; };
+		9587CDA72C1B183F00495D33 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9587CDA62C1B183F00495D33 /* Localizable.xcstrings */; };
 		959EE2142C10FEB30061E678 /* PaletteEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959EE2132C10FEB30061E678 /* PaletteEditView.swift */; };
 		959EE2362C1180DF0061E678 /* PaletteStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959EE2352C1180DF0061E678 /* PaletteStackView.swift */; };
 		959EE2382C1186150061E678 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959EE2372C1186150061E678 /* DeviceRotationViewModifier.swift */; };
@@ -170,8 +170,8 @@
 		95A847162C06147800D9451A /* DarkModeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A847152C06147800D9451A /* DarkModeViewModifier.swift */; };
 		95D52A112C06179A00606CBF /* SingleColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D52A102C06179A00606CBF /* SingleColorView.swift */; };
 		95D52A152C061F6E00606CBF /* ColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D52A142C061F6E00606CBF /* ColorPaletteView.swift */; };
-		95D52A192C06233300606CBF /* HierarchicalStylesPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D52A172C06233300606CBF /* HierarchicalStylesPreview.swift */; };
-		95D52A1A2C06233300606CBF /* SemanticStylesPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D52A182C06233300606CBF /* SemanticStylesPreview.swift */; };
+		95E4DBF22C1B25B30029BBFC /* Color-Streak-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95E4DBF12C1B25B30029BBFC /* Color-Streak-Info.plist */; };
+		95E4DBF42C1B25F70029BBFC /* LabCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E4DBF32C1B25F70029BBFC /* LabCalculator.swift */; };
 		95EDD6242C0F713900DD7655 /* DominantColors in Frameworks */ = {isa = PBXBuildFile; productRef = 95EDD6232C0F713900DD7655 /* DominantColors */; };
 		95EF77792C135393007E1DEC /* HexPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77782C135393007E1DEC /* HexPanelView.swift */; };
 		95EF777B2C13832A007E1DEC /* ExportPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF777A2C13832A007E1DEC /* ExportPalette.swift */; };
@@ -266,7 +266,6 @@
 		951113BE2C0DE57B000B3E3C /* PaletteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteImage.swift; sourceTree = "<group>"; };
 		951113C02C0DF9B4000B3E3C /* AxisPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisPalette.swift; sourceTree = "<group>"; };
 		951113C42C0E0DB7000B3E3C /* PaletteDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteDropDelegate.swift; sourceTree = "<group>"; };
-		951113C62C0E0E53000B3E3C /* Color-Palette-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Color-Palette-Info.plist"; sourceTree = SOURCE_ROOT; };
 		951113C72C0E12F5000B3E3C /* ExtensionUTType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUTType.swift; sourceTree = "<group>"; };
 		951113CA2C0E1768000B3E3C /* PaletteModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PaletteModel.xcdatamodel; sourceTree = "<group>"; };
 		951113D12C0E1B29000B3E3C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -314,7 +313,7 @@
 		95583C112C045E3C00B33354 /* CIHueSaturationValueGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIHueSaturationValueGradientView.swift; sourceTree = "<group>"; };
 		95583C132C046BCC00B33354 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		95583C152C04B5E900B33354 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
-		95879D7A2BF72F860016A577 /* Color Palette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Palette.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95879D7A2BF72F860016A577 /* Color Streak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Streak.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95879D7D2BF72F860016A577 /* Color_Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_Palette.swift; sourceTree = "<group>"; };
 		95879D7F2BF72F860016A577 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		95879D812BF72F870016A577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -328,7 +327,7 @@
 		95879DB02BF759000016A577 /* BoundDoubleFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundDoubleFormatter.swift; sourceTree = "<group>"; };
 		95879DB42BF75B780016A577 /* ColorExtension+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorExtension+Hex.swift"; sourceTree = "<group>"; };
 		95879DBA2BF783C80016A577 /* ColorExtension+Lab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorExtension+Lab.swift"; sourceTree = "<group>"; };
-		95879DC22BF78C6D0016A577 /* Color PaletteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Color PaletteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95879DC22BF78C6D0016A577 /* Color StreakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Color StreakTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95879DC42BF78C6D0016A577 /* LabCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCalculatorTests.swift; sourceTree = "<group>"; };
 		95879DD02BF7E84C0016A577 /* CGColorExtensionColorDifference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtensionColorDifference.swift; sourceTree = "<group>"; };
 		95879DD22BF85E8E0016A577 /* ColorDifference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDifference.swift; sourceTree = "<group>"; };
@@ -355,7 +354,7 @@
 		9587CDA02C197C7400495D33 /* CHCatalogCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCatalogCoordinatorView.swift; sourceTree = "<group>"; };
 		9587CDA22C197CE900495D33 /* CHCatalogRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHCatalogRouter.swift; sourceTree = "<group>"; };
 		9587CDA42C197E9700495D33 /* TabCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinatorView.swift; sourceTree = "<group>"; };
-		959EE2102C10FBB20061E678 /* LabCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabCalculator.swift; path = "Color Palette/Extensions/LabCalculator.swift"; sourceTree = SOURCE_ROOT; };
+		9587CDA62C1B183F00495D33 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		959EE2132C10FEB30061E678 /* PaletteEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteEditView.swift; sourceTree = "<group>"; };
 		959EE2352C1180DF0061E678 /* PaletteStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteStackView.swift; sourceTree = "<group>"; };
 		959EE2372C1186150061E678 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
@@ -372,8 +371,8 @@
 		95A847152C06147800D9451A /* DarkModeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeViewModifier.swift; sourceTree = "<group>"; };
 		95D52A102C06179A00606CBF /* SingleColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleColorView.swift; sourceTree = "<group>"; };
 		95D52A142C061F6E00606CBF /* ColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteView.swift; sourceTree = "<group>"; };
-		95D52A172C06233300606CBF /* HierarchicalStylesPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HierarchicalStylesPreview.swift; sourceTree = "<group>"; };
-		95D52A182C06233300606CBF /* SemanticStylesPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemanticStylesPreview.swift; sourceTree = "<group>"; };
+		95E4DBF12C1B25B30029BBFC /* Color-Streak-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Color-Streak-Info.plist"; sourceTree = SOURCE_ROOT; };
+		95E4DBF32C1B25F70029BBFC /* LabCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabCalculator.swift; path = "Color Streak/Extensions/LabCalculator.swift"; sourceTree = SOURCE_ROOT; };
 		95EF77782C135393007E1DEC /* HexPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexPanelView.swift; sourceTree = "<group>"; };
 		95EF777A2C13832A007E1DEC /* ExportPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportPalette.swift; sourceTree = "<group>"; };
 		95EF777C2C1389E1007E1DEC /* ColorTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTag.swift; sourceTree = "<group>"; };
@@ -382,7 +381,6 @@
 		95EF77832C1415B8007E1DEC /* ContrastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastView.swift; sourceTree = "<group>"; };
 		95EF77872C141998007E1DEC /* ContrastWCAGCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastWCAGCalculator.swift; sourceTree = "<group>"; };
 		95EF77892C141BF9007E1DEC /* Contrast WCAGClaculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contrast WCAGClaculatorTests.swift"; sourceTree = "<group>"; };
-		95EF778C2C141DD9007E1DEC /* Color Palette.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Color Palette.xctestplan"; sourceTree = SOURCE_ROOT; };
 		95EF778E2C14259E007E1DEC /* ContrastWCAG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastWCAG.swift; sourceTree = "<group>"; };
 		95EF77902C142FF0007E1DEC /* ContrastNormalTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastNormalTextView.swift; sourceTree = "<group>"; };
 		95EF77922C1434F5007E1DEC /* ContrastResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastResultView.swift; sourceTree = "<group>"; };
@@ -760,8 +758,8 @@
 		95879D712BF72F860016A577 = {
 			isa = PBXGroup;
 			children = (
-				95879D7C2BF72F860016A577 /* Color Palette */,
-				95879DC32BF78C6D0016A577 /* Color PaletteTests */,
+				95879D7C2BF72F860016A577 /* Color Streak */,
+				95879DC32BF78C6D0016A577 /* Color StreakTests */,
 				95879D7B2BF72F860016A577 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -769,16 +767,16 @@
 		95879D7B2BF72F860016A577 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				95879D7A2BF72F860016A577 /* Color Palette.app */,
-				95879DC22BF78C6D0016A577 /* Color PaletteTests.xctest */,
+				95879D7A2BF72F860016A577 /* Color Streak.app */,
+				95879DC22BF78C6D0016A577 /* Color StreakTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		95879D7C2BF72F860016A577 /* Color Palette */ = {
+		95879D7C2BF72F860016A577 /* Color Streak */ = {
 			isa = PBXGroup;
 			children = (
-				951113C62C0E0E53000B3E3C /* Color-Palette-Info.plist */,
+				95E4DBF12C1B25B30029BBFC /* Color-Streak-Info.plist */,
 				95879D7D2BF72F860016A577 /* Color_Palette.swift */,
 				951113D32C0EE37B000B3E3C /* AppDelegate.swift */,
 				95879D7F2BF72F860016A577 /* ContentView.swift */,
@@ -799,8 +797,9 @@
 				95879D812BF72F870016A577 /* Assets.xcassets */,
 				95879D832BF72F870016A577 /* Preview Content */,
 				951113C92C0E1768000B3E3C /* PaletteModel.xcdatamodeld */,
+				9587CDA62C1B183F00495D33 /* Localizable.xcstrings */,
 			);
-			path = "Color Palette";
+			path = "Color Streak";
 			sourceTree = "<group>";
 		};
 		95879D832BF72F870016A577 /* Preview Content */ = {
@@ -852,7 +851,7 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
-		95879DC32BF78C6D0016A577 /* Color PaletteTests */ = {
+		95879DC32BF78C6D0016A577 /* Color StreakTests */ = {
 			isa = PBXGroup;
 			children = (
 				95879DC42BF78C6D0016A577 /* LabCalculatorTests.swift */,
@@ -864,9 +863,8 @@
 				952B82432C10219B008A3EF8 /* UIImageColors.swift */,
 				95EF77892C141BF9007E1DEC /* Contrast WCAGClaculatorTests.swift */,
 				952B82452C1022AA008A3EF8 /* Asset.xcassets */,
-				95EF778C2C141DD9007E1DEC /* Color Palette.xctestplan */,
 			);
-			path = "Color PaletteTests";
+			path = "Color StreakTests";
 			sourceTree = "<group>";
 		};
 		95879DD42BF85F590016A577 /* ColorDifference */ = {
@@ -905,8 +903,8 @@
 		95879DE12BF867830016A577 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				95E4DBF32C1B25F70029BBFC /* LabCalculator.swift */,
 				95879DDF2BF867760016A577 /* XYZCalculator.swift */,
-				959EE2102C10FBB20061E678 /* LabCalculator.swift */,
 				95879DE42BF86A030016A577 /* ReferenceWhite.swift */,
 				95879DE22BF8695C0016A577 /* RGBWorkingSpace.swift */,
 				9511134F2C072AE2000B3E3C /* HSBCalculator.swift */,
@@ -955,7 +953,6 @@
 				95EF77822C14159D007E1DEC /* Contrast */,
 				959EE2122C10FE760061E678 /* PaletteEdit */,
 				95A846FF2C04F24900D9451A /* PalettePick */,
-				95D52A162C06233300606CBF /* ColorPreview */,
 				954A69C42BF9DB8B00726A65 /* ColorPicker */,
 			);
 			path = Flow;
@@ -1034,15 +1031,6 @@
 			path = ModifierView;
 			sourceTree = "<group>";
 		};
-		95D52A162C06233300606CBF /* ColorPreview */ = {
-			isa = PBXGroup;
-			children = (
-				95D52A172C06233300606CBF /* HierarchicalStylesPreview.swift */,
-				95D52A182C06233300606CBF /* SemanticStylesPreview.swift */,
-			);
-			path = ColorPreview;
-			sourceTree = "<group>";
-		};
 		95EF77822C14159D007E1DEC /* Contrast */ = {
 			isa = PBXGroup;
 			children = (
@@ -1072,9 +1060,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		95879D792BF72F860016A577 /* Color Palette */ = {
+		95879D792BF72F860016A577 /* Color Streak */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 95879D882BF72F870016A577 /* Build configuration list for PBXNativeTarget "Color Palette" */;
+			buildConfigurationList = 95879D882BF72F870016A577 /* Build configuration list for PBXNativeTarget "Color Streak" */;
 			buildPhases = (
 				95879D762BF72F860016A577 /* Sources */,
 				95879D772BF72F860016A577 /* Frameworks */,
@@ -1084,18 +1072,18 @@
 			);
 			dependencies = (
 			);
-			name = "Color Palette";
+			name = "Color Streak";
 			packageProductDependencies = (
 				951113982C0CD693000B3E3C /* Liquid */,
 				95EDD6232C0F713900DD7655 /* DominantColors */,
 			);
 			productName = "dE Calculator";
-			productReference = 95879D7A2BF72F860016A577 /* Color Palette.app */;
+			productReference = 95879D7A2BF72F860016A577 /* Color Streak.app */;
 			productType = "com.apple.product-type.application";
 		};
-		95879DC12BF78C6D0016A577 /* Color PaletteTests */ = {
+		95879DC12BF78C6D0016A577 /* Color StreakTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 95879DC82BF78C6D0016A577 /* Build configuration list for PBXNativeTarget "Color PaletteTests" */;
+			buildConfigurationList = 95879DC82BF78C6D0016A577 /* Build configuration list for PBXNativeTarget "Color StreakTests" */;
 			buildPhases = (
 				95879DBE2BF78C6D0016A577 /* Sources */,
 				95879DBF2BF78C6D0016A577 /* Frameworks */,
@@ -1106,9 +1094,9 @@
 			dependencies = (
 				95879DC72BF78C6D0016A577 /* PBXTargetDependency */,
 			);
-			name = "Color PaletteTests";
+			name = "Color StreakTests";
 			productName = "dE CalculatorTests";
-			productReference = 95879DC22BF78C6D0016A577 /* Color PaletteTests.xctest */;
+			productReference = 95879DC22BF78C6D0016A577 /* Color StreakTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1130,13 +1118,14 @@
 					};
 				};
 			};
-			buildConfigurationList = 95879D752BF72F860016A577 /* Build configuration list for PBXProject "Color Palette" */;
+			buildConfigurationList = 95879D752BF72F860016A577 /* Build configuration list for PBXProject "Color Streak" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 95879D712BF72F860016A577;
 			packageReferences = (
@@ -1147,8 +1136,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				95879D792BF72F860016A577 /* Color Palette */,
-				95879DC12BF78C6D0016A577 /* Color PaletteTests */,
+				95879D792BF72F860016A577 /* Color Streak */,
+				95879DC12BF78C6D0016A577 /* Color StreakTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1158,8 +1147,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95E4DBF22C1B25B30029BBFC /* Color-Streak-Info.plist in Resources */,
 				95879D852BF72F870016A577 /* Preview Assets.xcassets in Resources */,
 				95879D822BF72F870016A577 /* Assets.xcassets in Resources */,
+				9587CDA72C1B183F00495D33 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1225,6 +1216,7 @@
 				9587CD912C196C8900495D33 /* SuggestedTagsView.swift in Sources */,
 				9587CD932C1971B400495D33 /* SuggestedTagsSectionView.swift in Sources */,
 				951113DE2C0F05D7000B3E3C /* ColorSource.swift in Sources */,
+				95E4DBF42C1B25F70029BBFC /* LabCalculator.swift in Sources */,
 				95A846F82C04DAFC00D9451A /* HSBHueSlider.swift in Sources */,
 				9511133D2C065E3C000B3E3C /* LabLuminancePicker.swift in Sources */,
 				95879DA42BF74BA50016A577 /* BoundIntFormatter.swift in Sources */,
@@ -1271,7 +1263,6 @@
 				95583C002C04481600B33354 /* CMYK.swift in Sources */,
 				95EF77972C1446EC007E1DEC /* ContrastPreviewView.swift in Sources */,
 				95879DDC2BF8648B0016A577 /* CGColorExtensionRGB.swift in Sources */,
-				95D52A1A2C06233300606CBF /* SemanticStylesPreview.swift in Sources */,
 				95EF77812C139953007E1DEC /* ColorExtensionRandom.swift in Sources */,
 				95583C142C046BCC00B33354 /* LineView.swift in Sources */,
 				95EF77A72C15815A007E1DEC /* BottomSheetView.swift in Sources */,
@@ -1319,12 +1310,10 @@
 				959EE2362C1180DF0061E678 /* PaletteStackView.swift in Sources */,
 				95EF77842C1415B8007E1DEC /* ContrastView.swift in Sources */,
 				951113BF2C0DE57B000B3E3C /* PaletteImage.swift in Sources */,
-				959EE2112C10FBB20061E678 /* LabCalculator.swift in Sources */,
 				951113B92C0DCCB3000B3E3C /* InfoView.swift in Sources */,
 				9587CDA52C197E9700495D33 /* TabCoordinatorView.swift in Sources */,
 				9587CD9D2C197BA600495D33 /* TabCoordinator.swift in Sources */,
 				95D52A152C061F6E00606CBF /* ColorPaletteView.swift in Sources */,
-				95D52A192C06233300606CBF /* HierarchicalStylesPreview.swift in Sources */,
 				951113C82C0E12F5000B3E3C /* ExtensionUTType.swift in Sources */,
 				9511137E2C09A70D000B3E3C /* Coordinator.swift in Sources */,
 				951950E62C10EFB4001434F4 /* AboutView.swift in Sources */,
@@ -1375,7 +1364,7 @@
 /* Begin PBXTargetDependency section */
 		95879DC72BF78C6D0016A577 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 95879D792BF72F860016A577 /* Color Palette */;
+			target = 95879D792BF72F860016A577 /* Color Streak */;
 			targetProxy = 95879DC62BF78C6D0016A577 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1507,13 +1496,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "Color\\ Palette/Preview\\ Content/Preview\\ Assets.xcassets";
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Color Streak/Assets.xcassets\"";
 				DEVELOPMENT_TEAM = TNTX3799P3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Color-Palette-Info.plist";
+				INFOPLIST_FILE = "Color-Streak-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Access to save color palette";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Access to saving and importing the color palette";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1523,7 +1512,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "DenisDmitriev.Color-Palette";
+				PRODUCT_BUNDLE_IDENTIFIER = "DenisDmitriev.Color-Streak";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1538,13 +1527,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "Color\\ Palette/Preview\\ Content/Preview\\ Assets.xcassets";
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Color Streak/Assets.xcassets\"";
 				DEVELOPMENT_TEAM = TNTX3799P3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Color-Palette-Info.plist";
+				INFOPLIST_FILE = "Color-Streak-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Access to save color palette";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Access to saving and importing the color palette";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1554,7 +1543,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "DenisDmitriev.Color-Palette";
+				PRODUCT_BUNDLE_IDENTIFIER = "DenisDmitriev.Color-Streak";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1577,7 +1566,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Color Palette.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Color Palette";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Color Streak.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Color Streak";
 			};
 			name = Debug;
 		};
@@ -1596,14 +1585,14 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Color Palette.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Color Palette";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Color Streak.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Color Streak";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		95879D752BF72F860016A577 /* Build configuration list for PBXProject "Color Palette" */ = {
+		95879D752BF72F860016A577 /* Build configuration list for PBXProject "Color Streak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				95879D862BF72F870016A577 /* Debug */,
@@ -1612,7 +1601,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		95879D882BF72F870016A577 /* Build configuration list for PBXNativeTarget "Color Palette" */ = {
+		95879D882BF72F870016A577 /* Build configuration list for PBXNativeTarget "Color Streak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				95879D892BF72F870016A577 /* Debug */,
@@ -1621,7 +1610,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		95879DC82BF78C6D0016A577 /* Build configuration list for PBXNativeTarget "Color PaletteTests" */ = {
+		95879DC82BF78C6D0016A577 /* Build configuration list for PBXNativeTarget "Color StreakTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				95879DC92BF78C6D0016A577 /* Debug */,

@@ -76,7 +76,7 @@ struct ShareImageView: View {
                 Section("Appearance") {
                     Picker("Axis", selection: $axis) {
                         ForEach(AxisPalette.allCases) { axis in
-                            Text(axis.rawValue)
+                            Text(axis.name)
                                 .tag(axis)
                         }
                     }

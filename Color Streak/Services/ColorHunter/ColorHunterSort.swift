@@ -16,7 +16,16 @@ enum ColorHunterSort: String, Identifiable, CaseIterable {
     }
     
     var name: String {
-        self.rawValue.capitalized
+        switch self {
+        case .new:
+            return String(localized: "New")
+        case .popular:
+            return String(localized: "Popular")
+        case .random:
+            return String(localized: "Random")
+        case .empty:
+            return self.rawValue
+        }
     }
     
     static var uiCases: [Self] {

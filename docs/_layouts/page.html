@@ -1,14 +1,22 @@
 ---
-layout: base
+# Front matter comment to ensure Jekyll properly reads file.
 ---
-<article class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title | escape }}</h1>
-  </header>
+<!DOCTYPE html>
+<html lang="en-us">
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+{% include head.html %}
 
-</article>
+<body class="subPageBody">
+    <div class="headerBackground subPageHeaderBackground">
+        <div class="container subPageContainer">
+        {% include header.html %}
+            <article class="page markdown-body">
+                {{ content }}
+            </article>
+        </div>
+        {% include appstoreimages.html %}
+    </div>
+</body>
+
+</html>

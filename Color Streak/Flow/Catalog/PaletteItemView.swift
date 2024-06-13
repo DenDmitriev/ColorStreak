@@ -47,7 +47,7 @@ struct PaletteItemView: View {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             
             HStack(spacing: 20) {
-                Text(palette.name.isEmpty ? "Unknown" : palette.name)
+                Text(palette.name.isEmpty ? String(localized: "Unknown") : palette.name)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Button(action: { showMenu.toggle() }, label: {

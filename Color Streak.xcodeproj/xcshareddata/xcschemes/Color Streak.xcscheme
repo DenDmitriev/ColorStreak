@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "95879D792BF72F860016A577"
-               BuildableName = "Color Palette.app"
-               BlueprintName = "Color Palette"
-               ReferencedContainer = "container:Color Palette.xcodeproj">
+               BuildableName = "Color Streak.app"
+               BlueprintName = "Color Streak"
+               ReferencedContainer = "container:Color Streak.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,13 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <TestPlans>
-         <TestPlanReference
-            reference = "container:Color Palette.xctestplan"
-            default = "YES">
-         </TestPlanReference>
-      </TestPlans>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -49,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "95879D792BF72F860016A577"
-            BuildableName = "Color Palette.app"
-            BlueprintName = "Color Palette"
-            ReferencedContainer = "container:Color Palette.xcodeproj">
+            BuildableName = "Color Streak.app"
+            BlueprintName = "Color Streak"
+            ReferencedContainer = "container:Color Streak.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -66,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "95879D792BF72F860016A577"
-            BuildableName = "Color Palette.app"
-            BlueprintName = "Color Palette"
-            ReferencedContainer = "container:Color Palette.xcodeproj">
+            BuildableName = "Color Streak.app"
+            BlueprintName = "Color Streak"
+            ReferencedContainer = "container:Color Streak.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

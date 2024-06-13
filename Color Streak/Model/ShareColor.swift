@@ -16,6 +16,11 @@ enum ShareColor: String, CaseIterable, Identifiable {
     }
     
     var name: String {
-        self.rawValue
+        switch self {
+        case .image:
+            String(localized: "Image")
+        case .color:
+            String(localized: "Color")
+        }
     }
 }

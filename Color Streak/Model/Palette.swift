@@ -205,7 +205,7 @@ extension Palette {
     func css() -> String {
         /* Color Theme Swatches in Hex */
         // .My-Color-Theme-1-hex { color: #C03EFA; }
-        var css: String = "/* Color Theme Swatches in Hex */"
+        var css: String = "/* Color Theme Swatches in Hex */\n"
         let name = ".\(name.replacingOccurrences(of: " ", with: "-"))-hex"
         for color in colors {
             css.append("\(name) { color: #\(color.hex); }\n")
@@ -218,7 +218,7 @@ extension Palette {
         // <palette>
         // <color name='My-Color-Theme-1' rgb='C03EFA' r='192' g='62' b='250' />
         // </palette>
-        var xml: String = "<palette>"
+        var xml: String = "<palette>\n"
         let name = "\(name.replacingOccurrences(of: " ", with: "-"))"
         for color in colors {
             let rgb = color.rgb

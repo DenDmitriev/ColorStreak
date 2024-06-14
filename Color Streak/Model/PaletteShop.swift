@@ -61,7 +61,20 @@ class PaletteShop: ObservableObject {
     
     @discardableResult
     func add(palette: Palette) -> Bool {
-        guard !palettes.contains(palette) else { return false }
+        guard !palette.colors.isEmpty,
+              !palettes.contains(palette)
+        else { return false }
+        
+        if palette.name.isEmpty, let generatedName = palette.generateName() {
+            palette.name = generatedName
+        }
+        
+        if palette.tags.isEmpty {
+            palette.autoTags()
+        }
+        
+        palette.isNew = true
+        
         palettes.append(palette)
         Task(priority: .background) {
             await coreDataManager.addPalette(palette: palette)
@@ -91,12 +104,7 @@ class PaletteShop: ObservableObject {
     
     @discardableResult
     func duplicate(palette: Palette) -> Bool {
-        let duplicate = Palette()
-        duplicate.colors = palette.colors
-        duplicate.name = "Duplicate " + palette.name
-        Task(priority: .background) {
-            await coreDataManager.addPalette(palette: duplicate)
-        }
+        guard let duplicate = palette.copy() as? Palette else { return false }
         return add(palette: duplicate)
     }
     

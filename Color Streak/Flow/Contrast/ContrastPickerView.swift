@@ -38,9 +38,29 @@ struct ContrastPickerView: View {
         }
         .sheet(isPresented: $showBackgroundPicker) {
             ColorPickerPanel(color: $background, isShow: $showBackgroundPicker)
+                .overlay(alignment: .topTrailing) {
+                    Button {
+                        showBackgroundPicker.toggle()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                    }
+                    .font(.system(size: 28, weight: .semibold))
+                    .padding(12)
+                }
+                .presentationDetents([.medium])
         }
         .sheet(isPresented: $showForegroundPicker) {
             ColorPickerPanel(color: $foreground, isShow: $showForegroundPicker)
+                .overlay(alignment: .topTrailing) {
+                    Button {
+                        showForegroundPicker.toggle()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                    }
+                    .font(.system(size: 28, weight: .semibold))
+                    .padding(12)
+                }
+                .presentationDetents([.medium])
         }
     }
 }

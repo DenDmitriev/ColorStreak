@@ -38,6 +38,6 @@ struct Color_Palette: App {
         UINavigationBar.appearance().backIndicatorImage = backImage
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
 //        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -150, vertical: 0), for:UIBarMetrics.default)
-        UIToolbar.appearance().barTintColor = UIColor.red
+//        UIToolbar.appearance().barTintColor = UIColor.red
     }
 }

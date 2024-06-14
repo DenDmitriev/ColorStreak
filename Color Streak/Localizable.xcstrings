@@ -7,6 +7,16 @@
     "#%@" : {
 
     },
+    "A set of colors based on the key color." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Набор цветов на основе ключевого цвета."
+          }
+        }
+      }
+    },
     "AA" : {
 
     },
@@ -134,6 +144,16 @@
         }
       }
     },
+    "Color combinations according to patterns." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сочетания цветов по схемам."
+          }
+        }
+      }
+    },
     "Color Difference" : {
       "localizations" : {
         "ru" : {
@@ -160,16 +180,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Информация цвета"
-          }
-        }
-      }
-    },
-    "Color Palette" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Цветовая палитра"
           }
         }
       }
@@ -399,7 +409,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Неудача"
+            "value" : "Нет"
           }
         }
       }
@@ -524,12 +534,32 @@
         }
       }
     },
+    "Liquid" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жидкость"
+          }
+        }
+      }
+    },
     "Menu" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Меню"
+          }
+        }
+      }
+    },
+    "Metaball" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Метабол"
           }
         }
       }
@@ -664,15 +694,12 @@
         }
       }
     },
-    "paletteVisualization" : {
-
-    },
     "Pass" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Подходит"
+            "value" : "Да"
           }
         }
       }
@@ -730,12 +757,32 @@
         }
       }
     },
+    "Random color selection." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Случайный выбор цвета."
+          }
+        }
+      }
+    },
     "Random Palette" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Случайная палитра"
+          }
+        }
+      }
+    },
+    "Rectangle" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прямоугольник"
           }
         }
       }
@@ -840,6 +887,16 @@
         }
       }
     },
+    "Tag length must be from 3 to 9 characters." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Длина тега должна быть от 3 до 9 символов."
+          }
+        }
+      }
+    },
     "Tags" : {
       "localizations" : {
         "ru" : {
@@ -866,6 +923,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Текст"
+          }
+        }
+      }
+    },
+    "The name must be no more than 12 characters long." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя должно содержать не более 12 символов."
           }
         }
       }
@@ -932,6 +999,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вертикально"
+          }
+        }
+      }
+    },
+    "Visualization" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Визуализация"
           }
         }
       }

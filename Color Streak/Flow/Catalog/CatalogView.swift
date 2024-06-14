@@ -20,7 +20,7 @@ struct CatalogView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach(isSearching ? shop.palettes.filter({ $0.name.contains(searchText) }): shop.palettes, id: \.id) { palette in
+                ForEach(isSearching ? shop.palettes.filter({ $0.searchText.contains(searchText) }) : shop.palettes.sorted(by: { $1.dateModified < $0.dateModified })) { palette in
                     PaletteItemView(palette: palette)
                         .contextMenu {
                             contextMenuItems(palette: palette)
@@ -56,6 +56,7 @@ struct CatalogView: View {
                 placeholderText(text: "Error")
             }
         }
+        .scrollDismissesKeyboard(.automatic)
         .searchable(text: $searchText, isPresented: $isSearching)
         .refreshable {
             await shop.fetchPalettes()

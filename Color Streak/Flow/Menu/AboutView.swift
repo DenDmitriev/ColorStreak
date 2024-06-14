@@ -10,14 +10,15 @@ import StoreKit
 
 struct AboutView: View {
     
+    let appName = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     let appBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
     let mailSupport = URL(string: "mailto:dv.denstr@gmail.com")
     let icons = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any]
     
     let site = URL(string: "https://dendmitriev.github.io/ColorPalette/")
-    let privatePolicy = URL(string: "https://dendmitriev.github.io/ColorPalette/privacy_policy/")
-    let termsOfService = URL(string: "https://dendmitriev.github.io/ColorPalette/termsofservice/")
+    let privatePolicy = URL(string: "https://dendmitriev.github.io/ColorStreak/privacy_policy/")
+    let termsOfService = URL(string: "https://dendmitriev.github.io/ColorStreak/termsofservice/")
     
     @Environment(\.requestReview) var requestReview
     
@@ -30,7 +31,7 @@ struct AboutView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     
                     VStack(alignment: .leading) {
-                        Text("Color Palette")
+                        Text(appName ?? "Color Streak")
                             .font(.title)
                         Text("Version \(appVersion ?? "Empty") (Build \(appBuild ?? "Empty"))")
                             .foregroundStyle(.secondary)

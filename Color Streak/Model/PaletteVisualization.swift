@@ -8,15 +8,22 @@
 import Foundation
 
 enum PaletteVisualization: String, Identifiable, CaseIterable {
-    case rectangle = "Rectangle"
-    case liquid = "Liquid"
-    case metaBall = "Metaball"
+    case rectangle = "rectangle"
+    case liquid = "liquid"
+    case metaBall = "metaball"
     
     var id: Self {
         self
     }
     
     var name: String {
-        self.rawValue
+        switch self {
+        case .rectangle:
+            String(localized: "Rectangle")
+        case .liquid:
+            String(localized: "Liquid")
+        case .metaBall:
+            String(localized: "Metaball")
+        }
     }
 }

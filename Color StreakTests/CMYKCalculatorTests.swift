@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Color_Palette
+@testable import Color_Streak
 import SwiftUI
 
 final class CMYKCalculatorTests: XCTestCase {

@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "D1A9DF7B-59FE-4492-AC30-BB663FB6D254",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Color Streak.xcodeproj",
+        "identifier" : "95879DC12BF78C6D0016A577",
+        "name" : "Color StreakTests"
+      }
+    }
+  ],
+  "version" : 1
+}

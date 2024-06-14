@@ -19,6 +19,7 @@ struct ColorPickerPanel: UIViewControllerRepresentable {
         let picker = UIColorPickerViewController()
         picker.delegate = context.coordinator
         picker.modalPresentationStyle = .formSheet
+        picker.supportsAlpha = false
         return picker
     }
     

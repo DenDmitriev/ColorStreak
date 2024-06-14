@@ -35,6 +35,7 @@ class CoreDataManager {
     private init() {}
     
     private func saveChanges(with context: NSManagedObjectContext) {
+        print(#function)
         context.performAndWait {
             if context.hasChanges {
                 do {
@@ -138,7 +139,10 @@ class CoreDataManager {
     }
     
     func addPalette(palette: Palette) async {
-        let objectPalette = PaletteModel(context: bgContext)
+        let objectPalette = PaletteModel(context: context)
+        if palette.name.isEmpty {
+            palette.name = palette.generateName() ?? Date().description
+        }
         objectPalette.name = palette.name
         objectPalette.id = palette.id
         objectPalette.colorSpace = Int16(palette.colorSpace.rawValue)
@@ -146,7 +150,7 @@ class CoreDataManager {
         objectPalette.dateModified = palette.dateModified
         
         for color in palette.colors {
-            let objectColor = ColorModel(context: bgContext)
+            let objectColor = ColorModel(context: context)
             let rgb = color.rgb
             objectColor.red = Int16(rgb.red255)
             objectColor.green = Int16(rgb.green255)
@@ -157,13 +161,13 @@ class CoreDataManager {
         }
         
         for tag in palette.tags {
-            let objectTag = ColorTagModel(context: bgContext)
+            let objectTag = ColorTagModel(context: context)
             objectTag.tag = tag.tag
             objectTag.palette = objectPalette
             objectPalette.mutableSetValue(forKey: "tags").add(objectTag)
         }
         
-        saveChanges(with: bgContext)
+        saveChanges(with: context)
     }
     
     func deletePalette(palette: Palette) async throws {

@@ -15,37 +15,38 @@ struct NewColorHarmony: View {
     private var colorHarmony: ColorHarmony = .triangular
     
     var body: some View {
-        HStack {
-            Text("Color Harmony")
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
+        Section {
             Picker("Color Harmony", selection: $colorHarmony) {
                 ForEach(ColorHarmony.allCases) { colorHarmony in
                     Text(colorHarmony.name)
                         .tag(colorHarmony)
                 }
             }
-        }
-        
-        ColorPicker(selection: $keyColor, supportsOpacity: false) {
-            HStack {
-                Text("KeyColor")
-                
-                Spacer()
-                
-                Button(action: {
-                    keyColor = randomColor()
-                }, label: {
-                    Image(systemName: "arrow.clockwise.circle.fill")
-                        .font(.system(size: 26))
-                })
+            
+            ColorPicker(selection: $keyColor, supportsOpacity: false) {
+                HStack {
+                    Text("KeyColor")
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        keyColor = randomColor()
+                    }, label: {
+                        Image(systemName: "arrow.clockwise.circle.fill")
+                            .font(.system(size: 26))
+                    })
+                }
             }
-        }
-        .onChange(of: keyColor, { _, newKeyColor in
-            generateColors(key: newKeyColor)
-        })
-        .onAppear {
-            generateColors(key: keyColor)
+            .onChange(of: keyColor, { _, newKeyColor in
+                generateColors(key: newKeyColor)
+            })
+            .onAppear {
+                generateColors(key: keyColor)
+            }
+        } header: {
+            Text("")
+        } footer: {
+            Text("Color combinations according to patterns.")
         }
     }
     
@@ -67,5 +68,7 @@ struct NewColorHarmony: View {
 }
 
 #Preview {
-    NewColorHarmony(colors: .constant(.init()), keyColor: .constant(.blue))
+    List {
+        NewColorHarmony(colors: .constant(.init()), keyColor: .constant(.blue))
+    }
 }

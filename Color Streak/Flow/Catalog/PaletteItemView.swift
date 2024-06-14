@@ -22,6 +22,12 @@ struct PaletteItemView: View {
                         .fill(color)
                 }
             }
+            .overlay(alignment: .bottomLeading, content: {
+                if palette.isNew {
+                    BudgeView(kind: .new)
+                        .padding(8)
+                }
+            })
             .onTapGesture {
                 showPaletteAction()
             }
@@ -51,7 +57,12 @@ struct PaletteItemView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Button(action: { showMenu.toggle() }, label: {
-                    Image(systemName: "ellipsis")
+                    Rectangle()
+                        .fill(.background)
+                        .frame(width: 24, height: 24)
+                        .overlay {
+                            Image(systemName: "ellipsis")
+                        }
                 })
             }
             .font(.system(size: 14, weight: .regular))
@@ -84,7 +95,7 @@ struct PaletteItemView: View {
 
 #Preview {
     VStack {
-        PaletteItemView(palette: Palette(colors: [.red, .orange, .yellow, .green, .cyan, .blue, .purple], name: "Palette"))
+        PaletteItemView(palette: .placeholder)
             .environmentObject(Coordinator<CatalogRouter, CatalogError>())
             .environmentObject(PaletteShop())
             .padding()

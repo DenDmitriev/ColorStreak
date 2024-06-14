@@ -6,20 +6,26 @@
 //
 
 import SwiftUI
+import Combine
 
 struct DetailPaletteView: View {
     @ObservedObject var palette: Palette
     @State private var tagText: String = ""
     @Environment(\.dismiss) var dismiss
     
+    private let nameMaxChars = 12
+    
     var body: some View {
         NavigationStack {
             List {
-                Section("General") {
+                Section {
                     TextField("", text: $palette.name,
                               prompt: Text("Palette name")
                         .foregroundStyle(.secondary)
                     )
+                    .onReceive(Just(palette.name)) { _ in 
+                        limitName(nameMaxChars)
+                    }
                     
                     Picker("Color Space", selection: $palette.colorSpace) {
                         ForEach(DeviceColorSpace.allCases) { colorSpace in
@@ -27,9 +33,14 @@ struct DetailPaletteView: View {
                                 .tag(colorSpace)
                         }
                     }
+                } header: {
+                    Text("General")
+                } footer: {
+                    Text("The name must be no more than 12 characters long.")
                 }
                 
-                Section("Tags") {
+                
+                Section {
                     TextField("Tag", text: $tagText, prompt: Text("Tag").foregroundStyle(.secondary))
                         .onSubmit {
                             palette.append(tag: tagText)
@@ -39,6 +50,10 @@ struct DetailPaletteView: View {
                     TagView(layout: .vertical, tags: tagsBinding) { tag in
                         palette.remove(tag: tag)
                     }
+                } header: {
+                    Text("Tags")
+                } footer: {
+                    Text("Tag length must be from 3 to 9 characters.")
                 }
                 
                 Section("Date") {
@@ -55,6 +70,7 @@ struct DetailPaletteView: View {
                 }
                 .foregroundStyle(.secondary)
             }
+            .scrollDismissesKeyboard(.immediately)
             .scrollContentBackground(.hidden)
             .background(.appBackground)
             .navigationTitle("Detail")
@@ -70,16 +86,25 @@ struct DetailPaletteView: View {
         .onReceive(palette.$colorSpace) { newColorSpace in
             palette.convert(device: newColorSpace)
         }
+        .onAppear {
+            UITextField.appearance().clearButtonMode = .whileEditing
+        }
         .onDisappear {
             palette.saveModel()
         }
     }
     
-    var tagsBinding: Binding<[TagViewItem]> {
+    private var tagsBinding: Binding<[TagViewItem]> {
         Binding(
             get: { palette.tags.map({ TagViewItem(title: $0.tag, isSelected: false) }) },
             set: { _ in }
         )
+    }
+    
+    private func limitName(_ upper: Int) {
+        if palette.name.count > upper {
+            palette.name = String(palette.name.prefix(upper))
+        }
     }
 }
 

@@ -13,19 +13,25 @@ struct NewFromColors: View {
     @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
     
     var body: some View {
-        ColorPicker(selection: $keyColor, supportsOpacity: false) {
-            HStack {
-                Text("KeyColor")
-                
-                Spacer()
-                
-                Button(action: {
-                    keyColor = randomColor()
-                }, label: {
-                    Image(systemName: "arrow.clockwise.circle.fill")
-                        .font(.system(size: 26))
-                })
+        Section {
+            ColorPicker(selection: $keyColor, supportsOpacity: false) {
+                HStack {
+                    Text("KeyColor")
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        keyColor = randomColor()
+                    }, label: {
+                        Image(systemName: "arrow.clockwise.circle.fill")
+                            .font(.system(size: 26))
+                    })
+                }
             }
+        } header: {
+            Text("")
+        } footer: {
+            Text("A set of colors based on the key color.")
         }
         .alert(isPresented: $coordinator.hasError, error: coordinator.error) {
             Button("Ok", action: { coordinator.dismissErrorAlert() })
@@ -70,7 +76,7 @@ struct NewFromColors: View {
         @State private var keyColor: Color = .red
         
         var body: some View {
-            VStack {
+            List {
                 NewFromColors(colors: $colors, keyColor: $keyColor)
                 
                 HStack {

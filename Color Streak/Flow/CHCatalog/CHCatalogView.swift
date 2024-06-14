@@ -42,6 +42,7 @@ struct CHCatalogView: View {
             }
             .padding()
         }
+        .scrollDismissesKeyboard(.automatic)
         .searchable(
             text: $chShop.searchText,
             tokens: $chShop.selectedTags, /*suggestedTokens: $chShop.suggestedTags*/
@@ -61,9 +62,6 @@ struct CHCatalogView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding(.horizontal, 28)
                 .padding(.top, 8)
-                .onTapGesture {
-                    hideKeyboard()
-                }
             }
         })
         .overlay(content: {

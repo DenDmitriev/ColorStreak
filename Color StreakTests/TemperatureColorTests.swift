@@ -7,7 +7,7 @@
 
 import XCTest
 import SwiftUI
-@testable import Color_Palette
+@testable import Color_Streak
 
 final class TemperatureColorTests: XCTestCase {
     

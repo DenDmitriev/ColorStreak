@@ -70,7 +70,7 @@ struct ShareImageView: View {
                 }
                 .keyboardType(.numberPad)
                 .onSubmit {
-                    createPaletteImage()
+                    createPaletteImage(size: CGSize(width: widthPalette, height: heightPalette))
                 }
                 
                 Section("Appearance") {
@@ -82,6 +82,7 @@ struct ShareImageView: View {
                     }
                 }
             }
+            .scrollDismissesKeyboard(.immediately)
             .scrollContentBackground(.hidden)
             .background(.appBackground)
             .frame(height: 200)
@@ -90,12 +91,20 @@ struct ShareImageView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 shareButton
             }
+            ToolbarItem(placement: .keyboard) {
+                Button("Done") {
+                    hideKeyboard()
+                }
+            }
         })
         .onAppear {
-            createPaletteImage()
+            createPaletteImage(size: CGSize(width: widthPalette, height: heightPalette))
         }
         .onChange(of: axis) { _, newAxis in
-            createPaletteImage()
+            createPaletteImage(size: CGSize(width: widthPalette, height: heightPalette))
+        }
+        .onChange(of: [widthPalette, heightPalette]) { _, newSize in
+            createPaletteImage(size: CGSize(width: newSize[0], height: newSize[1]))
         }
     }
     
@@ -113,7 +122,7 @@ struct ShareImageView: View {
         }
     }
     
-    private func createPaletteImage() {
+    private func createPaletteImage(size: CGSize) {
         guard !palette.colors.isEmpty else { return }
         
         Task(priority: .medium) {
@@ -121,7 +130,6 @@ struct ShareImageView: View {
                 self.state = .rendering
             }
             
-            let size = CGSize(width: widthPalette, height: heightPalette)
             do {
                 let uiImage = try ImageRenderService.paletteImage(size: size, colors: palette.colors.map({  UIColor($0) }), axis: axis == .horizontal ? .horizontal : .vertical)
                 

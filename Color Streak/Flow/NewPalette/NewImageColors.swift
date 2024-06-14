@@ -16,12 +16,11 @@ struct NewImageColors: View {
     @State private(set) var imageState: ImageState = .empty
     
     var body: some View {
-        VStack {
+        Section {
             PhotosPicker(selection: $imageSelection, matching: .images, photoLibrary: .shared()) {
                 HStack {
                     Text("Select image")
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.headline)
                         .tint(.primary)
                     
                     Image(systemName: "photo.fill")
@@ -39,7 +38,6 @@ struct NewImageColors: View {
             
             HStack(spacing: 16) {
                 Text("Colors")
-                    .font(.headline)
                 Slider(value: $count, in: 1...12, step: 1) { changed in
                     if case .success(let image) = imageState {
                         Task(priority: .userInitiated) {
@@ -48,33 +46,37 @@ struct NewImageColors: View {
                     }
                 }
                 Text(count, format: .number)
-                    .font(.headline)
             }
             
-            switch imageState {
-            case .success(let image):
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxHeight: 300)
-                    .onAppear {
-                        palette.image =  image
-                    }
-                    .task {
-                        await getColors(image: image)
-                    }
-            case .loading:
-                ProgressView()
-            case .empty:
-                Text("No Image")
-                    .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.secondary)
-                    .frame(height: 44)
-            case .failure:
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .font(.system(size: 40))
-                    .foregroundColor(.white)
+            Group {
+                switch imageState {
+                case .success(let image):
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: 300)
+                        .onAppear {
+                            palette.image =  image
+                        }
+                        .task {
+                            await getColors(image: image)
+                        }
+                case .loading:
+                    ProgressView()
+                case .empty:
+                    Text("No Image")
+                        .font(.headline)
+                        .foregroundStyle(HierarchicalShapeStyle.quinary)
+                        .multilineTextAlignment(.center)
+                case .failure:
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.system(size: 40))
+                        .foregroundColor(.white)
+                }
             }
+            .padding(.horizontal, -22)
+            .padding(.vertical, -12)
+            .frame(maxWidth: .infinity, alignment: .center)
         }
     }
     
@@ -134,9 +136,11 @@ struct NewImageColors: View {
                 return ProfileImage(image: image)
             #elseif canImport(UIKit)
                 guard let uiImage = UIImage(data: data)?.fixedOrientation
+//                      let convertedUIImage = uiImage.convert()
                 else {
                     throw TransferError.importFailed
                 }
+                print(uiImage.cgImage?.colorSpace)
                 if UIScreen.screenWidth < uiImage.size.width {
                     let width = UIScreen.screenWidth
                     guard let resizedImage = uiImage.resizeImage(width: width) else {
@@ -160,7 +164,7 @@ struct NewImageColors: View {
         @State private var palette: Palette = .init()
         
         var body: some View {
-            VStack {
+            List {
                 NewImageColors(palette: palette)
                 
                 HStack {

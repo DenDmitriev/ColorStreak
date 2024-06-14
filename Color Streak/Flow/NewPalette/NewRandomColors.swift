@@ -12,13 +12,19 @@ struct NewRandomColors: View {
     @EnvironmentObject var coordinator: Coordinator<CatalogRouter, CatalogError>
     
     var body: some View {
-        Text("Random Palette")
-            .alert(isPresented: $coordinator.hasError, error: coordinator.error) {
-                Button("Ok", action: { coordinator.dismissErrorAlert() })
-            }
-            .task {
-                await generateRandom()
-            }
+        Section {
+            Text("Random Palette")
+        } header: {
+            Text("")
+        }  footer: {
+            Text("Random color selection.")
+        }
+        .alert(isPresented: $coordinator.hasError, error: coordinator.error) {
+            Button("Ok", action: { coordinator.dismissErrorAlert() })
+        }
+        .task {
+            await generateRandom()
+        }
     }
     
     private func generateRandom() async {
@@ -43,7 +49,7 @@ struct NewRandomColors: View {
         @State private var colors: [Color] = .init()
         
         var body: some View {
-            VStack {
+            List {
                 NewRandomColors(colors: $colors)
                 
                 HStack {

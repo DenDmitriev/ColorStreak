@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Color_Palette
+@testable import Color_Streak
 
 final class UIImageColors: XCTestCase {
 
@@ -102,7 +102,7 @@ final class UIImageColors: XCTestCase {
     }
     
     
-    func testGetColor() {
+    func testGetColorSRGB() {
         let image = UIImage(resource: .rgb30X10)
         
         let redPoint = CGPoint(x: 0, y: 0)
@@ -119,5 +119,43 @@ final class UIImageColors: XCTestCase {
         let blue = image.getColor(point: bluePoint)
         XCTAssertEqual(blue.rgb, RGB(red: 0, green: 0, blue: 1))
         XCTAssertEqual(blue.cgColor.alpha, 1)
+    }
+    
+    func testGetColorDisplayP3() {
+        let image = UIImage(resource: .rgb30X10DisplayP3)
+        
+        let redPoint = CGPoint(x: 0, y: 0)
+        let red = image.getColor(point: redPoint)
+        XCTAssertEqual(red.rgb, RGB(red: 1, green: 0, blue: 0))
+        XCTAssertEqual(red.cgColor.alpha, 1)
+        
+        let greenPoint = CGPoint(x: 10, y: 0)
+        let green = image.getColor(point: greenPoint)
+        XCTAssertEqual(green.rgb, RGB(red: 0, green: 1, blue: 0))
+        XCTAssertEqual(green.cgColor.alpha, 1)
+        
+        let bluePoint = CGPoint(x: 20, y: 0)
+        let blue = image.getColor(point: bluePoint)
+        XCTAssertEqual(blue.rgb, RGB(red: 0, green: 0, blue: 1))
+        XCTAssertEqual(blue.cgColor.alpha, 1)
+    }
+    
+    func testGetColorGray() {
+        let image = UIImage(resource: .gray30X10)
+        
+        let grayPoint = CGPoint(x: 0, y: 0)
+        let gray = image.getColor(point: grayPoint)
+        XCTAssertEqual(gray.rgb, RGB(red: 129 / 255, green: 129 / 255, blue: 129 / 255))
+        XCTAssertEqual(gray.cgColor.alpha, 1)
+        
+        let whitePoint = CGPoint(x: 10, y: 0)
+        let white = image.getColor(point: whitePoint)
+        XCTAssertEqual(white.rgb, RGB(red: 1, green: 1, blue: 1))
+        XCTAssertEqual(white.cgColor.alpha, 1)
+        
+        let blackPoint = CGPoint(x: 20, y: 0)
+        let black = image.getColor(point: blackPoint)
+        XCTAssertEqual(black.rgb, RGB(red: 0, green: 0, blue: 0))
+        XCTAssertEqual(black.cgColor.alpha, 1)
     }
 }

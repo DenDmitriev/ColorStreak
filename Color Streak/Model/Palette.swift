@@ -14,6 +14,7 @@ class Palette: ObservableObject {
     @Published var colorSpace: DeviceColorSpace = .sRGB
     @Published var name: String = ""
     @Published var tags: [ColorTag] = []
+    @Published var isNew = false
     var dateCreated: Date
     var dateModified: Date
     var image: UIImage?
@@ -21,14 +22,6 @@ class Palette: ObservableObject {
     var cancellable = Set<AnyCancellable>()
     
     var id: UUID = UUID()
-    
-    var isMaxColors: Bool {
-        colors.count >= 12
-    }
-    
-    var isEmptyColors: Bool {
-        colors.isEmpty
-    }
     
     init() {
         dateCreated = Date.now
@@ -53,6 +46,22 @@ class Palette: ObservableObject {
         self.colorSpace = colorSpace
         self.name = name
         self.selection = colors.first != nil ? .zero : nil
+    }
+    
+    var isMaxColors: Bool {
+        colors.count >= 12
+    }
+    
+    var isEmptyColors: Bool {
+        colors.isEmpty
+    }
+    
+    var searchText: String {
+        var total = [String]()
+        total.append(name)
+        total.append(contentsOf: tags.map({ $0.tag }))
+        
+        return total.joined(separator: " ")
     }
     
     func saveModel() {
@@ -134,8 +143,28 @@ class Palette: ObservableObject {
         selection = colors.count - 1
     }
     
+    func generateName() -> String? {
+        if let keyColor = colors.first {
+            let colorShade = ColorShade(cgColor: UIColor(keyColor).cgColor)
+            return colorShade.title.capitalized
+        } else {
+            return nil
+        }
+    }
+    
+    func autoTags() {
+        for color in colors {
+            let shade = ColorShade(cgColor: UIColor(color).cgColor)
+            guard !tags.contains(where: { $0.tag == shade.title }) else { continue }
+            tags.append(ColorTag(tag: shade.title))
+        }
+    }
+    
     func append(tag: String) {
-        guard !tags.contains(where: { $0.tag == tag }) else { return }
+        guard 3...9 ~= tag.count,
+              !tags.contains(where: { $0.tag == tag })
+        else { return }
+        
         DispatchQueue.main.async {
             self.tags.append(ColorTag(tag: tag))
         }
@@ -159,12 +188,17 @@ extension Palette: Identifiable, Hashable {
 }
 
 extension Palette {
-    static let placeholder = Palette(
-        colors: [.red, .orange, .yellow, .green, .cyan, .blue, .purple],
-        name: "Palette",
-        image: UIImage(named: "Palette"),
-        tags: [ColorTag(tag: "Rainbow")]
-    )
+    static var placeholder: Palette = {
+        let palette = Palette(
+            colors: [.red, .orange, .yellow, .green, .cyan, .blue, .purple],
+            name: "Palette",
+            image: UIImage(named: "Palette"),
+            tags: [ColorTag(tag: "Rainbow")]
+        )
+        palette.isNew = true
+        
+        return palette
+    }()
     
     static let rgb = Palette(
         colors: [
@@ -195,7 +229,8 @@ extension Palette: NSCopying {
             colors: self.colors,
             name: "Copy of " + self.name,
             colorSpace: self.colorSpace,
-            image: self.image
+            image: self.image,
+            tags: self.tags
         )
         return copy
     }

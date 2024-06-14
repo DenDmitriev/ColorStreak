@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct PalettePickView: View {
     @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
@@ -154,6 +155,13 @@ struct PalettePickView: View {
         .onDisappear {
             palette.saveModel()
         }
+        .analyticsScreen(
+            name: AnalyticsEventScreenView,
+            extraParameters: [
+                AnalyticsParameterScreenName: "\(type(of: self))",
+                AnalyticsParameterScreenClass: "\(type(of: self))"
+            ]
+        )
     }
     
     private var minusButton: some View  {

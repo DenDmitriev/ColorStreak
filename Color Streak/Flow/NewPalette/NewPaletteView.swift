@@ -8,6 +8,7 @@
 import SwiftUI
 import Liquid
 import Combine
+import FirebaseAnalytics
 
 struct NewPaletteView: View {
     
@@ -154,6 +155,13 @@ struct NewPaletteView: View {
                 focusedField = .name
                 UITextField.appearance().clearButtonMode = .whileEditing
             }
+            .analyticsScreen(
+                name: AnalyticsEventScreenView,
+                extraParameters: [
+                    AnalyticsParameterScreenName: "\(type(of: self))",
+                    AnalyticsParameterScreenClass: "\(type(of: self))"
+                ]
+            )
         }
     }
     

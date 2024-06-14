@@ -157,6 +157,12 @@
 		9587CDA72C1B183F00495D33 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9587CDA62C1B183F00495D33 /* Localizable.xcstrings */; };
 		958AE49D2C1C18F80037AF40 /* BudgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AE49C2C1C18F80037AF40 /* BudgeView.swift */; };
 		958AE4A12C1C2B280037AF40 /* BitmapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AE4A02C1C2B270037AF40 /* BitmapExtension.swift */; };
+		958AE4A42C1C41170037AF40 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 958AE4A32C1C41170037AF40 /* GoogleService-Info.plist */; };
+		958AE4A82C1C42E80037AF40 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 958AE4A72C1C42E80037AF40 /* FirebaseAnalytics */; };
+		958AE4AA2C1C42E80037AF40 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 958AE4A92C1C42E80037AF40 /* FirebaseAnalyticsOnDeviceConversion */; };
+		958AE4AC2C1C42E80037AF40 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 958AE4AB2C1C42E80037AF40 /* FirebaseAnalyticsSwift */; };
+		958AE4AE2C1C42E80037AF40 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 958AE4AD2C1C42E80037AF40 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		958AE4B02C1C42E80037AF40 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 958AE4AF2C1C42E80037AF40 /* FirebaseAppCheck */; };
 		959EE2142C10FEB30061E678 /* PaletteEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959EE2132C10FEB30061E678 /* PaletteEditView.swift */; };
 		959EE2362C1180DF0061E678 /* PaletteStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959EE2352C1180DF0061E678 /* PaletteStackView.swift */; };
 		959EE2382C1186150061E678 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959EE2372C1186150061E678 /* DeviceRotationViewModifier.swift */; };
@@ -362,6 +368,7 @@
 		958AE49C2C1C18F80037AF40 /* BudgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgeView.swift; sourceTree = "<group>"; };
 		958AE4A02C1C2B270037AF40 /* BitmapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitmapExtension.swift; sourceTree = "<group>"; };
 		958AE4A22C1C30310037AF40 /* Color Streak.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Color Streak.xctestplan"; sourceTree = SOURCE_ROOT; };
+		958AE4A32C1C41170037AF40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		959EE2132C10FEB30061E678 /* PaletteEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteEditView.swift; sourceTree = "<group>"; };
 		959EE2352C1180DF0061E678 /* PaletteStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteStackView.swift; sourceTree = "<group>"; };
 		959EE2372C1186150061E678 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
@@ -409,7 +416,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				95EDD6242C0F713900DD7655 /* DominantColors in Frameworks */,
+				958AE4AE2C1C42E80037AF40 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				951113992C0CD693000B3E3C /* Liquid in Frameworks */,
+				958AE4A82C1C42E80037AF40 /* FirebaseAnalytics in Frameworks */,
+				958AE4B02C1C42E80037AF40 /* FirebaseAppCheck in Frameworks */,
+				958AE4AA2C1C42E80037AF40 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				958AE4AC2C1C42E80037AF40 /* FirebaseAnalyticsSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +790,7 @@
 			isa = PBXGroup;
 			children = (
 				95E4DBF12C1B25B30029BBFC /* Color-Streak-Info.plist */,
+				958AE4A32C1C41170037AF40 /* GoogleService-Info.plist */,
 				95879D7D2BF72F860016A577 /* Color_Palette.swift */,
 				951113D32C0EE37B000B3E3C /* AppDelegate.swift */,
 				95879D7F2BF72F860016A577 /* ContentView.swift */,
@@ -1079,6 +1092,11 @@
 			packageProductDependencies = (
 				951113982C0CD693000B3E3C /* Liquid */,
 				95EDD6232C0F713900DD7655 /* DominantColors */,
+				958AE4A72C1C42E80037AF40 /* FirebaseAnalytics */,
+				958AE4A92C1C42E80037AF40 /* FirebaseAnalyticsOnDeviceConversion */,
+				958AE4AB2C1C42E80037AF40 /* FirebaseAnalyticsSwift */,
+				958AE4AD2C1C42E80037AF40 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				958AE4AF2C1C42E80037AF40 /* FirebaseAppCheck */,
 			);
 			productName = "dE Calculator";
 			productReference = 95879D7A2BF72F860016A577 /* Color Streak.app */;
@@ -1134,6 +1152,7 @@
 			packageReferences = (
 				951113972C0CD693000B3E3C /* XCRemoteSwiftPackageReference "liquid" */,
 				95EDD6222C0F713900DD7655 /* XCRemoteSwiftPackageReference "DominantColors" */,
+				958AE4A62C1C42E80037AF40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 95879D7B2BF72F860016A577 /* Products */;
 			projectDirPath = "";
@@ -1152,6 +1171,7 @@
 			files = (
 				95E4DBF22C1B25B30029BBFC /* Color-Streak-Info.plist in Resources */,
 				95879D852BF72F870016A577 /* Preview Assets.xcassets in Resources */,
+				958AE4A42C1C41170037AF40 /* GoogleService-Info.plist in Resources */,
 				95879D822BF72F870016A577 /* Assets.xcassets in Resources */,
 				9587CDA72C1B183F00495D33 /* Localizable.xcstrings in Resources */,
 			);
@@ -1638,6 +1658,14 @@
 				minimumVersion = 0.0.1;
 			};
 		};
+		958AE4A62C1C42E80037AF40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.27.0;
+			};
+		};
 		95EDD6222C0F713900DD7655 /* XCRemoteSwiftPackageReference "DominantColors" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/DenDmitriev/DominantColors";
@@ -1653,6 +1681,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 951113972C0CD693000B3E3C /* XCRemoteSwiftPackageReference "liquid" */;
 			productName = Liquid;
+		};
+		958AE4A72C1C42E80037AF40 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 958AE4A62C1C42E80037AF40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		958AE4A92C1C42E80037AF40 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 958AE4A62C1C42E80037AF40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		958AE4AB2C1C42E80037AF40 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 958AE4A62C1C42E80037AF40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		958AE4AD2C1C42E80037AF40 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 958AE4A62C1C42E80037AF40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		958AE4AF2C1C42E80037AF40 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 958AE4A62C1C42E80037AF40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
 		};
 		95EDD6232C0F713900DD7655 /* DominantColors */ = {
 			isa = XCSwiftPackageProductDependency;

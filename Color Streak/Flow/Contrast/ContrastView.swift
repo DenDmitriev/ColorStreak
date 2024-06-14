@@ -7,8 +7,7 @@
 
 import SwiftUI
 import DominantColors
-
-
+import FirebaseAnalytics
 
 struct ContrastView: View {
     @ObservedObject var palette: Palette
@@ -111,6 +110,13 @@ struct ContrastView: View {
         .onDisappear {
             palette.saveModel()
         }
+        .analyticsScreen(
+            name: AnalyticsEventScreenView,
+            extraParameters: [
+                AnalyticsParameterScreenName: "\(type(of: self))",
+                AnalyticsParameterScreenClass: "\(type(of: self))"
+            ]
+        )
     }
     
     private var colorsRange: Range<Int> { 0..<palette.colors.count }

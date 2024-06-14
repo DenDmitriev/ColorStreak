@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 @main
 struct Color_Palette: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     @StateObject private var shop: PaletteShop = .init()
     @StateObject private var chShop: CHPaletteShop = .init()
     
@@ -23,6 +26,13 @@ struct Color_Palette: App {
                     backButtonAppearance()
                 }
                 .preferredColorScheme(isDarkMode ? .dark : .light)
+                .analyticsScreen(
+                    name: AnalyticsEventScreenView,
+                    extraParameters: [
+                        AnalyticsParameterScreenName: "\(type(of: self))",
+                        AnalyticsParameterScreenClass: "\(type(of: self))"
+                    ]
+                )
         }
         .environmentObject(shop)
         .environmentObject(chShop)
@@ -37,7 +47,5 @@ struct Color_Palette: App {
         let backImage = UIImage(systemName: "arrow.left")
         UINavigationBar.appearance().backIndicatorImage = backImage
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
-//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -150, vertical: 0), for:UIBarMetrics.default)
-//        UIToolbar.appearance().barTintColor = UIColor.red
     }
 }

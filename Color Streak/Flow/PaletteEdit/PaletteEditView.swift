@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct PaletteEditView: View {
     @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
@@ -56,6 +57,13 @@ struct PaletteEditView: View {
                 .tint(.primary)
             }
         })
+        .analyticsScreen(
+            name: AnalyticsEventScreenView,
+            extraParameters: [
+                AnalyticsParameterScreenName: "\(type(of: self))",
+                AnalyticsParameterScreenClass: "\(type(of: self))"
+            ]
+        )
     }
     
     private func saveColors() {

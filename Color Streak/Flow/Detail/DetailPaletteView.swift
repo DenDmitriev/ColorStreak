@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import FirebaseAnalytics
 
 struct DetailPaletteView: View {
     @ObservedObject var palette: Palette
@@ -92,6 +93,13 @@ struct DetailPaletteView: View {
         .onDisappear {
             palette.saveModel()
         }
+        .analyticsScreen(
+            name: AnalyticsEventScreenView,
+            extraParameters: [
+                AnalyticsParameterScreenName: "\(type(of: self))",
+                AnalyticsParameterScreenClass: "\(type(of: self))"
+            ]
+        )
     }
     
     private var tagsBinding: Binding<[TagViewItem]> {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct ShareView: View {
     @ObservedObject var palette: Palette
@@ -34,6 +35,13 @@ struct ShareView: View {
             .navigationTitle("Share Palette")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .analyticsScreen(
+            name: AnalyticsEventScreenView,
+            extraParameters: [
+                AnalyticsParameterScreenName: "\(type(of: self))",
+                AnalyticsParameterScreenClass: "\(type(of: self))"
+            ]
+        )
     }
 }
 

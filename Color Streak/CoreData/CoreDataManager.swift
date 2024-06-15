@@ -52,7 +52,7 @@ class CoreDataManager {
     }
     
     private func sendLogMessageCrashlytics(error: Error, function: String) {
-        Crashlytics.crashlytics().log("CoreData: \(error.localizedDescription), \(function)")
+        Crashlytics.crashlytics().record(error: error, userInfo: ["CoreData" : function])
     }
     
     func fetchPalettes() async throws -> [Palette] {

@@ -148,7 +148,7 @@ struct ShareImageView: View {
     }
     
     private func sendLogMessageCrashlytics(error: Error, function: String) {
-        Crashlytics.crashlytics().log("Share Palette Image: \(error.localizedDescription), \(function)")
+        Crashlytics.crashlytics().record(error: error, userInfo: ["Share Palette Image" : function])
     }
 }
 

@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 import SwiftUI
+import FirebaseCrashlytics
 
 class CoreDataManager {
     
@@ -42,11 +43,16 @@ class CoreDataManager {
                     try context.save()
                 } catch {
                     print("CoreData \(#function) error: \(error.localizedDescription)")
+                    sendLogMessageCrashlytics(error: error, function: #function)
                     context.rollback()
                 }
             }
             context.reset()
         }
+    }
+    
+    private func sendLogMessageCrashlytics(error: Error, function: String) {
+        Crashlytics.crashlytics().log("CoreData: \(error.localizedDescription), \(function)")
     }
     
     func fetchPalettes() async throws -> [Palette] {

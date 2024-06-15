@@ -29,7 +29,7 @@ struct AdjustControlView: View {
             BalanceSlider(text: "Temperature", level: $deltaTemperature, coordinate: .normal)
             BalanceSlider(text: "Tint", level: $deltaTint, coordinate: .normal)
         }
-        .onChange(of: [deltaHue, deltaSaturation, deltaBrightness, deltaTemperature, deltaTint]) { newValue in
+        .onChange(of: [deltaHue, deltaSaturation, deltaBrightness, deltaTemperature, deltaTint]) { _, newValue in
             guard !newValue.filter({ !$0.isZero }).isEmpty else {
                 palette.colors = paletteInitial.colors
                 return

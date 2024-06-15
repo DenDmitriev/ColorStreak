@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct CHPaletteItemView: View {
     @ObservedObject var palette: Palette
     @EnvironmentObject private var tabCoordinator: TabCoordinator<TabRouter>
     @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
-    @EnvironmentObject private var chShop: PaletteShop
+    @EnvironmentObject private var chShop: CHPaletteShop
     @EnvironmentObject var shop: PaletteShop
     
     @State private var showMenu = false
@@ -74,6 +75,17 @@ struct CHPaletteItemView: View {
         showMenu = false
         shop.add(palette: palette)
         tabCoordinator.change(.catalog)
+        
+        sendAnalyticsImportPalette()
+    }
+    
+    private func sendAnalyticsImportPalette() {
+        let tags = chShop.selectedTags.map({ $0.name }).joined(separator: ", ")
+        let searchText = chShop.searchText
+        Analytics.logEvent(AnalyticsEvent.importPalette.key, parameters: [
+            AnalyticsParameterSearchTerm: "tags: \(tags), searchText: \(searchText)",
+            AnalyticsParameterContentType: Palette.self
+        ])
     }
 }
 

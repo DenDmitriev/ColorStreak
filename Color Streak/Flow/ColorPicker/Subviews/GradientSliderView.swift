@@ -82,11 +82,11 @@ struct GradientSliderView: View {
             }
             .frame(height: 24)
             .padding(.horizontal, 12)
-            .onChange(of: level) { newLevel in
+            .onChange(of: level) { _, newLevel in
                 guard !isDragging else { return }
                 updatePosition(level: newLevel)
             }
-            .onChange(of: position) { newPosition in
+            .onChange(of: position) { _, newPosition in
                 guard isDragging else { return }
                 updateLevel(position: newPosition)
             }

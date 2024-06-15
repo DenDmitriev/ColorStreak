@@ -7,6 +7,7 @@
 // https://palett.es/api
 
 import Foundation
+import FirebaseCrashlytics
 
 enum PalettAPIError: Error, LocalizedError {
     case invalidRequest
@@ -67,7 +68,12 @@ struct PaletteAPI {
             
             return .success(palette)
         } catch {
+            sendLogMessageCrashlytics(error: error, function: #function, url: url.absoluteString)
             return .failure(PalettAPIError.throwError(description: error.localizedDescription))
         }
+    }
+    
+    static private func sendLogMessageCrashlytics(error: Error, function: String, url: String) {
+        Crashlytics.crashlytics().log("Palette API: \(error.localizedDescription), \(function), url: \(url)")
     }
 }

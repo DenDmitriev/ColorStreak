@@ -73,7 +73,7 @@ struct HSBCalculator {
     /// h = [0,360], s = [0,1], v = [0,1]
     /// [HSV to RGB](https://www.cs.rit.edu/~ncs/color/t_convert.html#RGB%20to%20HSV%20&%20HSV%20to%20RGB)
     static func hsb2rgb(hsb: HSB) -> RGB {
-        var h = hsb.h
+        let h = hsb.h
         let s = hsb.s
         let b = hsb.b
         

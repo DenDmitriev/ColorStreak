@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import CoreData
+import FirebaseCrashlytics
 
 class PaletteShop: ObservableObject {
     @Published var palettes: [Palette] = []
@@ -46,6 +47,7 @@ class PaletteShop: ObservableObject {
         } catch {
             print(error.localizedDescription)
             state(is: .failure)
+            sendLogMessageCrashlytics(error: error, function: #function)
         }
     }
     
@@ -114,6 +116,10 @@ class PaletteShop: ObservableObject {
                 self?.objectWillChange.send()
             }
             .store(in: &cancellable)
+    }
+    
+    private func sendLogMessageCrashlytics(error: Error, function: String) {
+        Crashlytics.crashlytics().log("Palette Shop: \(error.localizedDescription), \(function)")
     }
 }
 

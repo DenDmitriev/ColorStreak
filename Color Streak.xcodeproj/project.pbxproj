@@ -163,6 +163,8 @@
 		958AE4AC2C1C42E80037AF40 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 958AE4AB2C1C42E80037AF40 /* FirebaseAnalyticsSwift */; };
 		958AE4AE2C1C42E80037AF40 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 958AE4AD2C1C42E80037AF40 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		958AE4B02C1C42E80037AF40 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 958AE4AF2C1C42E80037AF40 /* FirebaseAppCheck */; };
+		958AE4B72C1D62C60037AF40 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AE4B62C1D62C60037AF40 /* AnalyticsEvent.swift */; };
+		958AE4BA2C1D717C0037AF40 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 958AE4B92C1D717C0037AF40 /* FirebaseCrashlytics */; };
 		959EE2142C10FEB30061E678 /* PaletteEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959EE2132C10FEB30061E678 /* PaletteEditView.swift */; };
 		959EE2362C1180DF0061E678 /* PaletteStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959EE2352C1180DF0061E678 /* PaletteStackView.swift */; };
 		959EE2382C1186150061E678 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959EE2372C1186150061E678 /* DeviceRotationViewModifier.swift */; };
@@ -369,6 +371,7 @@
 		958AE4A02C1C2B270037AF40 /* BitmapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitmapExtension.swift; sourceTree = "<group>"; };
 		958AE4A22C1C30310037AF40 /* Color Streak.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Color Streak.xctestplan"; sourceTree = SOURCE_ROOT; };
 		958AE4A32C1C41170037AF40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		958AE4B62C1D62C60037AF40 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		959EE2132C10FEB30061E678 /* PaletteEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteEditView.swift; sourceTree = "<group>"; };
 		959EE2352C1180DF0061E678 /* PaletteStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteStackView.swift; sourceTree = "<group>"; };
 		959EE2372C1186150061E678 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
@@ -420,6 +423,7 @@
 				951113992C0CD693000B3E3C /* Liquid in Frameworks */,
 				958AE4A82C1C42E80037AF40 /* FirebaseAnalytics in Frameworks */,
 				958AE4B02C1C42E80037AF40 /* FirebaseAppCheck in Frameworks */,
+				958AE4BA2C1D717C0037AF40 /* FirebaseCrashlytics in Frameworks */,
 				958AE4AA2C1C42E80037AF40 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				958AE4AC2C1C42E80037AF40 /* FirebaseAnalyticsSwift in Frameworks */,
 			);
@@ -774,6 +778,7 @@
 				95879D7C2BF72F860016A577 /* Color Streak */,
 				95879DC32BF78C6D0016A577 /* Color StreakTests */,
 				95879D7B2BF72F860016A577 /* Products */,
+				958AE4B82C1D717C0037AF40 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -794,6 +799,7 @@
 				95879D7D2BF72F860016A577 /* Color_Palette.swift */,
 				951113D32C0EE37B000B3E3C /* AppDelegate.swift */,
 				95879D7F2BF72F860016A577 /* ContentView.swift */,
+				958AE4B52C1D62A40037AF40 /* Firebase */,
 				951113CE2C0E1AF2000B3E3C /* CoreData */,
 				9511137C2C09A702000B3E3C /* Coordinator */,
 				9587CD962C19799600495D33 /* Flow */,
@@ -983,6 +989,21 @@
 			path = Tab;
 			sourceTree = "<group>";
 		};
+		958AE4B52C1D62A40037AF40 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				958AE4B62C1D62C60037AF40 /* AnalyticsEvent.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		958AE4B82C1D717C0037AF40 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		959EE2122C10FE760061E678 /* PaletteEdit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1083,6 +1104,7 @@
 				95879D762BF72F860016A577 /* Sources */,
 				95879D772BF72F860016A577 /* Frameworks */,
 				95879D782BF72F860016A577 /* Resources */,
+				958AE4B42C1D5E280037AF40 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1097,6 +1119,7 @@
 				958AE4AB2C1C42E80037AF40 /* FirebaseAnalyticsSwift */,
 				958AE4AD2C1C42E80037AF40 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				958AE4AF2C1C42E80037AF40 /* FirebaseAppCheck */,
+				958AE4B92C1D717C0037AF40 /* FirebaseCrashlytics */,
 			);
 			productName = "dE Calculator";
 			productReference = 95879D7A2BF72F860016A577 /* Color Streak.app */;
@@ -1187,6 +1210,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		958AE4B42C1D5E280037AF40 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		95879D762BF72F860016A577 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1249,6 +1297,7 @@
 				954A69D42BF9F16E00726A65 /* CGColorExtensionHSB.swift in Sources */,
 				95EF77A92C173EB9007E1DEC /* AppIcon.swift in Sources */,
 				9501E9A62BFA315C004448EA /* UserDefaultsKey.swift in Sources */,
+				958AE4B72C1D62C60037AF40 /* AnalyticsEvent.swift in Sources */,
 				9587CD8A2C188E7400495D33 /* CHCatalogView.swift in Sources */,
 				9587CD982C197A1000495D33 /* ColorHunterTag.swift in Sources */,
 				9511136D2C087285000B3E3C /* PaletteItemView.swift in Sources */,
@@ -1521,7 +1570,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Color Streak/Assets.xcassets\"";
 				DEVELOPMENT_TEAM = TNTX3799P3;
 				ENABLE_PREVIEWS = YES;
@@ -1553,7 +1603,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Color Streak/Assets.xcassets\"";
 				DEVELOPMENT_TEAM = TNTX3799P3;
 				ENABLE_PREVIEWS = YES;
@@ -1706,6 +1756,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 958AE4A62C1C42E80037AF40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAppCheck;
+		};
+		958AE4B92C1D717C0037AF40 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 958AE4A62C1C42E80037AF40 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		95EDD6232C0F713900DD7655 /* DominantColors */ = {
 			isa = XCSwiftPackageProductDependency;

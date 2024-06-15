@@ -8,6 +8,7 @@
 import SwiftUI
 import PhotosUI
 import DominantColors
+import FirebaseCrashlytics
 
 struct NewImageColors: View {
     @ObservedObject var palette: Palette
@@ -89,6 +90,7 @@ struct NewImageColors: View {
                 }
             } catch {
                 print(error.localizedDescription)
+                sendLogMessageCrashlytics(error: error, function: #function)
             }
         }
     }
@@ -140,7 +142,7 @@ struct NewImageColors: View {
                 else {
                     throw TransferError.importFailed
                 }
-                print(uiImage.cgImage?.colorSpace)
+                
                 if UIScreen.screenWidth < uiImage.size.width {
                     let width = UIScreen.screenWidth
                     guard let resizedImage = uiImage.resizeImage(width: width) else {
@@ -156,6 +158,10 @@ struct NewImageColors: View {
             #endif
             }
         }
+    }
+    
+    private func sendLogMessageCrashlytics(error: Error, function: String) {
+        Crashlytics.crashlytics().log("Palette From Image: \(error.localizedDescription), \(function)")
     }
 }
 

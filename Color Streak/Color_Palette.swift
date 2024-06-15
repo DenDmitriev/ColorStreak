@@ -26,13 +26,6 @@ struct Color_Palette: App {
                     backButtonAppearance()
                 }
                 .preferredColorScheme(isDarkMode ? .dark : .light)
-                .analyticsScreen(
-                    name: AnalyticsEventScreenView,
-                    extraParameters: [
-                        AnalyticsParameterScreenName: "\(type(of: self))",
-                        AnalyticsParameterScreenClass: "\(type(of: self))"
-                    ]
-                )
         }
         .environmentObject(shop)
         .environmentObject(chShop)

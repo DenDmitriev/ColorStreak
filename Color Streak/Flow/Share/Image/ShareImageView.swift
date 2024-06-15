@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseCrashlytics
+import FirebaseAnalytics
 
 struct ShareImageView: View {
     enum ImageRenderState {
@@ -140,8 +142,13 @@ struct ShareImageView: View {
                 DispatchQueue.main.async {
                     self.state = .failure(error: error.localizedDescription)
                 }
+                sendLogMessageCrashlytics(error: error, function: #function)
             }
         }
+    }
+    
+    private func sendLogMessageCrashlytics(error: Error, function: String) {
+        Crashlytics.crashlytics().log("Share Palette Image: \(error.localizedDescription), \(function)")
     }
 }
 

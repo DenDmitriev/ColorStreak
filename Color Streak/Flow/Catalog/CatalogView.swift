@@ -67,13 +67,7 @@ struct CatalogView: View {
                 await shop.fetchPalettes()
             }
         }
-        .analyticsScreen(
-            name: AnalyticsEventScreenView,
-            extraParameters: [
-                AnalyticsParameterScreenName: "\(type(of: self))",
-                AnalyticsParameterScreenClass: "\(type(of: self))"
-            ]
-        )
+        .analyticsScreen(name: AnalyticsEvent.screen(view: "\(type(of: self))"))
     }
     
     private func placeholderText(text: String) -> some View {
@@ -91,7 +85,7 @@ struct CatalogView: View {
             }
             
             Button {
-                coordinator.present(sheet: .share(palette))
+                shareAction(palette: palette)
             } label: {
                 Label("Share", systemImage: "square.and.arrow.up")
             }
@@ -131,6 +125,15 @@ struct CatalogView: View {
     
     private func addNewAction() {
         coordinator.present(sheet: .newPalette)
+    }
+    
+    private func shareAction(palette: Palette) {
+        coordinator.present(sheet: .share(palette))
+        
+        Analytics.logEvent(AnalyticsEventShare, parameters: [
+            AnalyticsParameterItemName: palette.name,
+            AnalyticsParameterContentType: Palette.self
+        ])
     }
     
     private func removeAction(palette: Palette) {

@@ -52,6 +52,13 @@ struct MenuView: View {
                     Button("Delete all palettes", role: .destructive) {
                         showDeleteAlert.toggle()
                     }
+                    
+                    /*
+                    // Test Crashlytics
+                    Button("Crash", role: .destructive) {
+                      fatalError("Crash was triggered")
+                    }
+                    */
                 }
                 
                 Section("Info") {
@@ -67,13 +74,7 @@ struct MenuView: View {
                 Text("Are you sure you want to delete all palettes?")
             }
         }
-        .analyticsScreen(
-            name: AnalyticsEventScreenView,
-            extraParameters: [
-                AnalyticsParameterScreenName: "\(type(of: self))",
-                AnalyticsParameterScreenClass: "\(type(of: self))"
-            ]
-        )
+        .analyticsScreen(name: AnalyticsEvent.screen(view: "\(type(of: self))"))
     }
     
     private func removeAllPalette() {

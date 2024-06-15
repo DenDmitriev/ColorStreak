@@ -121,13 +121,7 @@ struct CHCatalogView: View {
                 }
             }
         }
-        .analyticsScreen(
-            name: AnalyticsEventScreenView,
-            extraParameters: [
-                AnalyticsParameterScreenName: "\(type(of: self))",
-                AnalyticsParameterScreenClass: "\(type(of: self))"
-            ]
-        )
+        .analyticsScreen(name: AnalyticsEvent.screen(view: "\(type(of: self))"))
     }
     
     private var showSuggestedTags: Bool {

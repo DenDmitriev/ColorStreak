@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseCrashlytics
 
 struct ColorHunterAPI {
     enum ColorHunterError: Error, LocalizedError {
@@ -38,6 +39,7 @@ struct ColorHunterAPI {
             let palettes = try JSONDecoder().decode([ColorHuntPalette].self, from: data)
             return.success(palettes)
         } catch {
+            sendLogMessageCrashlytics(error: error, function: #function, url: url.absoluteString, query: query)
             return .failure(.error(description: error.localizedDescription))
         }
     }
@@ -80,7 +82,12 @@ struct ColorHunterAPI {
             let palettes = try JSONDecoder().decode([ColorHuntPalette].self, from: data)
             return.success(palettes)
         } catch {
+            sendLogMessageCrashlytics(error: error, function: #function, url: url.absoluteString, query: query)
             return .failure(.error(description: error.localizedDescription))
         }
+    }
+    
+    static private func sendLogMessageCrashlytics(error: Error, function: String, url: String, query: String) {
+        Crashlytics.crashlytics().log("Color Hunter API: \(error.localizedDescription), \(function), url: \(url), query: \(query)")
     }
 }

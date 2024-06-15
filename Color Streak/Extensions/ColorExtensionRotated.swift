@@ -11,7 +11,7 @@ extension Color {
     public func rotated(angle: Angle) -> Self {
         let hsb = self.hsb
         
-        var rotatedHue = Angle(degrees: (hsb.hue360 + angle.degrees).normalizedDegrees())
+        let rotatedHue = Angle(degrees: (hsb.hue360 + angle.degrees).normalizedDegrees())
         let partDegrees = rotatedHue.degrees / 360
         
         let cgColor = UIColor(self).cgColor

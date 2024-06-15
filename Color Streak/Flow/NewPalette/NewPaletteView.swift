@@ -155,13 +155,7 @@ struct NewPaletteView: View {
                 focusedField = .name
                 UITextField.appearance().clearButtonMode = .whileEditing
             }
-            .analyticsScreen(
-                name: AnalyticsEventScreenView,
-                extraParameters: [
-                    AnalyticsParameterScreenName: "\(type(of: self))",
-                    AnalyticsParameterScreenClass: "\(type(of: self))"
-                ]
-            )
+            .analyticsScreen(name: AnalyticsEvent.screen(view: "\(type(of: self))"))
         }
     }
     
@@ -182,6 +176,11 @@ struct NewPaletteView: View {
         shop.add(palette: newPalette)
         coordinator.push(.pickPalette(newPalette))
         coordinator.dismissSheet()
+        
+        Analytics.logEvent(AnalyticsEvent.createPalette.key, parameters: [
+            AnalyticsParameterItemName: newPalette.name,
+            AnalyticsParameterContentType: Palette.self
+        ])
     }
     
     private func limitName(_ upper: Int) {

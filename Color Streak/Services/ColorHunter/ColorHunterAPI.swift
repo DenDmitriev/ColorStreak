@@ -88,6 +88,10 @@ struct ColorHunterAPI {
     }
     
     static private func sendLogMessageCrashlytics(error: Error, function: String, url: String, query: String) {
-        Crashlytics.crashlytics().log("Color Hunter API: \(error.localizedDescription), \(function), url: \(url), query: \(query)")
+        Crashlytics.crashlytics().record(error: error, userInfo: [
+            "Color Hunter API" : function,
+            "URL": url,
+            "Query": query
+        ])
     }
 }

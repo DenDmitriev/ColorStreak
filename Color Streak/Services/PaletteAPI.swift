@@ -74,6 +74,9 @@ struct PaletteAPI {
     }
     
     static private func sendLogMessageCrashlytics(error: Error, function: String, url: String) {
-        Crashlytics.crashlytics().log("Palette API: \(error.localizedDescription), \(function), url: \(url)")
+        Crashlytics.crashlytics().record(error: error, userInfo: [
+            "Palette API" : function,
+            "URL": url
+        ])
     }
 }

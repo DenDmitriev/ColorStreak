@@ -119,7 +119,7 @@ class PaletteShop: ObservableObject {
     }
     
     private func sendLogMessageCrashlytics(error: Error, function: String) {
-        Crashlytics.crashlytics().log("Palette Shop: \(error.localizedDescription), \(function)")
+        Crashlytics.crashlytics().record(error: error, userInfo: ["Palette Shop" : function])
     }
 }
 

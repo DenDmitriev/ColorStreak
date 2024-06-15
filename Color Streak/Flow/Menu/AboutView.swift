@@ -16,7 +16,7 @@ struct AboutView: View {
     let mailSupport = URL(string: "mailto:dv.denstr@gmail.com")
     let icons = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String: Any]
     
-    let site = URL(string: "https://dendmitriev.github.io/ColorPalette/")
+    let site = URL(string: "https://dendmitriev.github.io/ColorStreak/")
     let privatePolicy = URL(string: "https://dendmitriev.github.io/ColorStreak/privacy_policy/")
     let termsOfService = URL(string: "https://dendmitriev.github.io/ColorStreak/termsofservice/")
     

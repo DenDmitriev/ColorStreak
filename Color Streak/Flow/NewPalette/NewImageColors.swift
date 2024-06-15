@@ -161,7 +161,7 @@ struct NewImageColors: View {
     }
     
     private func sendLogMessageCrashlytics(error: Error, function: String) {
-        Crashlytics.crashlytics().log("Palette From Image: \(error.localizedDescription), \(function)")
+        Crashlytics.crashlytics().record(error: error, userInfo: ["Palette From Image" : function])
     }
 }
 

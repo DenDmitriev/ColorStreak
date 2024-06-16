@@ -33,13 +33,17 @@ struct ColorPickerView: View {
 
 #Preview {
     struct PreviewWrapper: View {
-        @State private var color: Color = .red
+        @State private var color: Color = .green
         @State private var colorSpace: DeviceColorSpace = .displayP3
-        @State private var colorTable: ColorTable = .hsb
+        @State private var colorTable: ColorTable = .hex
         @State private var controller: PalettePickView.ColorController = .slider
         
         var body: some View {
-            ColorPickerView(color: $color, colorSpace: $colorSpace, colorTable: $colorTable, controller: $controller)
+            VStack {
+                ColorPickerView(color: $color, colorSpace: $colorSpace, colorTable: $colorTable, controller: $controller)
+                
+                ColorPicker("Color", selection: $color, supportsOpacity: false)
+            }
         }
     }
     

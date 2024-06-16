@@ -36,7 +36,7 @@ struct CMYKColorPicker: View {
             CMYKKeyPicker(key: $key, color: $color)
         }
         .onChange(of: color) { _, newColor in
-            guard controller != .slider else { return }
+//            guard controller != .slider else { return }
             let cmyk = color.cmyk
             self.cyan = cmyk.cyan
             self.magenta = cmyk.magenta

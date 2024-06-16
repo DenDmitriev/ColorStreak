@@ -33,7 +33,7 @@ struct LabColorPicker: View {
             LabBPicker(blueYellowB: $blueYellowB)
         }
         .onChange(of: color, { _, newColor in
-            guard controller != .slider else { return }
+//            guard controller != .slider else { return }
             let lab = color.lab
             self.lightness = lab.L
             self.greenRedA = lab.a

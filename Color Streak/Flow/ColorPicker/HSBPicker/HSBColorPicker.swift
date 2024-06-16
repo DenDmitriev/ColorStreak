@@ -35,11 +35,7 @@ struct HSBColorPicker: View {
             HSBBrightnessSlider(brightness: $brightness, color: $color)
         }
         .onChange(of: color, { _, newColor in
-            guard controller != .slider else { return }
-            let hsb = newColor.hsb
-            self.hue = hsb.hue
-            self.saturation = hsb.saturation
-            self.brightness = hsb.brightness
+            updateValues(color: newColor)
         })
         .onChange(of: [hue, saturation, brightness]) { _, newValue in
             guard controller == .slider else { return }
@@ -49,6 +45,14 @@ struct HSBColorPicker: View {
             
             color = Color(hue: hue, saturation: saturation, brightness: brightness)
         }
+    }
+    
+    private func updateValues(color: Color) {
+//        guard controller != .slider else { return }
+        let hsb = color.hsb
+        self.hue = hsb.hue
+        self.saturation = hsb.saturation
+        self.brightness = hsb.brightness
     }
 }
 

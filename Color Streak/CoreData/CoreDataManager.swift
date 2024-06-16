@@ -71,7 +71,7 @@ class CoreDataManager {
             
             var colors = [Color]()
             if let colorsObjects = object.colors?.allObjects as? [ColorModel] {
-                for colorsObject in colorsObjects {
+                for colorsObject in colorsObjects.sorted(by: { $0.index < $1.index }) {
                     let red = Double(colorsObject.red) / 255
                     let green = Double(colorsObject.green) / 255
                     let blue = Double(colorsObject.blue) / 255
@@ -114,9 +114,10 @@ class CoreDataManager {
             }
         }
         
-        for color in palette.colors {
+        for (index, color) in palette.colors.enumerated() {
             let objectColor = ColorModel(context: bgContext)
             let rgb = color.rgb
+            objectColor.index = Int16(index)
             objectColor.red = Int16(rgb.red255)
             objectColor.green = Int16(rgb.green255)
             objectColor.blue = Int16(rgb.blue255)
@@ -155,9 +156,10 @@ class CoreDataManager {
         objectPalette.dateCreated = palette.dateCreated
         objectPalette.dateModified = palette.dateModified
         
-        for color in palette.colors {
+        for (index, color) in palette.colors.enumerated() {
             let objectColor = ColorModel(context: context)
             let rgb = color.rgb
+            objectColor.index = Int16(index)
             objectColor.red = Int16(rgb.red255)
             objectColor.green = Int16(rgb.green255)
             objectColor.blue = Int16(rgb.blue255)

@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class Palette: ObservableObject {
+class Palette: ObservableObject, Copyable {
     @Published var colors = [Color]()
     @Published var selection: Int?
     @Published var colorSpace: DeviceColorSpace = .sRGB
@@ -46,6 +46,16 @@ class Palette: ObservableObject {
         self.colorSpace = colorSpace
         self.name = name
         self.selection = colors.first != nil ? .zero : nil
+    }
+    
+    required init(copy: Palette) {
+        self.colors = copy.colors
+        self.name = "Copy of " + copy.name
+        self.colorSpace = copy.colorSpace
+        self.image = copy.image
+        self.tags = copy.tags
+        self.dateCreated = Date.now
+        self.dateModified = Date.now
     }
     
     var isMaxColors: Bool {
@@ -221,19 +231,6 @@ extension Palette {
         image: UIImage(resource: .circleColors))
     
     static func single(_ color: Color) -> Palette { Palette(colors: [color]) }
-}
-
-extension Palette: NSCopying {
-    func copy(with zone: NSZone? = nil) -> Any {
-        let copy = Palette(
-            colors: self.colors,
-            name: "Copy of " + self.name,
-            colorSpace: self.colorSpace,
-            image: self.image,
-            tags: self.tags
-        )
-        return copy
-    }
 }
 
 extension Palette {

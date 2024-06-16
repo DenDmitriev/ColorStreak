@@ -49,13 +49,14 @@ struct BottomSheetView<Content: View, Left: View, Right: View>: View {
             }
             .frame(width: geometry.size.width)
             .frame(maxHeight: maxHeight + heightToggle)
+            .padding(.bottom, safeAreaInsets.bottom)
             .background(background)
             .cornerRadius(Constants.radius)
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
             .animation(.spring, value: isOpen)
             .gesture(
-                DragGesture().updating(self.$translation) { value, state, _ in
+                DragGesture(minimumDistance: 40).updating(self.$translation) { value, state, _ in
                     state = value.translation.height
                 }.onEnded { value in
                     let snapDistance = self.maxHeight * Constants.snapRatio

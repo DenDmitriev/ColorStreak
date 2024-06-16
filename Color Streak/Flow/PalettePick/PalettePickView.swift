@@ -55,16 +55,18 @@ struct PalettePickView: View {
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .layoutPriority(1)
+            .frame(maxHeight: UIScreen.screenHeight / 2)
             
             ColorPaletteView(palette: palette, selection: $palette.selection)
                 .clipShape(RoundedRectangle(cornerRadius: 24))
         }
         .overlay(alignment: .trailing) {
             plusButton
+                .padding(.bottom, 50)
         }
         .overlay(alignment: .leading) {
             minusButton
+                .padding(.bottom, 50)
         }
         .overlay {
             BottomSheetView(isOpen: $showControl, background: AnyShapeStyle(Material.thickMaterial)) {

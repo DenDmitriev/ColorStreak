@@ -8,6 +8,6 @@
 import UniformTypeIdentifiers
 
 extension UTType {
-    public static var palette: UTType { UTType("com.colorpalette.palette")! }
+//    public static var palette: UTType { UTType("com.colorstreak.palette")! }
     
 }

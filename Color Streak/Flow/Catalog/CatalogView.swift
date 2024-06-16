@@ -12,7 +12,6 @@ import FirebaseAnalytics
 struct CatalogView: View {
     @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
     @ObservedObject var shop: PaletteShop
-    @State private var draggedItem: Palette?
     @State private var isSearching = false
     @State private var searchText: String = ""
     
@@ -26,11 +25,6 @@ struct CatalogView: View {
                         .contextMenu {
                             contextMenuItems(palette: palette)
                         }
-                        .onDrag({
-                            self.draggedItem = palette
-                            return NSItemProvider(item: nil, typeIdentifier: palette.id.uuidString)
-                        })
-                        .onDrop(of: [.palette], delegate: PaletteDropDelegate(item: palette, items: $shop.palettes, draggedItem: $draggedItem))
                 }
                 
                 addNewButtonInList

@@ -206,6 +206,7 @@
 		95EF77A72C15815A007E1DEC /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77A62C15815A007E1DEC /* BottomSheetView.swift */; };
 		95EF77A92C173EB9007E1DEC /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77A82C173EB9007E1DEC /* AppIcon.swift */; };
 		95FC797E2C1ED12F00E9DF40 /* Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FC797D2C1ED12F00E9DF40 /* Copyable.swift */; };
+		95FC79802C1F55B400E9DF40 /* DoubleExtensionAccuracy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FC797F2C1F55B400E9DF40 /* DoubleExtensionAccuracy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -413,6 +414,7 @@
 		95EF77A62C15815A007E1DEC /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		95EF77A82C173EB9007E1DEC /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		95FC797D2C1ED12F00E9DF40 /* Copyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copyable.swift; sourceTree = "<group>"; };
+		95FC797F2C1F55B400E9DF40 /* DoubleExtensionAccuracy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensionAccuracy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -863,6 +865,7 @@
 				958AE4A02C1C2B270037AF40 /* BitmapExtension.swift */,
 				95EF77802C139953007E1DEC /* ColorExtensionRandom.swift */,
 				9587CD942C19778D00495D33 /* ExtensionViewHideKeyboard.swift */,
+				95FC797F2C1F55B400E9DF40 /* DoubleExtensionAccuracy.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1366,6 +1369,7 @@
 				95EF778F2C14259E007E1DEC /* ContrastWCAG.swift in Sources */,
 				95A8470E2C05A67500D9451A /* HexFormatter.swift in Sources */,
 				9587CD9A2C197AB100495D33 /* ColorHunterSort.swift in Sources */,
+				95FC79802C1F55B400E9DF40 /* DoubleExtensionAccuracy.swift in Sources */,
 				95EF779D2C145B31007E1DEC /* ContrastLargeTextView.swift in Sources */,
 				95583BF82C024F9900B33354 /* StepperView.swift in Sources */,
 				951113892C0CC5F1000B3E3C /* SingleMetaball.swift in Sources */,
@@ -1574,7 +1578,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Color Streak/Assets.xcassets\"";
 				DEVELOPMENT_TEAM = TNTX3799P3;
@@ -1607,7 +1611,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/Color Streak/Assets.xcassets\"";
 				DEVELOPMENT_TEAM = TNTX3799P3;
 				ENABLE_PREVIEWS = YES;

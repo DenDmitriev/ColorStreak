@@ -9,16 +9,18 @@ import SwiftUI
 
 struct HEXColorPicker: View {
     @Binding var color: Color
+    let initial: Color?
     @Binding var colorSpace: DeviceColorSpace
     @Binding var controller: PalettePickView.ColorController
     
     @State private var hex: String = ""
     
-    init(color: Binding<Color>, colorSpace: Binding<DeviceColorSpace>, controller: Binding<PalettePickView.ColorController>) {
+    init(color: Binding<Color>, initial: Color?, colorSpace: Binding<DeviceColorSpace>, controller: Binding<PalettePickView.ColorController>) {
         self._color = color
         self._colorSpace = colorSpace
         self.hex = color.wrappedValue.hex
         self._controller = controller
+        self.initial = initial
     }
     
     var body: some View {
@@ -61,7 +63,7 @@ struct HEXColorPicker: View {
                 RoundedRectangle(cornerRadius: 24)
                     .fill(color)
                 
-                HEXColorPicker(color: $color, colorSpace: .constant(.displayP3), controller: $controller)
+                HEXColorPicker(color: $color, initial: color, colorSpace: .constant(.displayP3), controller: $controller)
                 
             }
         }

@@ -17,7 +17,12 @@ struct CMYKColorPicker: View {
     @State private var yellow: Double
     @State private var key: Double
     
-    init(color: Binding<Color>, colorSpace: Binding<DeviceColorSpace>, controller: Binding<PalettePickView.ColorController>) {
+    private let cyanInitial: Double?
+    private let magentaInitial: Double?
+    private let yellowInitial: Double?
+    private let keyInitial: Double?
+    
+    init(color: Binding<Color>, initial: Color?, colorSpace: Binding<DeviceColorSpace>, controller: Binding<PalettePickView.ColorController>) {
         self._color = color
         self._colorSpace = colorSpace
         let cmyk = color.wrappedValue.cmyk
@@ -26,14 +31,19 @@ struct CMYKColorPicker: View {
         self.yellow = cmyk.yellow
         self.key = cmyk.key
         self._controller = controller
+        let cmykInitial = initial?.cmyk
+        self.cyanInitial = cmykInitial?.cyan
+        self.magentaInitial = cmykInitial?.magenta
+        self.yellowInitial = cmykInitial?.yellow
+        self.keyInitial = cmykInitial?.key
     }
     
     var body: some View {
         VStack(spacing: 14) {
-            CMYKCyanPicker(cyan: $cyan, color: $color)
-            CMYKMagentaPicker(magenta: $magenta, color: $color)
-            CMYKYellowPicker(yellow: $yellow, color: $color)
-            CMYKKeyPicker(key: $key, color: $color)
+            CMYKCyanPicker(cyan: $cyan, color: $color, initial: cyanInitial)
+            CMYKMagentaPicker(magenta: $magenta, color: $color, initial: magentaInitial)
+            CMYKYellowPicker(yellow: $yellow, color: $color, initial: yellowInitial)
+            CMYKKeyPicker(key: $key, color: $color, initial: keyInitial)
         }
         .onChange(of: color) { _, newColor in
 //            guard controller != .slider else { return }
@@ -67,7 +77,7 @@ struct CMYKColorPicker: View {
                 RoundedRectangle(cornerRadius: 24)
                     .fill(color)
                 
-                CMYKColorPicker(color: $color, colorSpace: .constant(.displayP3), controller: $controller)
+                CMYKColorPicker(color: $color, initial: color, colorSpace: .constant(.displayP3), controller: $controller)
                     
             }
         }

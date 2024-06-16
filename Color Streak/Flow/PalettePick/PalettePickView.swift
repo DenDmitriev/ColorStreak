@@ -76,7 +76,7 @@ struct PalettePickView: View {
         }
         .overlay {
             BottomSheetView(isOpen: $showControl, background: AnyShapeStyle(Material.thickMaterial)) {
-                ColorPickerView(color: selectedColor, colorSpace: $colorSpace, colorTable: $colorTable, controller: $controller)
+                ColorPickerView(color: selectedColor, initial: initialColor, colorSpace: $colorSpace, colorTable: $colorTable, controller: $controller)
                     .disabled(palette.isEmptyColors)
                     .padding(.horizontal)
                     .padding(.bottom, safeAreaInsets.bottom)
@@ -175,6 +175,13 @@ struct PalettePickView: View {
                     palette.colors[selection] = color
                 }
             }
+    }
+    
+    private var initialColor: Color? {
+        guard let selection = palette.selection,
+              0..<initialColors.count ~= selection
+        else { return nil }
+        return initialColors[selection]
     }
     
     private var brightness: Binding<CGFloat> {

@@ -18,7 +18,7 @@ struct AdjustControlView: View {
     
     init(palette: Palette) {
         self.palette = palette
-        self._paletteInitial = .init(wrappedValue: palette.copy() as! Palette)
+        self._paletteInitial = .init(wrappedValue: palette.copy())
     }
     
     var body: some View {

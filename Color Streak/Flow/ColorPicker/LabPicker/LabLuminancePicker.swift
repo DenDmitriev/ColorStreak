@@ -9,15 +9,21 @@ import SwiftUI
 
 struct LabLuminancePicker: View {
     @Binding var lightness: Double
+    let initial: Double?
     @State private var lightnessColor: Color
     
-    init(lightness: Binding<Double>) {
+    init(lightness: Binding<Double>, initial: Double?) {
         self._lightness = lightness
+        if let initial {
+            self.initial = initial / 100
+        } else {
+            self.initial = nil
+        }
         self._lightnessColor = .init(wrappedValue: Color(lab: Lab(L: lightness.wrappedValue, a: 0, b: 0)))
     }
     
     var body: some View {
-        GradientSliderView(text: "Luminance", color: $lightnessColor, level: lightnessAxis, gradient: lightnessGradient, coordinate: .normal)
+        GradientSliderView(text: "Luminance", color: $lightnessColor, level: lightnessAxis, initial: initial, gradient: lightnessGradient, coordinate: .normal)
     }
     
     private var lightnessAxis: Binding<Double> {
@@ -49,7 +55,7 @@ struct LabLuminancePicker: View {
         @State private var lightness: Double = 50
         
         var body: some View {
-            LabLuminancePicker(lightness: $lightness)
+            LabLuminancePicker(lightness: $lightness, initial: lightness)
             
         }
     }

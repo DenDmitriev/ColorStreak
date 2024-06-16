@@ -10,10 +10,10 @@ import SwiftUI
 struct CMYKYellowPicker: View {
     @Binding var yellow: Double
     @Binding var color: Color
-
+    let initial: Double?
     
     var body: some View {
-        GradientSliderView(text: "Yellow", color: $color, level: $yellow, gradient: yellowGradient, coordinate: .percent)
+        GradientSliderView(text: "Yellow", color: $color, level: $yellow, initial: initial, gradient: yellowGradient, coordinate: .percent)
     }
     
     private var yellowGradient: Binding<LinearGradient> {

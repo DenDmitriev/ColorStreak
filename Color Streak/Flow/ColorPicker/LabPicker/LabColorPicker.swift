@@ -16,7 +16,11 @@ struct LabColorPicker: View {
     @State private var greenRedA: Double
     @State private var blueYellowB: Double
     
-    init(color: Binding<Color>, colorSpace: Binding<DeviceColorSpace>, controller: Binding<PalettePickView.ColorController>) {
+    private let lightnessInitial: Double?
+    private let greenRedAInitial: Double?
+    private let blueYellowBInitial: Double?
+    
+    init(color: Binding<Color>, initial: Color?, colorSpace: Binding<DeviceColorSpace>, controller: Binding<PalettePickView.ColorController>) {
         self._color = color
         self._colorSpace = colorSpace
         let lab = color.wrappedValue.lab
@@ -24,13 +28,17 @@ struct LabColorPicker: View {
         self.greenRedA = lab.a
         self.blueYellowB = lab.b
         self._controller = controller
+        let labInitial = initial?.lab
+        self.lightnessInitial = labInitial?.L
+        self.greenRedAInitial = labInitial?.a
+        self.blueYellowBInitial = labInitial?.b
     }
     
     var body: some View {
         VStack(spacing: 14) {
-            LabLuminancePicker(lightness: $lightness)
-            LabAPicker(greenRedA: $greenRedA)
-            LabBPicker(blueYellowB: $blueYellowB)
+            LabLuminancePicker(lightness: $lightness, initial: lightnessInitial)
+            LabAPicker(greenRedA: $greenRedA, initial: greenRedAInitial)
+            LabBPicker(blueYellowB: $blueYellowB, initial: blueYellowBInitial)
         }
         .onChange(of: color, { _, newColor in
 //            guard controller != .slider else { return }
@@ -62,7 +70,7 @@ struct LabColorPicker: View {
                 RoundedRectangle(cornerRadius: 24)
                     .fill(color)
                 
-                LabColorPicker(color: $color, colorSpace: .constant(.displayP3), controller: $controller)
+                LabColorPicker(color: $color, initial: color, colorSpace: .constant(.displayP3), controller: $controller)
             }
         }
     }

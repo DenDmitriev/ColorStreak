@@ -15,10 +15,13 @@ struct HSBColorPicker: View {
     @State private var hue: Double
     @State private var saturation: Double
     @State private var brightness: Double
+    let hueInitial: Double?
+    let saturationInitial: Double?
+    let brightnessInitial: Double?
     
     @State private var isControl = true
     
-    init(color: Binding<Color>, colorSpace: Binding<DeviceColorSpace>, controller: Binding<PalettePickView.ColorController>) {
+    init(color: Binding<Color>, initial: Color?, colorSpace: Binding<DeviceColorSpace>, controller: Binding<PalettePickView.ColorController>) {
         self._color = color
         self._colorSpace = colorSpace
         let hsb = color.wrappedValue.hsb
@@ -26,13 +29,17 @@ struct HSBColorPicker: View {
         self.saturation = hsb.saturation
         self.brightness = hsb.brightness
         self._controller = controller
+        let hsbInitial = initial?.hsb
+        self.hueInitial = hsbInitial?.hue
+        self.saturationInitial = hsbInitial?.saturation
+        self.brightnessInitial = hsbInitial?.brightness
     }
     
     var body: some View {
         VStack(spacing: 14) {
-            HSBHueSlider(hue: $hue)
-            HSBSaturationSlider(saturation: $saturation, color: $color)
-            HSBBrightnessSlider(brightness: $brightness, color: $color)
+            HSBHueSlider(hue: $hue, initial: hueInitial)
+            HSBSaturationSlider(saturation: $saturation, initial: saturationInitial, color: $color)
+            HSBBrightnessSlider(brightness: $brightness, initial: brightnessInitial, color: $color)
         }
         .onChange(of: color, { _, newColor in
             updateValues(color: newColor)
@@ -66,7 +73,7 @@ struct HSBColorPicker: View {
                 RoundedRectangle(cornerRadius: 24)
                     .fill(color)
                 
-                HSBColorPicker(color: $color, colorSpace: .constant(.displayP3), controller: $controller)
+                HSBColorPicker(color: $color, initial: color, colorSpace: .constant(.displayP3), controller: $controller)
             }
         }
     }

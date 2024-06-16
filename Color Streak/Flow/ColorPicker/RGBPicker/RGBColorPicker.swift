@@ -16,7 +16,11 @@ struct RGBColorPicker: View {
     @State private var green: Double
     @State private var blue: Double
     
-    init(color: Binding<Color>, colorSpace: Binding<DeviceColorSpace>, controller: Binding<PalettePickView.ColorController>) {
+    private let redInitial: Double?
+    private let greenInitial: Double?
+    private let blueInitial: Double?
+    
+    init(color: Binding<Color>, initial: Color?, colorSpace: Binding<DeviceColorSpace>, controller: Binding<PalettePickView.ColorController>) {
         self._color = color
         self._colorSpace = colorSpace
         let rgb = color.wrappedValue.rgb
@@ -24,13 +28,17 @@ struct RGBColorPicker: View {
         self.green = rgb.green
         self.blue = rgb.blue
         self._controller = controller
+        let rgbInitial = initial?.rgb
+        self.redInitial = rgbInitial?.red
+        self.greenInitial = rgbInitial?.green
+        self.blueInitial = rgbInitial?.blue
     }
     
     var body: some View {
         VStack(spacing: 14) {
-            RGBRedSlider(red: $red, color: $color)
-            RGBGreenSlider(green: $green, color: $color)
-            RGBBlueSlider(blue: $blue, color: $color)
+            RGBRedSlider(red: $red, initial: redInitial, color: $color)
+            RGBGreenSlider(green: $green, initial: greenInitial, color: $color)
+            RGBBlueSlider(blue: $blue, initial: blueInitial, color: $color)
         }
         .onChange(of: color, { _, newColor in
 //            guard controller != .slider else { return }
@@ -60,7 +68,7 @@ struct RGBColorPicker: View {
                 RoundedRectangle(cornerRadius: 24)
                     .fill(color)
                 
-                RGBColorPicker(color: $color, colorSpace: .constant(.displayP3), controller: $controller)
+                RGBColorPicker(color: $color, initial: color, colorSpace: .constant(.displayP3), controller: $controller)
             }
         }
     }

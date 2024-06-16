@@ -9,10 +9,11 @@ import SwiftUI
 
 struct HSBBrightnessSlider: View {
     @Binding var brightness: Double
+    let initial: Double?
     @Binding var color: Color
     
     var body: some View {
-        GradientSliderView(text: "Brightness", color: $color, level: $brightness, gradient: brightnessGradient, coordinate: .percent)
+        GradientSliderView(text: "Brightness", color: $color, level: $brightness, initial: initial, gradient: brightnessGradient, coordinate: .percent)
     }
     
     private var brightnessGradient: Binding<LinearGradient> {

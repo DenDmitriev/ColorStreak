@@ -10,15 +10,15 @@ import Foundation
 /// The CMYK color model  is a subtractive color model.
 public struct CMYK {
     /// The cyan component of the color ranges from 0 to 1.
-    public var cyan: CGFloat
+    public var cyan: Double
     /// The magenta component of the color, in the ranges from 0 to 1.
-    public var magenta: CGFloat
+    public var magenta: Double
     /// The yellow component of the color, in the ranges from 0 to 1.
-    public var yellow: CGFloat
+    public var yellow: Double
     /// The black component of the color, in the ranges from 0 to 1.
-    public var black: CGFloat
+    public var black: Double
     /// The black component of the color, in the ranges from 0 to 1.
-    public var key: CGFloat { black }
+    public var key: Double { black }
     
     public var cyanPercent: CGFloat { cyan * 100 }
     public var magentaPercent: CGFloat { magenta * 100 }

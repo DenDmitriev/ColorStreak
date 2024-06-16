@@ -9,10 +9,11 @@ import SwiftUI
 
 struct HSBSaturationSlider: View {
     @Binding var saturation: Double
+    let initial: Double?
     @Binding var color: Color
     
     var body: some View {
-        GradientSliderView(text: "Saturation", color: $color, level: $saturation, gradient: saturationGradient, coordinate: .percent)
+        GradientSliderView(text: "Saturation", color: $color, level: $saturation, initial: initial, gradient: saturationGradient, coordinate: .percent)
     }
     
     private var saturationGradient: Binding<LinearGradient> {
@@ -31,7 +32,7 @@ struct HSBSaturationSlider: View {
         @State var color: Color = .yellow
         
         var body: some View {
-            HSBSaturationSlider(saturation: $saturation, color: $color)
+            HSBSaturationSlider(saturation: $saturation, initial: 0, color: $color)
         }
     }
     return PreviewWrapper()

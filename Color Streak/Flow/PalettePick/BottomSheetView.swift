@@ -73,7 +73,7 @@ struct BottomSheetView<Content: View, Left: View, Right: View>: View {
     }
     
     private var offset: CGFloat {
-        isOpen ? 0 : maxHeight 
+        isOpen ? 0 : maxHeight  - safeAreaInsets.bottom
     }
     
     private var toolBar: some View {

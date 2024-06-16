@@ -38,10 +38,13 @@ struct NewColorHarmony: View {
                 }
             }
             .onChange(of: keyColor, { _, newKeyColor in
-                generateColors(key: newKeyColor)
+                generateColors(key: newKeyColor, colorHarmony: colorHarmony)
+            })
+            .onChange(of: colorHarmony, { _, newHarmony in
+                generateColors(key: keyColor, colorHarmony: newHarmony)
             })
             .onAppear {
-                generateColors(key: keyColor)
+                generateColors(key: keyColor, colorHarmony: colorHarmony)
             }
         } header: {
             Text("")
@@ -50,7 +53,7 @@ struct NewColorHarmony: View {
         }
     }
     
-    private func generateColors(key: Color) {
+    private func generateColors(key: Color, colorHarmony: ColorHarmony) {
         Task(priority: .userInitiated) {
             let colors = colorHarmony.colors(initial: keyColor)
             DispatchQueue.main.async {

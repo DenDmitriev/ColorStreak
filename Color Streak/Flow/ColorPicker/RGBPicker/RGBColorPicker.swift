@@ -33,7 +33,7 @@ struct RGBColorPicker: View {
             RGBBlueSlider(blue: $blue, color: $color)
         }
         .onChange(of: color, { _, newColor in
-            guard controller != .slider else { return }
+//            guard controller != .slider else { return }
             let rgb = color.rgb
             self.red = rgb.red
             self.green = rgb.green

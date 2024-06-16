@@ -566,6 +566,7 @@
 		951113642C083E1A000B3E3C /* Shape */ = {
 			isa = PBXGroup;
 			children = (
+				951950E02C108503001434F4 /* SideDropShape.swift */,
 				951113622C083D88000B3E3C /* Triangle.swift */,
 				951113672C085683000B3E3C /* RoundedCorner.swift */,
 			);
@@ -1019,7 +1020,6 @@
 			children = (
 				95583C0D2C045C7300B33354 /* PalettePickView.swift */,
 				95EF77A62C15815A007E1DEC /* BottomSheetView.swift */,
-				951950E02C108503001434F4 /* SideDropShape.swift */,
 				952B823D2C0FA159008A3EF8 /* ImagePickerView.swift */,
 				951113572C0780EE000B3E3C /* ColorPickerView.swift */,
 				95D52A142C061F6E00606CBF /* ColorPaletteView.swift */,

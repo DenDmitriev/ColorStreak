@@ -534,6 +534,16 @@
         }
       }
     },
+    "Light mode" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оформление"
+          }
+        }
+      }
+    },
     "Liquid" : {
       "localizations" : {
         "ru" : {
@@ -806,6 +816,9 @@
           }
         }
       }
+    },
+    "Settings" : {
+
     },
     "Share" : {
       "localizations" : {

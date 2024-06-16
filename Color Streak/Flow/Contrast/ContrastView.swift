@@ -30,16 +30,21 @@ struct ContrastView: View {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 50, maximum: 100))], alignment: .center) {
                     ForEach(Array(zip(palette.colors.indices, palette.colors)), id: \.0) { index, color in
                         
+                        let isBackground = backgroundIndex == index
+                        let isForeground = foregroundIndex == index
                         Circle()
                             .fill(color)
-                            .shadow(color: .black.opacity(0.12), radius: 16)
                             .overlay {
-                                if index == foregroundIndex || index == backgroundIndex {
-                                    Circle()
-                                        .fill(.regularMaterial)
-                                        .frame(width: 8)
-                                }
+                                Circle()
+                                    .stroke(.regularMaterial, lineWidth: isBackground ? 8 : 0)
                             }
+                            .overlay {
+                                Circle()
+                                    .fill(.regularMaterial)
+                                    .frame(width: isForeground ? 16 : 0)
+                            }
+                        
+                            .shadow(color: .black.opacity(0.12), radius: 8)
                             .onTapGesture {
                                 if index == foregroundIndex || index == backgroundIndex {
                                     ifForegroundSelection = (index == foregroundIndex)

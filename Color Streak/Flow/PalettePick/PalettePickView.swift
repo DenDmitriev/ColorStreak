@@ -11,6 +11,7 @@ import FirebaseAnalytics
 struct PalettePickView: View {
     @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
     @ObservedObject var palette: Palette
+    let initialColors: [Color]
     
     @AppStorage(UserDefaultsKey.deviceColorSpace.key)
     private var colorSpace: DeviceColorSpace = .displayP3
@@ -35,6 +36,11 @@ struct PalettePickView: View {
     }
     
     @State private var controller: ColorController = .slider
+    
+    init(palette: Palette) {
+        self.palette = palette
+        self.initialColors = palette.colors
+    }
     
     var body: some View {
         VStack(spacing: .zero) {
@@ -104,45 +110,13 @@ struct PalettePickView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .automatic) {
-                Menu {
-                    Button("Light", systemImage: "sun.min.fill", action: {
-                        isDarkMode = false
-                    })
-                    
-                    Button("Dark", systemImage: "moon.fill", action: {
-                        isDarkMode = true
-                    })
-                } label: {
-                    Image(systemName: isDarkMode ? "moon.fill" : "sun.min.fill")
-                }
+                menuActions
             }
             
             ToolbarItem(placement: .automatic) {
-                Menu {
-                    Picker("Color Space", selection: $colorSpace) {
-                        ForEach(DeviceColorSpace.allCases) { colorSpace in
-                            Text(colorSpace.name)
-                                .tag(colorSpace)
-                        }
-                    }
-                } label: {
-                    Image(systemName: "cube.fill")
+                Button(role: .destructive, action: cancelChanges) {
+                    Image(systemName: "arrow.clockwise")
                 }
-            }
-            
-            ToolbarItem(placement: .automatic) {
-                    if palette.image != nil {
-                        Menu {
-                            Picker("Picker", selection: $colorPickerSource) {
-                                ForEach(ColorPickerSource.allCases) { colorPickerSource in
-                                    Text(colorPickerSource.name)
-                                        .tag(colorPickerSource)
-                                }
-                            }
-                        } label: {
-                            Image(systemName: "eyedropper.halffull")
-                        }
-                    }
             }
         }
         .toolbar(.hidden, for: .tabBar)
@@ -158,6 +132,10 @@ struct PalettePickView: View {
             palette.saveModel()
         }
         .analyticsScreen(name: AnalyticsEvent.screen(view: "\(type(of: self))"))
+    }
+    
+    private func cancelChanges() {
+        palette.colors = initialColors
     }
     
     private var minusButton: some View  {
@@ -226,6 +204,48 @@ struct PalettePickView: View {
         
         var name: String {
             self.rawValue
+        }
+    }
+    
+    private var menuActions: some View {
+        Menu {
+            Menu {
+                Button("Light", systemImage: "sun.min.fill", action: {
+                    isDarkMode = false
+                })
+                
+                Button("Dark", systemImage: "moon.fill", action: {
+                    isDarkMode = true
+                })
+            } label: {
+                Label("Light mode", systemImage: isDarkMode ? "moon.fill" : "sun.min.fill")
+            }
+            
+            Menu {
+                Picker("Color Space", selection: $colorSpace) {
+                    ForEach(DeviceColorSpace.allCases) { colorSpace in
+                        Text(colorSpace.name)
+                            .tag(colorSpace)
+                    }
+                }
+            } label: {
+                Label("Color Space", systemImage: "cube.fill")
+            }
+            
+            if palette.image != nil {
+                Menu{
+                    Picker("Picker", selection: $colorPickerSource) {
+                        ForEach(ColorPickerSource.allCases) { colorPickerSource in
+                            Text(colorPickerSource.name)
+                                .tag(colorPickerSource)
+                        }
+                    }
+                } label: {
+                    Label("Picker", systemImage: "eyedropper.halffull")
+                }
+            }
+        } label: {
+            Label("Settings", systemImage: "gearshape.fill")
         }
     }
 }

@@ -205,6 +205,7 @@
 		95EF77A32C156F9D007E1DEC /* ContrastBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77A22C156F9D007E1DEC /* ContrastBackgroundView.swift */; };
 		95EF77A72C15815A007E1DEC /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77A62C15815A007E1DEC /* BottomSheetView.swift */; };
 		95EF77A92C173EB9007E1DEC /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77A82C173EB9007E1DEC /* AppIcon.swift */; };
+		95FC797E2C1ED12F00E9DF40 /* Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FC797D2C1ED12F00E9DF40 /* Copyable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -411,6 +412,7 @@
 		95EF77A22C156F9D007E1DEC /* ContrastBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastBackgroundView.swift; sourceTree = "<group>"; };
 		95EF77A62C15815A007E1DEC /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		95EF77A82C173EB9007E1DEC /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		95FC797D2C1ED12F00E9DF40 /* Copyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copyable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +468,7 @@
 				951113DD2C0F05D7000B3E3C /* ColorSource.swift */,
 				95EF777A2C13832A007E1DEC /* ExportPalette.swift */,
 				950E47C92C1C0142007D2F7F /* ColorShade.swift */,
+				95FC797D2C1ED12F00E9DF40 /* Copyable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1349,6 +1352,7 @@
 				95879D952BF7392B0016A577 /* Lab.swift in Sources */,
 				95879DEF2BF9AFC80016A577 /* HSBColorPicker.swift in Sources */,
 				95EF77932C1434F5007E1DEC /* ContrastResultView.swift in Sources */,
+				95FC797E2C1ED12F00E9DF40 /* Copyable.swift in Sources */,
 				951113D22C0E1B29000B3E3C /* CoreDataManager.swift in Sources */,
 				95EF77952C144697007E1DEC /* ContrastShapeView.swift in Sources */,
 				95879DBB2BF783C80016A577 /* ColorExtension+Lab.swift in Sources */,

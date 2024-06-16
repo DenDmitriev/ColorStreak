@@ -106,7 +106,7 @@ class PaletteShop: ObservableObject {
     
     @discardableResult
     func duplicate(palette: Palette) -> Bool {
-        guard let duplicate = palette.copy() as? Palette else { return false }
+        let duplicate = palette.copy()
         return add(palette: duplicate)
     }
     

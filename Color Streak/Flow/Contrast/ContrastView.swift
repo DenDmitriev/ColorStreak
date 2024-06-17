@@ -21,6 +21,8 @@ struct ContrastView: View {
     @State private var ifForegroundSelection = true
     @State private var showPicker = false
     
+    @Environment(\.colorScheme) private var colorScheme
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
@@ -32,15 +34,17 @@ struct ContrastView: View {
                         
                         let isBackground = backgroundIndex == index
                         let isForeground = foregroundIndex == index
+                        let material = (colorScheme == .light) ? Material.ultraThick : Material.ultraThin
                         Circle()
                             .fill(color)
                             .overlay {
                                 Circle()
-                                    .stroke(.regularMaterial, lineWidth: isBackground ? 8 : 0)
+                                    .stroke(material, lineWidth: isBackground ? 8 : 0)
+                                    .padding(8)
                             }
                             .overlay {
                                 Circle()
-                                    .fill(.regularMaterial)
+                                    .fill(material)
                                     .frame(width: isForeground ? 16 : 0)
                             }
                         

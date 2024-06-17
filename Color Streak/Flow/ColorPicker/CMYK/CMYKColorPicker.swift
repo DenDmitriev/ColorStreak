@@ -46,7 +46,7 @@ struct CMYKColorPicker: View {
             CMYKKeyPicker(key: $key, color: $color, initial: keyInitial)
         }
         .onChange(of: color) { _, newColor in
-//            guard controller != .slider else { return }
+            guard controller != .slider else { return }
             let cmyk = color.cmyk
             self.cyan = cmyk.cyan
             self.magenta = cmyk.magenta
@@ -54,7 +54,7 @@ struct CMYKColorPicker: View {
             self.key = cmyk.key
         }
         .onChange(of: [cyan, magenta, yellow, key]) { _, newValue in
-            guard controller == .slider else { return }
+            controller = .slider
             let cyan = newValue[0]
             let magenta = newValue[1]
             let yellow = newValue[2]

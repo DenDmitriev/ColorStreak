@@ -45,17 +45,17 @@ struct HSBColorPicker: View {
             updateValues(color: newColor)
         })
         .onChange(of: [hue, saturation, brightness]) { _, newValue in
-            guard controller == .slider else { return }
-            let hue = newValue[0]
-            let saturation = newValue[1]
-            let brightness = newValue[2]
-            
-            color = Color(hue: hue, saturation: saturation, brightness: brightness)
+            controller = .slider
+            updateColor(hue: newValue[0], saturation: newValue[1], brightness: newValue[2])
         }
     }
     
+    private func updateColor(hue: Double, saturation: Double, brightness: Double) {
+        color = Color(hue: hue, saturation: saturation, brightness: brightness)
+    }
+    
     private func updateValues(color: Color) {
-//        guard controller != .slider else { return }
+        guard controller != .slider else { return }
         let hsb = color.hsb
         self.hue = hsb.hue
         self.saturation = hsb.saturation
@@ -66,6 +66,7 @@ struct HSBColorPicker: View {
 #Preview {
     struct PreviewWrapper: View {
         @State var color: Color = .red
+        let initial: Color = .red
         @State var controller: PalettePickView.ColorController = .slider
         
         var body: some View {
@@ -73,7 +74,7 @@ struct HSBColorPicker: View {
                 RoundedRectangle(cornerRadius: 24)
                     .fill(color)
                 
-                HSBColorPicker(color: $color, initial: color, colorSpace: .constant(.displayP3), controller: $controller)
+                HSBColorPicker(color: $color, initial: initial, colorSpace: .constant(.displayP3), controller: $controller)
             }
         }
     }

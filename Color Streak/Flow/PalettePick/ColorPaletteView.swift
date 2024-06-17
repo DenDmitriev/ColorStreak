@@ -10,6 +10,7 @@ import SwiftUI
 struct ColorPaletteView: View {
     @ObservedObject var palette: Palette
     @Binding var selection: Int?
+    @Binding var controller: PalettePickView.ColorController
     @Environment(\.colorScheme) var colorScheme
     
     @State private var size: CGSize = .zero
@@ -21,6 +22,7 @@ struct ColorPaletteView: View {
                     Rectangle()
                         .fill(color.wrappedValue)
                         .onTapGesture {
+                            controller = .selection
                             selection = index
                         }
                 }
@@ -64,9 +66,10 @@ struct ColorPaletteView: View {
         }()
         
         @State private var selection: Int? = 1
+        @State private var controller: PalettePickView.ColorController = .slider
         
         var body: some View {
-            ColorPaletteView(palette: palette, selection: $selection)
+            ColorPaletteView(palette: palette, selection: $selection, controller: $controller)
         }
     }
     

@@ -94,6 +94,16 @@
         }
       }
     },
+    "Automatic" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Автоматически"
+          }
+        }
+      }
+    },
     "Axis" : {
       "localizations" : {
         "ru" : {
@@ -195,6 +205,7 @@
       }
     },
     "Color Table" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -818,7 +829,14 @@
       }
     },
     "Settings" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
     },
     "Share" : {
       "localizations" : {

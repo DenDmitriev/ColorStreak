@@ -41,14 +41,14 @@ struct LabColorPicker: View {
             LabBPicker(blueYellowB: $blueYellowB, initial: blueYellowBInitial)
         }
         .onChange(of: color, { _, newColor in
-//            guard controller != .slider else { return }
+            guard controller != .slider else { return }
             let lab = color.lab
             self.lightness = lab.L
             self.greenRedA = lab.a
             self.blueYellowB = lab.b
         })
         .onChange(of: [lightness, greenRedA, blueYellowB]) { _, newValue in
-            guard controller == .slider else { return }
+            controller = .slider
             let lightness = newValue[0]
             let greenRedA = newValue[1]
             let blueYellowB = newValue[2]

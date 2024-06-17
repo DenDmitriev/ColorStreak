@@ -36,11 +36,11 @@ struct HEXColorPicker: View {
         }
         .padding()
         .onChange(of: color) { _, newValue in
-//            guard controller != .slider else { return }
+            guard controller != .slider else { return }
             hex = color.hex
         }
         .onChange(of: hex) { _, newHex in
-            guard controller == .slider else { return }
+            controller = .slider
             if let color = Color(hex: hex) {
                 self.color = color
             }

@@ -15,8 +15,10 @@ struct Color_Palette: App {
     @StateObject private var shop: PaletteShop = .init()
     @StateObject private var chShop: CHPaletteShop = .init()
     
-    @AppStorage(UserDefaultsKey.isDarkMode.key)
-    private var isDarkMode: Bool = false
+    @AppStorage(UserDefaultsKey.lightMode.key)
+    private var lightMode: LightMode = .automatic
+    
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some Scene {
         WindowGroup {
@@ -25,10 +27,21 @@ struct Color_Palette: App {
                     navigationTitleAppearance()
                     backButtonAppearance()
                 }
-                .preferredColorScheme(isDarkMode ? .dark : .light)
+                .preferredColorScheme(preferredColorScheme)
         }
         .environmentObject(shop)
         .environmentObject(chShop)
+    }
+    
+    private var preferredColorScheme: ColorScheme {
+        switch lightMode {
+        case .automatic:
+            return colorScheme
+        case .light:
+            return .light
+        case .dark:
+            return .dark
+        }
     }
     
     private func navigationTitleAppearance() {

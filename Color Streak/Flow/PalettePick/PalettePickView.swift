@@ -15,27 +15,20 @@ struct PalettePickView: View {
     
     @AppStorage(UserDefaultsKey.deviceColorSpace.key)
     private var colorSpace: DeviceColorSpace = .displayP3
-    
-    @AppStorage(UserDefaultsKey.isDarkMode.key)
-    private var isDarkMode: Bool = false
+
+    @AppStorage(UserDefaultsKey.lightMode.key)
+    private var lightMode: LightMode = .automatic
     
     @AppStorage(UserDefaultsKey.colorTable.key)
     private var colorTable: ColorTable = .hsb
     
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Environment(\.dismiss) private var dismiss
+    
     @State private var pickerSize: CGSize = .zero
-    
     @State private var colorPickerSource: ColorPickerSource = .wheel
-    
     @State private var showControl = true
-    
-    enum ColorController {
-        case wheel
-        case slider
-    }
-    
-    @State private var controller: ColorController = .slider
+    @State private var controller: ColorController = .selection
     
     init(palette: Palette) {
         self.palette = palette
@@ -63,7 +56,7 @@ struct PalettePickView: View {
             .frame(maxWidth: .infinity)
             .frame(maxHeight: UIScreen.screenHeight / 2)
             
-            ColorPaletteView(palette: palette, selection: $palette.selection)
+            ColorPaletteView(palette: palette, selection: $palette.selection, controller: $controller)
                 .clipShape(RoundedRectangle(cornerRadius: 24))
         }
         .overlay(alignment: .trailing) {
@@ -105,7 +98,7 @@ struct PalettePickView: View {
         }
         .background(Color(UIColor.tertiarySystemBackground))
         .ignoresSafeArea(edges: .bottom)
-        .lightMode(dark: $isDarkMode)
+//        .lightMode(dark: $isDarkMode)
         .navigationTitle(palette.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -217,15 +210,13 @@ struct PalettePickView: View {
     private var menuActions: some View {
         Menu {
             Menu {
-                Button("Light", systemImage: "sun.min.fill", action: {
-                    isDarkMode = false
-                })
-                
-                Button("Dark", systemImage: "moon.fill", action: {
-                    isDarkMode = true
-                })
+                ForEach(LightMode.allCases) { mode in
+                    Button(mode.name, systemImage: mode.systemImage, action: {
+                        lightMode = mode
+                    })
+                }
             } label: {
-                Label("Light mode", systemImage: isDarkMode ? "moon.fill" : "sun.min.fill")
+                Label("Light mode", systemImage: lightMode.systemImage)
             }
             
             Menu {
@@ -254,6 +245,14 @@ struct PalettePickView: View {
         } label: {
             Label("Settings", systemImage: "gearshape.fill")
         }
+    }
+}
+
+extension PalettePickView {
+    enum ColorController {
+        case wheel
+        case slider
+        case selection
     }
 }
 

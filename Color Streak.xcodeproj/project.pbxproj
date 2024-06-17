@@ -207,6 +207,7 @@
 		95EF77A92C173EB9007E1DEC /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF77A82C173EB9007E1DEC /* AppIcon.swift */; };
 		95FC797E2C1ED12F00E9DF40 /* Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FC797D2C1ED12F00E9DF40 /* Copyable.swift */; };
 		95FC79802C1F55B400E9DF40 /* DoubleExtensionAccuracy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FC797F2C1F55B400E9DF40 /* DoubleExtensionAccuracy.swift */; };
+		95FC79822C1FECB100E9DF40 /* LightMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FC79812C1FECB100E9DF40 /* LightMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -415,6 +416,7 @@
 		95EF77A82C173EB9007E1DEC /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		95FC797D2C1ED12F00E9DF40 /* Copyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copyable.swift; sourceTree = "<group>"; };
 		95FC797F2C1F55B400E9DF40 /* DoubleExtensionAccuracy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensionAccuracy.swift; sourceTree = "<group>"; };
+		95FC79812C1FECB100E9DF40 /* LightMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -471,6 +473,7 @@
 				95EF777A2C13832A007E1DEC /* ExportPalette.swift */,
 				950E47C92C1C0142007D2F7F /* ColorShade.swift */,
 				95FC797D2C1ED12F00E9DF40 /* Copyable.swift */,
+				95FC79812C1FECB100E9DF40 /* LightMode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1387,6 +1390,7 @@
 				9511134C2C0716F6000B3E3C /* CMYKMagentaPicker.swift in Sources */,
 				951113412C06F84E000B3E3C /* LabBPicker.swift in Sources */,
 				951950E12C108503001434F4 /* SideDropShape.swift in Sources */,
+				95FC79822C1FECB100E9DF40 /* LightMode.swift in Sources */,
 				951113502C072AE2000B3E3C /* HSBCalculator.swift in Sources */,
 				951113D72C0EED93000B3E3C /* AppFont.swift in Sources */,
 				959EE2362C1180DF0061E678 /* PaletteStackView.swift in Sources */,

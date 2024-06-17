@@ -24,6 +24,7 @@ struct PalettePickView: View {
     
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
     
     @State private var pickerSize: CGSize = .zero
     @State private var colorPickerSource: ColorPickerSource = .wheel
@@ -98,7 +99,7 @@ struct PalettePickView: View {
         }
         .background(Color(UIColor.tertiarySystemBackground))
         .ignoresSafeArea(edges: .bottom)
-//        .lightMode(dark: $isDarkMode)
+        .lightMode(dark: Binding(get: { lightMode.isDark ?? (colorScheme == .dark) }, set: { _ in }))
         .navigationTitle(palette.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

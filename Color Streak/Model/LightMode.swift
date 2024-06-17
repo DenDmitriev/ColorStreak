@@ -5,7 +5,7 @@
 //  Created by Denis Dmitriev on 17.06.2024.
 //
 
-import Foundation
+import SwiftUI
 
 enum LightMode: String, CaseIterable, Identifiable {
     case light, dark, automatic
@@ -33,6 +33,28 @@ enum LightMode: String, CaseIterable, Identifiable {
             String(localized: "Dark")
         case .automatic:
             String(localized: "Automatic")
+        }
+    }
+    
+    var colorScheme: ColorScheme? {
+        switch self {
+        case .automatic:
+            return nil
+        case .light:
+            return .light
+        case .dark:
+            return .dark
+        }
+    }
+    
+    var isDark: Bool? {
+        switch self {
+        case .automatic:
+            return nil
+        case .light:
+            return false
+        case .dark:
+            return true
         }
     }
 }

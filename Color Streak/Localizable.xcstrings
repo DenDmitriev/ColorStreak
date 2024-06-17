@@ -205,7 +205,6 @@
       }
     },
     "Color Table" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

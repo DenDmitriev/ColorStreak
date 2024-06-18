@@ -110,25 +110,7 @@ enum ColorHarmony: String, Identifiable, Hashable, CaseIterable {
         let left = initial.rotated(angle: deltaAngle)
         let right = initial.rotated(angle: -deltaAngle)
         
-        let deltaSecondary: Double = -1/3
-        
-        let initialSecondary = initial.moved(
-            deltaHue: .zero,
-            deltaSaturation: deltaNormalized(deltaSecondary, value: initial.hsb.saturation),
-            deltaBrightness: deltaNormalized(deltaSecondary, value: initial.hsb.brightness)
-        )
-        let leftSecondary = left.moved(
-            deltaHue: .zero,
-            deltaSaturation: deltaNormalized(deltaSecondary, value: left.hsb.saturation),
-            deltaBrightness: deltaNormalized(deltaSecondary, value: left.hsb.brightness)
-        )
-        let rightSecondary = right.moved(
-            deltaHue: .zero,
-            deltaSaturation: deltaNormalized(deltaSecondary, value: right.hsb.saturation),
-            deltaBrightness: deltaNormalized(deltaSecondary, value: right.hsb.brightness)
-        )
-        
-        let result = [left, leftSecondary, initial, initialSecondary, right, rightSecondary]
+        let result = [left, initial, right]
         
         let colorSpace = initial.colorSpace
         guard colorSpace != left.colorSpace else { return result }
@@ -180,29 +162,7 @@ enum ColorHarmony: String, Identifiable, Hashable, CaseIterable {
         let cColor = bColor.rotated(angle: .degrees(90))
         let dColor = cColor.rotated(angle: .degrees(90))
         
-        let deltaSecondary: Double = -1/3
-        let aColorSecondary = aColor.moved(
-            deltaHue: .zero,
-            deltaSaturation: deltaNormalized(deltaSecondary, value: aColor.hsb.saturation),
-            deltaBrightness: deltaNormalized(deltaSecondary, value: aColor.hsb.brightness)
-        )
-        let bColorSecondary = bColor.moved(
-            deltaHue: .zero,
-            deltaSaturation: deltaNormalized(deltaSecondary, value: bColor.hsb.saturation),
-            deltaBrightness: deltaNormalized(deltaSecondary, value: bColor.hsb.brightness)
-        )
-        let cColorSecondary = cColor.moved(
-            deltaHue: .zero,
-            deltaSaturation: deltaNormalized(deltaSecondary, value: cColor.hsb.saturation),
-            deltaBrightness: deltaNormalized(deltaSecondary, value: cColor.hsb.brightness)
-        )
-        let dColorSecondary = dColor.moved(
-            deltaHue: .zero,
-            deltaSaturation: deltaNormalized(deltaSecondary, value: dColor.hsb.saturation),
-            deltaBrightness: deltaNormalized(deltaSecondary, value: dColor.hsb.brightness)
-        )
-        
-        let result = [aColor, aColorSecondary, bColor, bColorSecondary, cColor, cColorSecondary, dColor, dColorSecondary]
+        let result = [aColor, bColor, cColor, dColor]
         
         let colorSpace = initial.colorSpace
         guard colorSpace != bColor.colorSpace else { return result }
@@ -220,13 +180,7 @@ enum ColorHarmony: String, Identifiable, Hashable, CaseIterable {
         let initialComposite = initial.rotated(angle: deltaAngle)
         let complementaryComposite = complementary.rotated(angle: deltaAngle)
         
-        let deltaSecondary: Double = -1/3
-        let secondaryInit = initial.moved(
-            deltaHue: .zero,
-            deltaSaturation: deltaNormalized(deltaSecondary, value: initial.hsb.saturation),
-            deltaBrightness: deltaNormalized(deltaSecondary, value: initial.hsb.brightness))
-        
-        let result = [initial, secondaryInit, initialComposite, complementary, complementaryComposite]
+        let result = [initial, initialComposite, complementary, complementaryComposite]
         
         let colorSpace = initial.colorSpace
         guard colorSpace != complementary.colorSpace else { return result }

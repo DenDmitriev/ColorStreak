@@ -52,7 +52,7 @@ struct GradientSliderView: View {
                         .onChanged { value in
                             isDragging = true
                             let x = max(min(value.location.x, size.width), 0)
-                            let midY = (size.height - 1) / 2
+                            let midY = size.height / 2
                             position = CGPoint(x: x, y: midY)
                         }
                         .onEnded { _ in
@@ -70,7 +70,6 @@ struct GradientSliderView: View {
                 
                 if let initial {
                     initialCircle(initial)
-                        .offset(y: 0.5)
                 }
             }
             .readSize { size in
@@ -128,7 +127,7 @@ struct GradientSliderView: View {
     }
     
     private func initialCircle(_ initial: Double) -> some View {
-        let midY = (size.height - 1) / 2
+        let midY = size.height / 2
         let initialX = max(min(initial * size.width, size.width), 0)
         let color: Color = .white.opacity(0.8)
         

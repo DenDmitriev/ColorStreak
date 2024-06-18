@@ -95,13 +95,6 @@ struct NewImageColors: View {
         }
     }
     
-    enum ImageState {
-        case empty
-        case loading(Progress)
-        case success(UIImage)
-        case failure(Error)
-    }
-    
     private func loadTransferable(from imageSelection: PhotosPickerItem) -> Progress {
         return imageSelection.loadTransferable(type: PaletteImage.self) { result in
             DispatchQueue.main.async {

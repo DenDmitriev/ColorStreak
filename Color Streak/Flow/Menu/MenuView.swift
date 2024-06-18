@@ -67,7 +67,7 @@ struct MenuView: View {
             }
             .scrollContentBackground(.hidden)
             .background(.appBackground)
-            .navigationTitle("Menu")
+            .navigationTitle(TabRouter.settings.title)
             .alert("Confirm deletion", isPresented: $showDeleteAlert) {
                 Button("Delete", role: .destructive, action: removeAllPalette)
             } message: {

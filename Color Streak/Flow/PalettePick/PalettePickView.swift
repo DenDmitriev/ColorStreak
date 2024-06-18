@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseAnalytics
 
 struct PalettePickView: View {
-    @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
+    @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>
     @ObservedObject var palette: Palette
     let initialColors: [Color]
     
@@ -268,6 +268,6 @@ extension PalettePickView {
     
     return NavigationStack {
         PreviewWrapper()
-            .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+            .environmentObject(Coordinator<HomeRouter, HomeError>())
     }
 }

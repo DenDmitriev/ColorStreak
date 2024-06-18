@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-enum CatalogRouter: NavigationRouter {
-    case catalog(shop: PaletteShop)
+enum HomeRouter: NavigationRouter {
+    case home
+    case catalog
     case newPalette
     case editPalette(_ palette: Palette)
     case pickPalette(_ palette: Palette)
@@ -19,6 +20,8 @@ enum CatalogRouter: NavigationRouter {
     
     var title: String {
         switch self {
+        case .home:
+            return String(localized: "Main")
         case .catalog:
             return String(localized: "Catalog")
         case .newPalette:
@@ -45,8 +48,10 @@ enum CatalogRouter: NavigationRouter {
     @ViewBuilder
     func view() -> some View {
         switch self {
-        case .catalog(let shop):
-            CatalogView(shop: shop)
+        case .home:
+            HomeView()
+        case .catalog:
+            CatalogView()
         case .newPalette:
             NewPaletteView()
         case .pickPalette(let palette):
@@ -65,8 +70,8 @@ enum CatalogRouter: NavigationRouter {
     }
 }
 
-extension CatalogRouter {
-    static func == (lhs: CatalogRouter, rhs: CatalogRouter) -> Bool {
+extension HomeRouter {
+    static func == (lhs: HomeRouter, rhs: HomeRouter) -> Bool {
         lhs.title == rhs.title
     }
     

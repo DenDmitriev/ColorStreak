@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CHCatalogCoordinatorView: View {
-    @EnvironmentObject private var coordinator: Coordinator<CHCatalogRouter, CatalogError>
+    @EnvironmentObject private var coordinator: Coordinator<CHCatalogRouter, HomeError>
     @EnvironmentObject private var shop: PaletteShop
     @EnvironmentObject private var chShop: CHPaletteShop
     
@@ -43,5 +43,5 @@ struct CHCatalogCoordinatorView: View {
     CHCatalogCoordinatorView()
         .environmentObject(PaletteShop())
         .environmentObject(CHPaletteShop())
-        .environmentObject(Coordinator<CHCatalogRouter, CatalogError>())
+        .environmentObject(Coordinator<CHCatalogRouter, HomeError>())
 }

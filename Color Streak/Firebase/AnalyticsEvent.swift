@@ -8,8 +8,14 @@
 import Foundation
 
 enum AnalyticsEvent: String {
+    /// Создание новой палитры
     case createPalette = "create_palette"
+    /// Импорт палитры из библиотеки
     case importPalette = "import_palette"
+    /// Создание палитры из изображения
+    case createImagePalette = "create_image_palette"
+    /// Проверка контраста
+    case contrastChecker = "contrast_checker"
     
     static func screen(view named: String) -> String {
         named

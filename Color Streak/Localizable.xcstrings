@@ -244,6 +244,16 @@
         }
       }
     },
+    "Contrast Checker" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверка контраста"
+          }
+        }
+      }
+    },
     "Contrast Ratio" : {
       "localizations" : {
         "ru" : {
@@ -564,7 +574,18 @@
         }
       }
     },
+    "Main" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Главная"
+          }
+        }
+      }
+    },
     "Menu" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -704,12 +725,32 @@
         }
       }
     },
+    "Palette from image" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Палитра из изображения"
+          }
+        }
+      }
+    },
     "Palette name" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Имя палитры"
+          }
+        }
+      }
+    },
+    "Palettes" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Палитры"
           }
         }
       }
@@ -813,6 +854,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отзыв в App Store"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "See all" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все"
           }
         }
       }

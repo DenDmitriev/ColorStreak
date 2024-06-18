@@ -10,8 +10,8 @@ import UniformTypeIdentifiers
 import FirebaseAnalytics
 
 struct CatalogView: View {
-    @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
-    @ObservedObject var shop: PaletteShop
+    @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>
+    @EnvironmentObject private var shop: PaletteShop
     @State private var isSearching = false
     @State private var searchText: String = ""
     
@@ -51,6 +51,7 @@ struct CatalogView: View {
                 placeholderText(text: "Error")
             }
         }
+        .navigationTitle(HomeRouter.catalog.title)
         .scrollDismissesKeyboard(.automatic)
         .searchable(text: $searchText, isPresented: $isSearching)
         .refreshable {
@@ -141,7 +142,8 @@ struct CatalogView: View {
 
 #Preview {
     NavigationStack {
-        CatalogView(shop: .init(palettes: [.placeholder]))
-            .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+        CatalogView()
+            .environmentObject(Coordinator<HomeRouter, HomeError>())
+            .environmentObject(PaletteShop.placeholder)
     }
 }

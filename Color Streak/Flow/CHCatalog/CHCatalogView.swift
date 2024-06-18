@@ -10,7 +10,7 @@ import FirebaseAnalytics
 
 struct CHCatalogView: View {
     @EnvironmentObject private var coordinator: TabCoordinator<TabRouter>
-    @EnvironmentObject private var catalogCoordinator: Coordinator<CHCatalogRouter, CatalogError>
+    @EnvironmentObject private var catalogCoordinator: Coordinator<CHCatalogRouter, HomeError>
     @EnvironmentObject var chShop: CHPaletteShop
     @EnvironmentObject var shop: PaletteShop
     @State private var palettes: [Palette] = []
@@ -86,9 +86,7 @@ struct CHCatalogView: View {
         .ignoresSafeArea(edges: [.bottom])
         .navigationTitle("Library")
         .task {
-            if chShop.palettes.isEmpty {
-                await chShop.fetch()
-            }
+            await chShop.reload()
         }
         .onReceive(chShop.$sort.dropFirst()) { _ in
             chShop.selectedTags.removeAll()
@@ -147,7 +145,7 @@ struct CHCatalogView: View {
         Group {
             Button {
                 shop.add(palette: palette)
-                coordinator.change(.catalog)
+                coordinator.change(.main)
             } label: {
                 Label("Add to catalog", systemImage: "plus")
             }
@@ -173,8 +171,8 @@ struct CHCatalogView: View {
         CHCatalogView()
             .environmentObject(CHPaletteShop())
             .environmentObject(PaletteShop())
-            .environmentObject(TabCoordinator<TabRouter>(tab: .catalog))
-            .environmentObject(Coordinator<CHCatalogRouter, CatalogError>())
+            .environmentObject(TabCoordinator<TabRouter>(tab: .main))
+            .environmentObject(Coordinator<CHCatalogRouter, HomeError>())
     }
-    .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+    .environmentObject(Coordinator<HomeRouter, HomeError>())
 }

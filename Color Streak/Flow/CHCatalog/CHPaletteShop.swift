@@ -10,7 +10,7 @@ import Combine
 
 class CHPaletteShop: ObservableObject {
     typealias API = ColorHunterAPI
-    @Published var palettes: [Palette] = []
+    @Published var palettes: [Palette] = .empty
     @Published var state: State = .empty
     @Published var selectedTags: [ColorHunterTag] = []
     @Published var suggestedTags: [ColorHunterTag] = ColorHunterTag.allCases

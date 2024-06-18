@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var catalogCoordinator: Coordinator<CatalogRouter, CatalogError> = .init()
-    @StateObject var libraryCoordinator: Coordinator<CHCatalogRouter, CatalogError> = .init()
-    @StateObject var coordinator: TabCoordinator<TabRouter> = .init(tab: .catalog)
+    @StateObject var catalogCoordinator: Coordinator<HomeRouter, HomeError> = .init()
+    @StateObject var libraryCoordinator: Coordinator<CHCatalogRouter, HomeError> = .init()
+    @StateObject var coordinator: TabCoordinator<TabRouter> = .init(tab: .main)
     
     @StateObject private var palette: Palette = .circleImages
     

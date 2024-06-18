@@ -12,7 +12,7 @@ import FirebaseAnalytics
 
 struct NewPaletteView: View {
     
-    @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
+    @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>
     @EnvironmentObject private var shop: PaletteShop
     @StateObject var newPalette: Palette = .init()
     @Environment(\.dismiss) private var dismiss
@@ -65,36 +65,6 @@ struct NewPaletteView: View {
                     NewImageColors(palette: newPalette)
                 }
                 
-                
-                Section {
-                    TextField("Add tag here", text: $tagText)
-                        .focused($focusedField, equals: .tags)
-                        .onSubmit {
-                            newPalette.append(tag: tagText)
-                            tagText.removeAll()
-                        }
-                    
-                    Group {
-                        switch tagsBinding {
-                        case _ where tagsBinding.wrappedValue.isEmpty:
-                            Text("No tags")
-                                .font(.headline)
-                                .foregroundStyle(HierarchicalShapeStyle.quinary)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                        default:
-                            TagView(layout: .vertical, tags: tagsBinding) { tag in
-                                newPalette.remove(tag: tag)
-                            }
-                        }
-                    }
-                } header: {
-                    Text("Tags")
-                } footer: {
-                    Text("Tag length must be from 3 to 9 characters.")
-                }
-                
-               
-                
                 Section {
                     Picker("Visualization", selection: $paletteVisualization) {
                         ForEach(PaletteVisualization.allCases) { visualization in
@@ -122,6 +92,33 @@ struct NewPaletteView: View {
                 } header: {
                     Text("Palette")
                 }
+                
+                Section {
+                    TextField("Add tag here", text: $tagText)
+                        .focused($focusedField, equals: .tags)
+                        .onSubmit {
+                            newPalette.append(tag: tagText)
+                            tagText.removeAll()
+                        }
+                    
+                    Group {
+                        switch tagsBinding {
+                        case _ where tagsBinding.wrappedValue.isEmpty:
+                            Text("No tags")
+                                .font(.headline)
+                                .foregroundStyle(HierarchicalShapeStyle.quinary)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        default:
+                            TagView(layout: .vertical, tags: tagsBinding) { tag in
+                                newPalette.remove(tag: tag)
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Tags")
+                } footer: {
+                    Text("Tag length must be from 3 to 9 characters.")
+                }
             }
             .scrollDismissesKeyboard(.immediately)
             .scrollContentBackground(.hidden)
@@ -130,7 +127,7 @@ struct NewPaletteView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Menu("Method", systemImage: "eyedropper") {
+                    Menu("Method", systemImage: colorSource.systemImage) {
                         ForEach(ColorSource.allCases) { colorSource in
                             Button(colorSource.name, systemImage: colorSource.systemImage) {
                                 self.colorSource = colorSource
@@ -192,6 +189,6 @@ struct NewPaletteView: View {
 
 #Preview {
     NewPaletteView()
-        .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+        .environmentObject(Coordinator<HomeRouter, HomeError>())
         .environmentObject(PaletteShop())
 }

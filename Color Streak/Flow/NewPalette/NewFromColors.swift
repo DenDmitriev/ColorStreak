@@ -10,7 +10,7 @@ import SwiftUI
 struct NewFromColors: View {
     @Binding var colors: [Color]
     @Binding var keyColor: Color
-    @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
+    @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>
     
     var body: some View {
         Section {
@@ -63,7 +63,7 @@ struct NewFromColors: View {
             }
         case .failure(let error):
             DispatchQueue.main.async {
-                coordinator.presentAlert(error: CatalogError.map(description: error.localizedDescription))
+                coordinator.presentAlert(error: HomeError.map(description: error.localizedDescription))
             }
             print(error.localizedDescription)
         }
@@ -90,5 +90,5 @@ struct NewFromColors: View {
     }
     
     return PreviewWrapper()
-        .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+        .environmentObject(Coordinator<HomeRouter, HomeError>())
 }

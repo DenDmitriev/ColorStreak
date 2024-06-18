@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 class Palette: ObservableObject, Copyable {
     @Published var colors = [Color]()
@@ -19,9 +18,9 @@ class Palette: ObservableObject, Copyable {
     var dateModified: Date
     var image: UIImage?
     
-    var cancellable = Set<AnyCancellable>()
-    
     var id: UUID = UUID()
+    
+    // MARK: - Init
     
     init() {
         dateCreated = Date.now
@@ -58,6 +57,8 @@ class Palette: ObservableObject, Copyable {
         self.dateModified = Date.now
     }
     
+    // MARK: - Helpers
+    
     var isMaxColors: Bool {
         colors.count >= 12
     }
@@ -74,12 +75,20 @@ class Palette: ObservableObject, Copyable {
         return total.joined(separator: " ")
     }
     
+    var isEmpty: Bool {
+        colors.isEmpty
+    }
+    
+    // MARK: - Core Data
+    
     func saveModel() {
         dateModified = Date.now
         Task(priority: .background) {
             try await CoreDataManager.shared.updatePalette(palette: self)
         }
     }
+    
+    // MARK: - Color Space
     
     func convert(device colorSpace: DeviceColorSpace) {
         colors = colors.map { color in
@@ -101,8 +110,14 @@ class Palette: ObservableObject, Copyable {
         }
     }
     
+    // MARK: - Colors
+    
     func removeColorSelection() {
-        guard let selection, !isEmptyColors else { return }
+        guard let selection,
+              !isEmptyColors,
+              colors.count >= 1
+        else { return }
+        
         switch selection {
         case 0:
             if colors.count > 1 {
@@ -153,6 +168,8 @@ class Palette: ObservableObject, Copyable {
         selection = colors.count - 1
     }
     
+    // MARK: - Name
+    
     func generateName() -> String? {
         if let keyColor = colors.first {
             let colorShade = ColorShade(cgColor: UIColor(keyColor).cgColor)
@@ -162,6 +179,7 @@ class Palette: ObservableObject, Copyable {
         }
     }
     
+    // MARK: - Tags
     func autoTags() {
         for color in colors {
             let shade = ColorShade(cgColor: UIColor(color).cgColor)
@@ -234,6 +252,7 @@ extension Palette {
 }
 
 extension Palette {
+    // MARK: - Share
     func css() -> String {
         /* Color Theme Swatches in Hex */
         // .My-Color-Theme-1-hex { color: #C03EFA; }
@@ -259,5 +278,11 @@ extension Palette {
         xml.append("</palette>")
         
         return xml
+    }
+}
+
+extension Array<Palette> {
+    static var empty: Self {
+        [Palette(), Palette(), Palette(), Palette()]
     }
 }

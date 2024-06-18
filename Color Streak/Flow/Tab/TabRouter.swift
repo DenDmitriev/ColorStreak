@@ -8,9 +8,9 @@
 import SwiftUI
 
 enum TabRouter: NavigationRouter, CaseIterable, Identifiable {
-    case catalog
+    case main
     case library
-    case menu
+    case settings
     
     var id: Self {
         return self
@@ -18,34 +18,34 @@ enum TabRouter: NavigationRouter, CaseIterable, Identifiable {
     
     var title: String {
         switch self {
-        case .catalog:
-            return String(localized: "Catalog")
+        case .main:
+            return String(localized: "Main")
         case .library:
             return String(localized: "Library")
-        case .menu:
-            return String(localized: "Menu")
+        case .settings:
+            return String(localized: "Settings")
         }
     }
     
     var systemImage: String {
         switch self {
-        case .catalog:
-            "rectangle.on.rectangle"
+        case .main:
+            "square"
         case .library:
-            "books.vertical"
-        case .menu:
-            "gear"
+            "square.grid.3x3.square"
+        case .settings:
+            "ellipsis"
         }
     }
     
     @ViewBuilder
     func view() -> some View {
         switch self {
-        case .catalog:
-            CatalogCoordinatorView()
+        case .main:
+            HomeCoordinatorView()
         case .library:
             CHCatalogCoordinatorView()
-        case .menu:
+        case .settings:
             MenuView()
         }
     }

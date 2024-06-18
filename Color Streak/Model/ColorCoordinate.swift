@@ -40,6 +40,22 @@ enum ColorCoordinate: String, CaseIterable, Identifiable {
         }
     }
     
+    var accuracy: Double {
+        let range = range.upperBound - range.lowerBound
+        switch self {
+        case .percent, .decimal:
+            return 0.9 * 0.01 / range
+        case .degree:
+            return 0.9 * 1 / range
+        case .bits:
+            return 0.9 * 1 / range
+        case .normal:
+            return 0.9 * 1 / range
+        case .balance:
+            return 0.9 * 1 / range
+        }
+    }
+    
     var increment: Double {
         switch self {
         case .percent, .decimal:

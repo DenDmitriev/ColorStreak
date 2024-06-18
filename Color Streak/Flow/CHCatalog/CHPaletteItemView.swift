@@ -11,7 +11,7 @@ import FirebaseAnalytics
 struct CHPaletteItemView: View {
     @ObservedObject var palette: Palette
     @EnvironmentObject private var tabCoordinator: TabCoordinator<TabRouter>
-    @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
+    @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>
     @EnvironmentObject private var chShop: CHPaletteShop
     @EnvironmentObject var shop: PaletteShop
     
@@ -20,9 +20,13 @@ struct CHPaletteItemView: View {
     var body: some View {
         VStack(spacing: .zero) {
             HStack(spacing: .zero) {
-                ForEach(Array(zip(palette.colors.indices, palette.colors)), id: \.0) { index, color in
-                    Rectangle()
-                        .fill(color)
+                if !palette.isEmpty {
+                    ForEach(Array(zip(palette.colors.indices, palette.colors)), id: \.0) { index, color in
+                        Rectangle()
+                            .fill(color)
+                    }
+                } else {
+                    ShimmerEffectView()
                 }
             }
             .onTapGesture {
@@ -74,7 +78,7 @@ struct CHPaletteItemView: View {
     private func addToCatalogAction() {
         showMenu = false
         shop.add(palette: palette)
-        tabCoordinator.change(.catalog)
+        tabCoordinator.change(.main)
         
         sendAnalyticsImportPalette()
     }
@@ -92,7 +96,7 @@ struct CHPaletteItemView: View {
 #Preview {
     VStack {
         CHPaletteItemView(palette: Palette(colors: [.red, .orange, .yellow, .green, .cyan, .blue, .purple], name: "Palette"))
-            .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+            .environmentObject(Coordinator<HomeRouter, HomeError>())
             .environmentObject(PaletteShop())
             .padding()
     }

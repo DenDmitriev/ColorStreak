@@ -21,41 +21,49 @@ struct ContrastView: View {
     @State private var ifForegroundSelection = true
     @State private var showPicker = false
     
+    @EnvironmentObject private var shop: PaletteShop
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
                 ContrastPickerView(foreground: $foreground, background: $background)
                     .shadow(color: .black.opacity(0.12), radius: 16)
                 
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 50, maximum: 100))], alignment: .center) {
-                    ForEach(Array(zip(palette.colors.indices, palette.colors)), id: \.0) { index, color in
-                        
-                        let isBackground = backgroundIndex == index
-                        let isForeground = foregroundIndex == index
-                        Circle()
-                            .fill(color)
-                            .overlay {
-                                Circle()
-                                    .stroke(.regularMaterial, lineWidth: isBackground ? 8 : 0)
-                            }
-                            .overlay {
-                                Circle()
-                                    .fill(.regularMaterial)
-                                    .frame(width: isForeground ? 16 : 0)
-                            }
-                        
-                            .shadow(color: .black.opacity(0.12), radius: 8)
-                            .onTapGesture {
-                                if index == foregroundIndex || index == backgroundIndex {
-                                    ifForegroundSelection = (index == foregroundIndex)
-                                } else {
-                                    if ifForegroundSelection {
-                                        foregroundIndex = index
+                if palette.colors.count > 2 {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 50, maximum: 100))], alignment: .center) {
+                        ForEach(Array(zip(palette.colors.indices, palette.colors)), id: \.0) { index, color in
+                            
+                            let isBackground = backgroundIndex == index
+                            let isForeground = foregroundIndex == index
+                            let material = (colorScheme == .light) ? Material.ultraThick : Material.ultraThin
+                            Circle()
+                                .fill(color)
+                                .overlay {
+                                    Circle()
+                                        .stroke(material, lineWidth: isBackground ? 8 : 0)
+                                        .padding(8)
+                                }
+                                .overlay {
+                                    Circle()
+                                        .fill(material)
+                                        .frame(width: isForeground ? 16 : 0)
+                                }
+                            
+                                .shadow(color: .black.opacity(0.12), radius: 8)
+                                .onTapGesture {
+                                    if index == foregroundIndex || index == backgroundIndex {
+                                        ifForegroundSelection = (index == foregroundIndex)
                                     } else {
-                                        backgroundIndex = index
+                                        if ifForegroundSelection {
+                                            foregroundIndex = index
+                                        } else {
+                                            backgroundIndex = index
+                                        }
                                     }
                                 }
-                            }
+                        }
                     }
                 }
                 
@@ -95,6 +103,16 @@ struct ContrastView: View {
         .animation(.easeInOut, value: foregroundIndex)
         .animation(.easeInOut, value: backgroundIndex)
         .navigationTitle("Contrast")
+        .toolbar(content: {
+            if !shop.contains(id: palette.id) {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Save") {
+                        dismiss()
+                        shop.add(palette: palette)
+                    }
+                }
+            }
+        })
         .onChange(of: [foregroundIndex, backgroundIndex]) { _, colorIndexes in
             let foregroundIndex = colorIndexes[0]
             foreground = palette.colors[foregroundIndex]
@@ -113,7 +131,9 @@ struct ContrastView: View {
             updateResults(foregroundIndex: foregroundIndex, backgroundIndex: backgroundIndex)
         }
         .onDisappear {
-            palette.saveModel()
+            if shop.contains(id: palette.id) {
+                palette.saveModel()
+            }
         }
         .analyticsScreen(name: AnalyticsEvent.screen(view: "\(type(of: self))"))
     }
@@ -135,4 +155,5 @@ struct ContrastView: View {
 
 #Preview {
     ContrastView(palette: .circleImages)
+        .environmentObject(PaletteShop())
 }

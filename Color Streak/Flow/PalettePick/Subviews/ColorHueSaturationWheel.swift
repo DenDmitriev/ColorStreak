@@ -21,11 +21,24 @@ struct ColorHueSaturationWheel: View {
     @State private var radiusCursorSelected: CGFloat = 48
     private let radiusCursorInitial: CGFloat = 24
     @State private var draggingIndex: Int?
+    @State private var isDragging = false
+    @State private var previousColor: Color?
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 CIHueSaturationValueGradientView(colorSpace: colorSpace.cgColorSpace, radius: geometry.size.width / 2, brightness: self.$brightness)
+                    .overlay(alignment: .topLeading) {
+                        helpColorCircle
+                    }
+                    .gesture(SpatialTapGesture(coordinateSpace: .global)
+                        .onEnded({ value in
+                            guard let selected else { return }
+                            controller = .wheel
+                            colors[selected] = getColorInWheel(rect: geometry.frame(in: .global), point: value.location)
+                            previousColor = colors[selected]
+                        })
+                    )
                 
                 ForEach(Array(zip(colors.indices, colors)), id: \.0) { index, color in
                     LineView(
@@ -35,33 +48,30 @@ struct ColorHueSaturationWheel: View {
                     )
                 }
                 
-                ForEach(Array(zip(colors.indices, colors)), id: \.0) { index, color in
-                    let bindingColor: Binding<Color> = .init {
-                        color
-                    } set: { color in
-                        colors[index] = color
-                    }
-                    
-                    KnobView(color: bindingColor)
+                ForEach(Array(zip(colors.indices, $colors)), id: \.0) { index, color in
+                    KnobView(color: color)
                         .frame(width: widthPicker(index: index))
-                        .offset(x: radius(size: geometry.size, color: bindingColor.wrappedValue))
-                        .rotationEffect(.degrees(-bindingColor.wrappedValue.hsb.hue360))
+                        .position(colorPoint(color: color.wrappedValue, size: geometry.size))
                         .onTapGesture {
+                            controller = .selection
                             selected = index
                         }
                         .gesture(
                             DragGesture(coordinateSpace: .global)
                                 .onChanged { value in
+                                    isDragging = true
                                     controller = .wheel
                                     draggingIndex = index
                                     selected = index
                                     radiusCursor = radiusCursorInitial * 3
-                                    bindingColor.wrappedValue = getColorInWheel(rect: geometry.frame(in: .global), point: value.location)
+                                    color.wrappedValue = getColorInWheel(rect: geometry.frame(in: .global), point: value.location)
                                 }
                                 .onEnded({ value in
+                                    isDragging = false
+                                    previousColor = color.wrappedValue
                                     radiusCursor = radiusCursorInitial
                                     draggingIndex = nil
-                                    controller = .slider
+                                    // controller = .slider
                                 })
                         )
                 }
@@ -71,6 +81,18 @@ struct ColorHueSaturationWheel: View {
         .aspectRatio(1, contentMode: .fit)
         .animation(.easeInOut, value: radiusCursor)
         .animation(.easeInOut, value: radiusCursorSelected)
+        .onAppear {
+            updatePreviousColor(selected: selected)
+        }
+        .onChange(of: selected) { _, newSelected in
+            updatePreviousColor(selected: newSelected)
+        }
+    }
+    
+    private func updatePreviousColor(selected: Int?) {
+        if let selected {
+            previousColor = colors[selected]
+        }
     }
     
     private func centerPoint(rect: CGRect) -> CGPoint {
@@ -162,6 +184,23 @@ struct ColorHueSaturationWheel: View {
         }
         
         return width
+    }
+    
+    @ViewBuilder
+    private var helpColorCircle: some View {
+        if let selected, let previousColor, isDragging {
+            ZStack {
+                Circle()
+                    .fill(previousColor)
+                    .frame(height: 44)
+                    .mask(Rectangle().offset(y: -22))
+                
+                Circle()
+                    .fill(colors[selected])
+                    .frame(height: 44)
+                    .mask(Rectangle().offset(y: 22))
+            }
+        }
     }
 }
 

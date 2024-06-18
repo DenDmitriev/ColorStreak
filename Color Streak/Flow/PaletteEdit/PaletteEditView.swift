@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseAnalytics
 
 struct PaletteEditView: View {
-    @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
+    @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>
     @ObservedObject var palette: Palette
     @StateObject var editPalette: Palette
     @Environment(\.safeAreaInsets) private var safeAreaInsets
@@ -69,6 +69,6 @@ struct PaletteEditView: View {
 #Preview {
     NavigationStack {
         PaletteEditView(palette: .placeholder)
-            .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+            .environmentObject(Coordinator<HomeRouter, HomeError>())
     }
 }

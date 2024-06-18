@@ -11,10 +11,10 @@ struct GradientSliderView: View {
     let text: String
     @Binding var color: Color
     @Binding var level: Double
+    let initial: Double?
     @Binding var gradient: LinearGradient
     @State var coordinate: ColorCoordinate
     let showControl = true
-//    @State var initialLevel: Double
     
     @State private var size: CGSize = .zero
     @State private var position: CGPoint = .zero
@@ -22,17 +22,11 @@ struct GradientSliderView: View {
     @State private var isDragging = false
     
     @Environment(\.isEnabled) private var isEnabled
+    @Environment(\.colorScheme) private var colorScheme
     
     @State private var triggerVibration: Bool = false
     
-    init(text: String, color: Binding<Color>, level: Binding<Double>, gradient: Binding<LinearGradient>, coordinate: ColorCoordinate) {
-        self.text = text
-        self._color = color
-        self._level = level
-        self._gradient = gradient
-        self.coordinate = coordinate
-//        self.initialLevel = level.wrappedValue
-    }
+    let initialCircleDiameter: CGFloat = 6
     
     var body: some View {
         VStack(spacing: 0) {
@@ -58,7 +52,7 @@ struct GradientSliderView: View {
                         .onChanged { value in
                             isDragging = true
                             let x = max(min(value.location.x, size.width), 0)
-                            let midY = (size.height - 1) / 2
+                            let midY = size.height / 2
                             position = CGPoint(x: x, y: midY)
                         }
                         .onEnded { _ in
@@ -74,7 +68,9 @@ struct GradientSliderView: View {
                 KnobView(color: $color)
                     .position(position)
                 
-//                initialPoint
+                if let initial {
+                    initialCircle(initial)
+                }
             }
             .readSize { size in
                 self.size = size
@@ -111,16 +107,11 @@ struct GradientSliderView: View {
     private func updateLevel(position: CGPoint) {
         let newLevel = max(min(position.x / size.width, size.width), 0)
         
-//        let accuracy = 0.9 * 1 / (coordinate.range.upperBound - coordinate.range.lowerBound)
-//        let initialAccuracyRange = (initialLevel - accuracy)...(initialLevel + accuracy)
-//        if initialAccuracyRange ~= newLevel {
-//            level = initialLevel
-//            triggerVibration.toggle()
-//        } else {
-//            level = newLevel
-//        }
-        
-        if level != newLevel {
+        if let initial, newLevel.isEqual(value: initial, accuracy: coordinate.accuracy) {
+            level = initial
+            updatePosition(level: level)
+            triggerVibration.toggle()
+        } else if level != newLevel {
             level = newLevel
         }
     }
@@ -135,27 +126,31 @@ struct GradientSliderView: View {
         }
     }
     
-//    private var initialPoint: some View {
-//        let midY = (size.height - 1) / 2
-//        let initialX = max(min(initialLevel * size.width, size.width), 0)
-//        return Circle()
-//            .fill(.regularMaterial)
-//            .frame(height: 5)
-//            .position(x: initialX, y: midY)
-//    }
+    private func initialCircle(_ initial: Double) -> some View {
+        let midY = size.height / 2
+        let initialX = max(min(initial * size.width, size.width), 0)
+        let color: Color = .white.opacity(0.8)
+        
+        return Circle()
+            .fill(color)
+            .frame(height: initialCircleDiameter)
+            .position(x: initialX, y: midY)
+    }
 }
 
 #Preview {
     struct PreviewWrapper: View {
         @State private var color: Color = .gray
         @State private var level: Double = 0.5
-        @State private var gradient: LinearGradient = .linearGradient(colors: [Color.white, Color.black], startPoint: .leading, endPoint: .trailing)
+        private let initial: Double = 0.5
+        @State private var gradient: LinearGradient = .linearGradient(colors: [Color(UIColor.lightGray), Color.black], startPoint: .leading, endPoint: .trailing)
         
         var body: some View {
             GradientSliderView(
                 text: "Label",
                 color: $color,
-                level: $level,
+                level: $level, 
+                initial: initial,
                 gradient: $gradient,
                 coordinate: .normal)
         }

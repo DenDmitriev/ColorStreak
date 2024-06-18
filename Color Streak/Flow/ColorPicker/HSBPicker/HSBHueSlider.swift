@@ -9,15 +9,17 @@ import SwiftUI
 
 struct HSBHueSlider: View {
     @Binding var hue: Double
+    let initial: Double?
     @State private var hueColor: Color
     
-    init(hue: Binding<Double>) {
+    init(hue: Binding<Double>, initial: Double?) {
         self._hue = hue
+        self.initial = initial
         self._hueColor = .init(wrappedValue: Color(hue: hue.wrappedValue, saturation: 1, brightness: 1))
     }
     
     var body: some View {
-        GradientSliderView(text: "Hue", color: $hueColor, level: $hue, gradient: hueGradient, coordinate: .degree)
+        GradientSliderView(text: "Hue", color: $hueColor, level: $hue, initial: initial, gradient: hueGradient, coordinate: .degree)
             .onChange(of: hue) { _, newHue in
                 hueColor = Color(hue: newHue, saturation: 1, brightness: 1)
             }
@@ -47,7 +49,7 @@ struct HSBHueSlider: View {
         @State var hue: Double = .zero
         
         var body: some View {
-            HSBHueSlider(hue: $hue)
+            HSBHueSlider(hue: $hue, initial: hue)
         }
     }
     return PreviewWrapper()

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ColorPickerView: View {
     @Binding var color: Color
+    let initial: Color?
     @Binding var colorSpace: DeviceColorSpace
     @Binding var colorTable: ColorTable
     @Binding var controller: PalettePickView.ColorController
@@ -17,15 +18,15 @@ struct ColorPickerView: View {
         VStack {
             switch colorTable {
             case .hsb:
-                HSBColorPicker(color: $color, colorSpace: $colorSpace, controller: $controller)
+                HSBColorPicker(color: $color, initial: initial, colorSpace: $colorSpace, controller: $controller)
             case .rgb:
-                RGBColorPicker(color: $color, colorSpace: $colorSpace, controller: $controller)
+                RGBColorPicker(color: $color, initial: initial, colorSpace: $colorSpace, controller: $controller)
             case .lab:
-                LabColorPicker(color: $color, colorSpace: $colorSpace, controller: $controller)
+                LabColorPicker(color: $color, initial: initial, colorSpace: $colorSpace, controller: $controller)
             case .cmyk:
-                CMYKColorPicker(color: $color, colorSpace: $colorSpace, controller: $controller)
+                CMYKColorPicker(color: $color, initial: initial, colorSpace: $colorSpace, controller: $controller)
             case .hex:
-                HEXColorPicker(color: $color, colorSpace: $colorSpace, controller: $controller)
+                HEXColorPicker(color: $color, initial: initial, colorSpace: $colorSpace, controller: $controller)
             }
         }
     }
@@ -34,13 +35,14 @@ struct ColorPickerView: View {
 #Preview {
     struct PreviewWrapper: View {
         @State private var color: Color = .green
+        @State private var initial: Color = .green
         @State private var colorSpace: DeviceColorSpace = .displayP3
-        @State private var colorTable: ColorTable = .hex
+        @State private var colorTable: ColorTable = .rgb
         @State private var controller: PalettePickView.ColorController = .slider
         
         var body: some View {
             VStack {
-                ColorPickerView(color: $color, colorSpace: $colorSpace, colorTable: $colorTable, controller: $controller)
+                ColorPickerView(color: $color, initial: initial, colorSpace: $colorSpace, colorTable: $colorTable, controller: $controller)
                 
                 ColorPicker("Color", selection: $color, supportsOpacity: false)
             }

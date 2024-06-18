@@ -9,10 +9,11 @@ import SwiftUI
 
 struct RGBRedSlider: View {
     @Binding var red: Double
+    let initial: Double?
     @Binding var color: Color
     
     var body: some View {
-        GradientSliderView(text: "Red", color: redColor, level: $red, gradient: redGradient, coordinate: .bits)
+        GradientSliderView(text: "Red", color: redColor, level: $red, initial: initial, gradient: redGradient, coordinate: .bits)
     }
     
     private var redColor: Binding<Color> {
@@ -33,5 +34,5 @@ struct RGBRedSlider: View {
 }
 
 #Preview {
-    RGBRedSlider(red: .constant(Color.red.rgb.red), color: .constant(.red))
+    RGBRedSlider(red: .constant(Color.red.rgb.red), initial: 1, color: .constant(.red))
 }

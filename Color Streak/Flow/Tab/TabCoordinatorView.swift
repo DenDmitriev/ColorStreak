@@ -19,7 +19,6 @@ struct TabCoordinatorView: View {
                     }
             }
         }
-        .environmentObject(coordinator)
     }
 }
 
@@ -27,7 +26,7 @@ struct TabCoordinatorView: View {
     TabCoordinatorView()
         .environmentObject(PaletteShop())
         .environmentObject(CHPaletteShop())
-        .environmentObject(TabCoordinator<TabRouter>(tab: .catalog))
-        .environmentObject(Coordinator<CatalogRouter, CatalogError>())
-        .environmentObject(Coordinator<CHCatalogRouter, CatalogError>())
+        .environmentObject(TabCoordinator<TabRouter>(tab: .main))
+        .environmentObject(Coordinator<HomeRouter, HomeError>())
+        .environmentObject(Coordinator<CHCatalogRouter, HomeError>())
 }

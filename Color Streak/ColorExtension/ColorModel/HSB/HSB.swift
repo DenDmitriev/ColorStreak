@@ -9,16 +9,16 @@ import Foundation
 
 public struct HSB {
     /// A value in the range 0 to 1 that maps to an angle from 0° to 360° to represent a shade on the color wheel.
-    public let hue: CGFloat
+    public let hue: Double
     /// A value in the range 0 to 1 that indicates how strongly the hue affects the color. A value of 0 removes the effect of the hue, resulting in gray. As the value increases, the hue becomes more prominent.
-    public let saturation: CGFloat
+    public let saturation: Double
     /// A value in the range 0 to 1 that indicates how bright a color is. A value of 0 results in black, regardless of the other components. The color lightens as you increase this component.
-    public let brightness: CGFloat
+    public let brightness: Double
     /// An optional degree of opacity, given in the range 0 to 1. A value of 0 means 100% transparency, while a value of 1 means 100% opacity. The default is 1.
-    public let alpha: CGFloat
+    public let alpha: Double
     
     /// Hue in degrees from 0° to 360°
-    public var hue360: CGFloat {
+    public var hue360: Double {
         let degrees = (hue * 360).roundedDecimal(4)
         return max(min(degrees, 360), 0)
     }

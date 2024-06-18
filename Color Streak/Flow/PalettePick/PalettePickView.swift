@@ -9,33 +9,27 @@ import SwiftUI
 import FirebaseAnalytics
 
 struct PalettePickView: View {
-    @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
+    @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>
     @ObservedObject var palette: Palette
     let initialColors: [Color]
     
     @AppStorage(UserDefaultsKey.deviceColorSpace.key)
     private var colorSpace: DeviceColorSpace = .displayP3
-    
-    @AppStorage(UserDefaultsKey.isDarkMode.key)
-    private var isDarkMode: Bool = false
+
+    @AppStorage(UserDefaultsKey.lightMode.key)
+    private var lightMode: LightMode = .automatic
     
     @AppStorage(UserDefaultsKey.colorTable.key)
     private var colorTable: ColorTable = .hsb
     
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
+    
     @State private var pickerSize: CGSize = .zero
-    
     @State private var colorPickerSource: ColorPickerSource = .wheel
-    
     @State private var showControl = true
-    
-    enum ColorController {
-        case wheel
-        case slider
-    }
-    
-    @State private var controller: ColorController = .slider
+    @State private var controller: ColorController = .selection
     
     init(palette: Palette) {
         self.palette = palette
@@ -63,7 +57,7 @@ struct PalettePickView: View {
             .frame(maxWidth: .infinity)
             .frame(maxHeight: UIScreen.screenHeight / 2)
             
-            ColorPaletteView(palette: palette, selection: $palette.selection)
+            ColorPaletteView(palette: palette, selection: $palette.selection, controller: $controller)
                 .clipShape(RoundedRectangle(cornerRadius: 24))
         }
         .overlay(alignment: .trailing) {
@@ -76,7 +70,7 @@ struct PalettePickView: View {
         }
         .overlay {
             BottomSheetView(isOpen: $showControl, background: AnyShapeStyle(Material.thickMaterial)) {
-                ColorPickerView(color: selectedColor, colorSpace: $colorSpace, colorTable: $colorTable, controller: $controller)
+                ColorPickerView(color: selectedColor, initial: initialColor, colorSpace: $colorSpace, colorTable: $colorTable, controller: $controller)
                     .disabled(palette.isEmptyColors)
                     .padding(.horizontal)
                     .padding(.bottom, safeAreaInsets.bottom)
@@ -105,7 +99,7 @@ struct PalettePickView: View {
         }
         .background(Color(UIColor.tertiarySystemBackground))
         .ignoresSafeArea(edges: .bottom)
-        .lightMode(dark: $isDarkMode)
+        .lightMode(dark: Binding(get: { lightMode.isDark ?? (colorScheme == .dark) }, set: { _ in }))
         .navigationTitle(palette.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -177,6 +171,13 @@ struct PalettePickView: View {
             }
     }
     
+    private var initialColor: Color? {
+        guard let selection = palette.selection,
+              0..<initialColors.count ~= selection
+        else { return nil }
+        return initialColors[selection]
+    }
+    
     private var brightness: Binding<CGFloat> {
         Binding<CGFloat>(
             get: {
@@ -210,15 +211,13 @@ struct PalettePickView: View {
     private var menuActions: some View {
         Menu {
             Menu {
-                Button("Light", systemImage: "sun.min.fill", action: {
-                    isDarkMode = false
-                })
-                
-                Button("Dark", systemImage: "moon.fill", action: {
-                    isDarkMode = true
-                })
+                ForEach(LightMode.allCases) { mode in
+                    Button(mode.name, systemImage: mode.systemImage, action: {
+                        lightMode = mode
+                    })
+                }
             } label: {
-                Label("Light mode", systemImage: isDarkMode ? "moon.fill" : "sun.min.fill")
+                Label("Light mode", systemImage: lightMode.systemImage)
             }
             
             Menu {
@@ -250,6 +249,14 @@ struct PalettePickView: View {
     }
 }
 
+extension PalettePickView {
+    enum ColorController {
+        case wheel
+        case slider
+        case selection
+    }
+}
+
 #Preview {
     struct PreviewWrapper: View {
         @StateObject private var palette: Palette = .placeholder
@@ -261,6 +268,6 @@ struct PalettePickView: View {
     
     return NavigationStack {
         PreviewWrapper()
-            .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+            .environmentObject(Coordinator<HomeRouter, HomeError>())
     }
 }

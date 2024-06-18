@@ -10,9 +10,10 @@ import SwiftUI
 struct CMYKKeyPicker: View {
     @Binding var key: Double
     @Binding var color: Color
+    let initial: Double?
     
     var body: some View {
-        GradientSliderView(text: "Key", color: $color, level: $key, gradient: keyGradient, coordinate: .percent)
+        GradientSliderView(text: "Key", color: $color, level: $key, initial: initial, gradient: keyGradient, coordinate: .percent)
     }
     
     private var keyGradient: Binding<LinearGradient> {

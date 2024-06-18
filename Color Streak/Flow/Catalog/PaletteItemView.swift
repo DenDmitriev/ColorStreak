@@ -9,17 +9,21 @@ import SwiftUI
 
 struct PaletteItemView: View {
     @ObservedObject var palette: Palette
-    @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
+    @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>
     @EnvironmentObject private var shop: PaletteShop
-    
+    @State private var proxyColors = [Color]()
     @State private var showMenu = false
     
     var body: some View {
         VStack(spacing: .zero) {
             HStack(spacing: .zero) {
-                ForEach(Array(zip(palette.colors.indices, palette.colors)), id: \.0) { index, color in
-                    Rectangle()
-                        .fill(color)
+                if !palette.isEmpty {
+                    ForEach(Array(zip(proxyColors.indices, proxyColors)), id: \.0) { index, color in
+                        Rectangle()
+                            .fill(color)
+                    }
+                } else {
+                    ShimmerEffectView()
                 }
             }
             .overlay(alignment: .bottomLeading, content: {
@@ -70,6 +74,10 @@ struct PaletteItemView: View {
             .padding(.horizontal)
             .padding(.vertical, 8)
         }
+        .onAppear {
+            // Так как цвета меняются, то чтоб не было ошибок диапазона
+            proxyColors = palette.colors
+        }
     }
     
     private func editPaletteAction() {
@@ -96,7 +104,7 @@ struct PaletteItemView: View {
 #Preview {
     VStack {
         PaletteItemView(palette: .placeholder)
-            .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+            .environmentObject(Coordinator<HomeRouter, HomeError>())
             .environmentObject(PaletteShop())
             .padding()
     }

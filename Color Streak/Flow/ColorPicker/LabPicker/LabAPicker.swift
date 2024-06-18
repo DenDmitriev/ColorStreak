@@ -9,15 +9,21 @@ import SwiftUI
 
 struct LabAPicker: View {
     @Binding var greenRedA: Double
+    let initial: Double?
     @State private var aAxisColor: Color
     
-    init(greenRedA: Binding<Double>) {
+    init(greenRedA: Binding<Double>, initial: Double?) {
         self._greenRedA = greenRedA
+        if let initial {
+            self.initial = (initial + 100) / 200
+        } else {
+            self.initial = nil
+        }
         self._aAxisColor = .init(wrappedValue: Color(lab: Lab(L: 75, a: greenRedA.wrappedValue, b: 0)))
     }
     
     var body: some View {
-        GradientSliderView(text: "Green-Red", color: $aAxisColor, level: aAxis, gradient: aAxisGradient, coordinate: .balance)
+        GradientSliderView(text: "Green-Red", color: $aAxisColor, level: aAxis, initial: initial, gradient: aAxisGradient, coordinate: .balance)
     }
     
     private var aAxis: Binding<Double> {
@@ -49,7 +55,7 @@ struct LabAPicker: View {
         @State private var greenRedA: Double = .zero
         
         var body: some View {
-            LabAPicker(greenRedA: $greenRedA)
+            LabAPicker(greenRedA: $greenRedA, initial: greenRedA)
         }
     }
     return PreviewWrapper()

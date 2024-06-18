@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewRandomColors: View {
     @Binding var colors: [Color]
-    @EnvironmentObject var coordinator: Coordinator<CatalogRouter, CatalogError>
+    @EnvironmentObject var coordinator: Coordinator<HomeRouter, HomeError>
     
     var body: some View {
         Section {
@@ -37,7 +37,7 @@ struct NewRandomColors: View {
             }
         case .failure(let error):
             DispatchQueue.main.async {
-                coordinator.presentAlert(error: CatalogError.map(description: error.localizedDescription))
+                coordinator.presentAlert(error: HomeError.map(description: error.localizedDescription))
             }
             print(error.localizedDescription)
         }
@@ -63,6 +63,6 @@ struct NewRandomColors: View {
     }
     
     return PreviewWrapper()
-        .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+        .environmentObject(Coordinator<HomeRouter, HomeError>())
 }
 

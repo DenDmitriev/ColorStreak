@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct CatalogCoordinatorView: View {
-    @EnvironmentObject private var coordinator: Coordinator<CatalogRouter, CatalogError>
-    @EnvironmentObject private var shop: PaletteShop
+struct HomeCoordinatorView: View {
+    @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.appPrimary]
@@ -17,9 +16,9 @@ struct CatalogCoordinatorView: View {
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            coordinator.build(.catalog(shop: shop))
-                .navigationTitle(CatalogRouter.catalog(shop: shop).title)
-                .navigationDestination(for: CatalogRouter.self) { route in
+            coordinator.build(.home)
+                .navigationTitle(HomeRouter.home.title)
+                .navigationDestination(for: HomeRouter.self) { route in
                     coordinator.build(route)
                 }
                 .sheet(item: $coordinator.sheet, content: { route in
@@ -37,7 +36,8 @@ struct CatalogCoordinatorView: View {
 }
 
 #Preview {
-    CatalogCoordinatorView()
+    HomeCoordinatorView()
         .environmentObject(PaletteShop(palettes: [.placeholder]))
-        .environmentObject(Coordinator<CatalogRouter, CatalogError>())
+        .environmentObject(CHPaletteShop())
+        .environmentObject(Coordinator<HomeRouter, HomeError>())
 }

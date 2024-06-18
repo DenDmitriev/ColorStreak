@@ -94,6 +94,16 @@
         }
       }
     },
+    "Automatic" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Автоматически"
+          }
+        }
+      }
+    },
     "Axis" : {
       "localizations" : {
         "ru" : {
@@ -230,6 +240,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Контраст"
+          }
+        }
+      }
+    },
+    "Contrast Checker" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверка контраста"
           }
         }
       }
@@ -554,7 +574,18 @@
         }
       }
     },
+    "Main" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Главная"
+          }
+        }
+      }
+    },
     "Menu" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -694,12 +725,32 @@
         }
       }
     },
+    "Palette from image" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Палитра из изображения"
+          }
+        }
+      }
+    },
     "Palette name" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Имя палитры"
+          }
+        }
+      }
+    },
+    "Palettes" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Палитры"
           }
         }
       }
@@ -807,6 +858,26 @@
         }
       }
     },
+    "Save" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "See all" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все"
+          }
+        }
+      }
+    },
     "Select image" : {
       "localizations" : {
         "ru" : {
@@ -818,7 +889,14 @@
       }
     },
     "Settings" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
     },
     "Share" : {
       "localizations" : {

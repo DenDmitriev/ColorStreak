@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CatalogError: Error, LocalizedError {
+enum HomeError: Error, LocalizedError {
     case map(description: String)
     
     var errorDescription: String? {

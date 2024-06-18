@@ -8,7 +8,7 @@
 import Foundation
 
 enum UserDefaultsKey: String {
-    case deviceColorSpace, isDarkMode, colorHarmony, paletteVisualization, shareColor, colorTable, widthPalette, heightPalette
+    case deviceColorSpace, lightMode, colorHarmony, paletteVisualization, shareColor, colorTable, widthPalette, heightPalette
     case colorSource
     
     var key: String {

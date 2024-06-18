@@ -14,8 +14,8 @@ struct MenuView: View {
     @AppStorage(UserDefaultsKey.deviceColorSpace.key)
     private var colorSpace: DeviceColorSpace = .displayP3
     
-    @AppStorage(UserDefaultsKey.isDarkMode.key)
-    private var isDarkMode: Bool = false
+    @AppStorage(UserDefaultsKey.lightMode.key)
+    private var lightMode: LightMode = .automatic
     
     @AppStorage(UserDefaultsKey.colorTable.key)
     private var colorTable: ColorTable = .hsb
@@ -26,11 +26,11 @@ struct MenuView: View {
         NavigationStack {
             List {
                 Section("General") {
-                    Picker("Theme", selection: $isDarkMode) {
-                        Text("Light")
-                            .tag(false)
-                        Text("Dark")
-                            .tag(true)
+                    Picker("Theme", selection: $lightMode) {
+                        ForEach(LightMode.allCases) { mode in
+                            Text(mode.name)
+                                .tag(mode)
+                        }
                     }
                 }
                 
@@ -67,7 +67,7 @@ struct MenuView: View {
             }
             .scrollContentBackground(.hidden)
             .background(.appBackground)
-            .navigationTitle("Menu")
+            .navigationTitle(TabRouter.settings.title)
             .alert("Confirm deletion", isPresented: $showDeleteAlert) {
                 Button("Delete", role: .destructive, action: removeAllPalette)
             } message: {

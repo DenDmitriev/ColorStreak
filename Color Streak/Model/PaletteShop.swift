@@ -11,11 +11,12 @@ import CoreData
 import FirebaseCrashlytics
 
 class PaletteShop: ObservableObject {
-    @Published var palettes: [Palette] = []
+    @Published var palettes: [Palette]
     @Published var state: State = .empty
     
     private var coreDataManager: CoreDataManager = .shared
     private var cancellable = Set<AnyCancellable>()
+    
     
     init(palettes: [Palette] = []) {
         self.palettes = palettes
@@ -61,8 +62,12 @@ class PaletteShop: ObservableObject {
         return palettes.firstIndex(where: { $0.id == id })
     }
     
+    func contains(id: Palette.ID) -> Bool {
+        palettes.contains(where: { $0.id == id })
+    }
+    
     @discardableResult
-    func add(palette: Palette) -> Bool {
+    func add(palette: Palette, at index: Int? = nil) -> Bool {
         guard !palette.colors.isEmpty,
               !palettes.contains(palette)
         else { return false }
@@ -77,7 +82,11 @@ class PaletteShop: ObservableObject {
         
         palette.isNew = true
         
-        palettes.append(palette)
+        if let index {
+            palettes.insert(palette, at: index)
+        } else {
+            palettes.append(palette)
+        }
         Task(priority: .background) {
             await coreDataManager.addPalette(palette: palette)
         }

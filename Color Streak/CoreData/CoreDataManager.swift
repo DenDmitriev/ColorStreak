@@ -68,6 +68,7 @@ class CoreDataManager {
             palette.dateCreated = object.dateCreated ?? Date.now
             palette.dateModified = object.dateModified ?? Date.now
             palette.colorSpace = DeviceColorSpace(rawValue: Int(object.colorSpace)) ?? .sRGB
+            palette.selection = palette.colors.isEmpty ? .zero : nil
             
             var colors = [Color]()
             if let colorsObjects = object.colors?.allObjects as? [ColorModel] {

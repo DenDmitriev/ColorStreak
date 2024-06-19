@@ -1,4 +1,7 @@
-# Color Streak
+# [Color Streak](https://apps.apple.com/ru/app/color-streak/id6504355410?uo=4)
+
+![Header](https://github.com/DenDmitriev/ColorStreak/assets/65191747/d90e438e-2fb0-4fa7-8261-48f634a8aa8a)
+
 [Color Streak](https://dendmitriev.github.io/ColorStreak/) creates unique color palettes based on the shades you choose.
 
 [demo_video.webm](https://github.com/DenDmitriev/ColorStreak/assets/65191747/cd54376b-c104-4f9c-9ef9-7bc83cfc124f)

@@ -1,14 +1,18 @@
-# [Color Streak](https://apps.apple.com/ru/app/color-streak/id6504355410?uo=4)
+<img height=64px src="https://github.com/DenDmitriev/ColorStreak/assets/65191747/4917fc3d-3f7e-43ea-829d-7bcf2e1fc6da"/>
 
-![Header](https://github.com/DenDmitriev/ColorStreak/assets/65191747/d90e438e-2fb0-4fa7-8261-48f634a8aa8a)
+# Color Streak
 
 [Color Streak](https://dendmitriev.github.io/ColorStreak/) creates unique color palettes based on the shades you choose.
 
-[demo_video.webm](https://github.com/DenDmitriev/ColorStreak/assets/65191747/cd54376b-c104-4f9c-9ef9-7bc83cfc124f)
+![Header](https://github.com/DenDmitriev/ColorStreak/assets/65191747/d90e438e-2fb0-4fa7-8261-48f634a8aa8a)
+
+[<img height=64px src="https://github.com/DenDmitriev/ColorStreak/assets/65191747/2f079490-5872-45c5-958b-b03c45208a1d"/>](https://apps.apple.com/ru/app/color-streak/id6504355410?uo=4)
 
 ## Features
 ### Create a palette of colors
 Extract stunning shades directly from your photos and enjoy the amazing combinations created by nature.
+
+<img width=300px src="https://github.com/DenDmitriev/ColorStreak/assets/65191747/c3b6f1c7-4c6b-4ee7-a0cc-dc51f9294eab"/>
 
 
 ### Color Hunt Color Library
@@ -39,4 +43,8 @@ Easily share your shades through images or HTML/XML codes.
 
 <img width=300px src="https://github.com/DenDmitriev/ColorStreak/assets/65191747/d4bc31e6-f110-450e-b426-15e2049fde93)"/>
 
-## [Privacy Policy](https://dendmitriev.github.io/ColorStreak/privacypolicy/)
+## Preview
+
+[demo_video.webm](https://github.com/DenDmitriev/ColorStreak/assets/65191747/cd54376b-c104-4f9c-9ef9-7bc83cfc124f)
+
+**[Privacy Policy](https://dendmitriev.github.io/ColorStreak/privacypolicy/)**

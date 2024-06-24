@@ -7,7 +7,6 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
-import FirebaseAnalytics
 
 struct CatalogView: View {
     @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>
@@ -62,7 +61,6 @@ struct CatalogView: View {
                 await shop.fetchPalettes()
             }
         }
-        .analyticsScreen(name: AnalyticsEvent.screen(view: "\(type(of: self))"))
     }
     
     private func placeholderText(text: String) -> some View {

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseAnalytics
 
 struct MenuView: View {
     @EnvironmentObject private var shop: PaletteShop
@@ -74,7 +73,6 @@ struct MenuView: View {
                 Text("Are you sure you want to delete all palettes?")
             }
         }
-        .analyticsScreen(name: AnalyticsEvent.screen(view: "\(type(of: self))"))
     }
     
     private func removeAllPalette() {

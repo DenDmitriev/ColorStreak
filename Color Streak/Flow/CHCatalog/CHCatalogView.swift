@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseAnalytics
 
 struct CHCatalogView: View {
     @EnvironmentObject private var coordinator: TabCoordinator<TabRouter>
@@ -119,7 +118,6 @@ struct CHCatalogView: View {
                 }
             }
         }
-        .analyticsScreen(name: AnalyticsEvent.screen(view: "\(type(of: self))"))
     }
     
     private var showSuggestedTags: Bool {

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FirebaseAnalytics
+//import FirebaseAnalytics
 
 @main
 struct Color_Palette: App {
@@ -24,6 +24,7 @@ struct Color_Palette: App {
         WindowGroup {
             ContentView()
                 .onAppear {
+                    // Analytics.resetAnalyticsData()
                     navigationTitleAppearance()
                     backButtonAppearance()
                 }

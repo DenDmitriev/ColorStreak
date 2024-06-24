@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import FirebaseAnalytics
 
 struct CatalogView: View {
     @EnvironmentObject private var coordinator: Coordinator<HomeRouter, HomeError>

@@ -1,7 +1,6 @@
 <img height=64px src="https://github.com/DenDmitriev/ColorStreak/assets/65191747/4917fc3d-3f7e-43ea-829d-7bcf2e1fc6da"/>
 
 # Color Streak
-
 [Color Streak](https://dendmitriev.github.io/ColorStreak/) creates unique color palettes based on the shades you choose.
 
 ![Header](https://github.com/DenDmitriev/ColorStreak/assets/65191747/d90e438e-2fb0-4fa7-8261-48f634a8aa8a)
